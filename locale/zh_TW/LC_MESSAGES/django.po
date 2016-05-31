@@ -1,0 +1,764 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-26 10:20+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: players/views.py:89 players/views.py:111
+msgid "UNABLED_TO_CREATE_PLAYER"
+msgstr "無法建立球員"
+
+#: players/views.py:130
+msgid "PLAYER_CREATED"
+msgstr "已新增球員"
+
+#: players/views.py:183 players/views.py:223 players/views.py:236
+msgid "UNABLED_TO_UPDATE_PLAYER"
+msgstr "無法更新球員"
+
+#: players/views.py:264
+msgid "PLAYER_UPDATED"
+msgstr "已更新球員"
+
+#: players/views.py:320 players/views.py:332 players/views.py:341
+msgid "UNABLED_TO_DELETE_PLAYER"
+msgstr "無法刪除球員"
+
+#: players/views.py:345
+msgid "PLAYER_DELETED"
+msgstr "已刪除球員"
+
+#: spacejam/views.py:51 spacejam/views.py:57
+msgid "INCORRECT_EMAIL_OR_PASSWORD"
+msgstr "不正確的Email或密碼"
+
+#: spacejam/views.py:125
+msgid "MY_ACCOUNT_UPDATED"
+msgstr "已更新我的帳號"
+
+#: spacejam/views.py:129
+msgid "UNABLED_TO_UPDATE_MY_ACCOUNT"
+msgstr "無法更新我的帳號"
+
+#: spacejam/views.py:147
+msgid "PASSWORD_UPDATED"
+msgstr "已更新密碼"
+
+#: spacejam/views.py:151
+msgid "UNABLED_TO_CHANGE_PASSWORD"
+msgstr "無法變更密碼"
+
+#: teams/views.py:39 teams/views.py:58
+msgid "UNABLED_TO_CREATE_TEAM"
+msgstr "無法建立球隊"
+
+#: teams/views.py:62
+msgid "TEAM_CREATED"
+msgstr "已新增球隊"
+
+#: teams/views.py:87 teams/views.py:97 teams/views.py:106 teams/views.py:116
+msgid "UNABLED_TO_UPDATE_TEAM"
+msgstr "無法更新球隊"
+
+#: teams/views.py:102
+msgid "TEAM_UPDATED"
+msgstr "已更新球隊"
+
+#: teams/views.py:127 teams/views.py:139 teams/views.py:149
+msgid "UNABLED_TO_DELETE_TEAM"
+msgstr "無法刪除球隊"
+
+#: teams/views.py:145
+msgid "TEAM_DELETED"
+msgstr "已刪除球隊"
+
+#: teams/views.py:287
+msgid "NEW_GAME_CREATED"
+msgstr "已建立新賽程"
+
+#: teams/views.py:291
+msgid "UNABLED_TO_CREATE_A_GAME"
+msgstr "無法建立新賽程"
+
+#: teams/views.py:343 teams/views.py:669 teams/views.py:1046
+msgid "GAME_UPDATED"
+msgstr "已更新賽程"
+
+#: teams/views.py:347 teams/views.py:420 teams/views.py:429 teams/views.py:445
+#: teams/views.py:465 teams/views.py:617 teams/views.py:660 teams/views.py:772
+#: teams/views.py:781 teams/views.py:798 teams/views.py:953 teams/views.py:962
+#: teams/views.py:985 teams/views.py:1042
+msgid "UNABLED_TO_UPDATE_GAME"
+msgstr "無法更新賽程"
+
+#: teams/views.py:1077 teams/views.py:1092 teams/views.py:1134
+#: teams/views.py:1143 teams/views.py:1153 teams/views.py:1161
+#: teams/views.py:1195 teams/views.py:1204 teams/views.py:1215
+msgid "UNABLED_TO_DELETE_GAME"
+msgstr "無法刪除賽程"
+
+#: teams/views.py:1211
+msgid "GAME_DELETED"
+msgstr "已刪除賽程"
+
+#: templates/base.html:23 templates/change_password.html:35
+#: templates/my_account.html:22 templates/teams/create.html:30
+#: templates/teams/create.html.py:36 templates/teams/edit.html:30
+#: templates/teams/edit.html.py:36 templates/teams/myteams.html:29
+#: templates/teams/myteams.html.py:35 templates/teams/registration.html:29
+msgid "MY_TEAM"
+msgstr "我的球隊"
+
+#: templates/base.html:24 templates/change_password.html:36
+#: templates/change_password.html.py:41 templates/my_account.html:23
+#: templates/my_account.html.py:28 templates/teams/create.html:31
+#: templates/teams/edit.html:31 templates/teams/myteams.html:30
+#: templates/teams/registration.html:30
+msgid "MY_ACCOUNT"
+msgstr "我的帳號"
+
+#: templates/base.html:25 templates/change_password.html:37
+#: templates/my_account.html:24 templates/teams/create.html:32
+#: templates/teams/edit.html:32 templates/teams/myteams.html:31
+#: templates/teams/registration.html:31
+msgid "SIGN_OUT"
+msgstr "登出"
+
+#: templates/change_password.html:41 templates/my_account.html:50
+msgid "CHANGE_PASSWORD"
+msgstr "變更密碼"
+
+#: templates/change_password.html:56
+msgid "NEW_PASSWORD"
+msgstr "新密碼"
+
+#: templates/change_password.html:58 templates/login.html:62
+#: templates/register.html:63
+msgid "PLEASE_INSERT_PASSWORD"
+msgstr "請輸入密碼"
+
+#: templates/change_password.html:59
+msgid "CONFIRM_PASSWORD"
+msgstr "確認密碼"
+
+#: templates/change_password.html:61
+msgid "PLEASE_CONFIRM_YOUR_PASSWORD_AGAIN"
+msgstr "請再次確認密碼"
+
+#: templates/change_password.html:64 templates/games/create.html:65
+#: templates/games/edit.html:68 templates/games/edit_complete.html:14
+#: templates/games/edit_states.html:12 templates/players/create.html:65
+#: templates/players/edit.html:87 templates/teams/create.html:54
+#: templates/teams/edit.html:60
+msgid "CANCEL"
+msgstr "取消"
+
+#: templates/change_password.html:65 templates/games/edit.html:69
+#: templates/games/edit_complete.html:13 templates/games/edit_states.html:11
+#: templates/my_account.html:51 templates/players/edit.html:88
+#: templates/teams/edit.html:61
+msgid "SAVE"
+msgstr "儲存"
+
+#: templates/games/complete.html:12 templates/games/mygames.html:48
+#: templates/games/mygames.html.py:82 templates/players/summary.html:162
+#: templates/teams/summary.html:19 templates/teams/summary.html.py:38
+msgid "DATE"
+msgstr "日期"
+
+#: templates/games/complete.html:12 templates/games/create.html:37
+#: templates/games/edit.html:20 templates/games/mygames.html:49
+#: templates/games/mygames.html.py:83 templates/players/summary.html:86
+#: templates/players/summary.html.py:124 templates/players/summary.html:164
+#: templates/teams/summary.html:20 templates/teams/summary.html.py:39
+msgid "TIME"
+msgstr "時間"
+
+#: templates/games/complete.html:15 templates/games/edit.html:11
+#: templates/games/edit_complete.html:11 templates/games/edit_states.html:10
+#: templates/games/mygames.html:66 templates/games/mygames.html.py:108
+#: templates/games/mygames.html:122 templates/players/edit.html:27
+#: templates/teams/edit.html:36 templates/teams/myteams.html:63
+#: templates/teams/roster.html:86
+msgid "EDIT"
+msgstr "編輯"
+
+#: templates/games/complete.html:52
+msgid "BOX_SCORE"
+msgstr "分數盒子"
+
+#: templates/games/complete.html:58 templates/games/edit_complete.html:21
+#: templates/games/edit_states.html:19
+msgid "Q1"
+msgstr "第一節"
+
+#: templates/games/complete.html:59 templates/games/edit_complete.html:22
+#: templates/games/edit_states.html:20
+msgid "Q2"
+msgstr "第二節"
+
+#: templates/games/complete.html:60 templates/games/edit_complete.html:23
+#: templates/games/edit_states.html:21
+msgid "Q3"
+msgstr "第三節"
+
+#: templates/games/complete.html:61 templates/games/edit_complete.html:24
+#: templates/games/edit_states.html:22
+msgid "Q4"
+msgstr "第四節"
+
+#: templates/games/complete.html:62 templates/games/edit_complete.html:25
+#: templates/games/edit_states.html:23
+msgid "OT"
+msgstr "延長賽"
+
+#: templates/games/complete.html:63 templates/games/complete.html.py:143
+#: templates/players/summary.html:79 templates/players/summary.html.py:229
+#: templates/teams/stats.html:26
+msgid "TOTAL"
+msgstr "總計"
+
+#: templates/games/complete.html:85
+msgid "PLAYER_STATS"
+msgstr "球員數據"
+
+#: templates/games/complete.html:90 templates/games/edit_complete.html:75
+#: templates/games/edit_states.html:69 templates/players/create.html:34
+#: templates/players/edit.html:31 templates/teams/registration.html:39
+#: templates/teams/roster.html:51
+msgid "NAME"
+msgstr "姓名"
+
+#: templates/games/complete.html:91 templates/games/edit_complete.html:76
+#: templates/games/edit_states.html:70
+msgid "GS"
+msgstr "先發"
+
+#: templates/games/complete.html:92 templates/games/edit_complete.html:77
+#: templates/games/edit_states.html:71
+msgid "MINS"
+msgstr "上場時間"
+
+#: templates/games/complete.html:93 templates/players/summary.html:166
+#: templates/teams/stats.html:33 templates/teams/stats.html.py:83
+msgid "FG"
+msgstr "投籃"
+
+#: templates/games/complete.html:94 templates/players/summary.html:87
+#: templates/players/summary.html.py:125 templates/players/summary.html:165
+#: templates/teams/stats.html:52
+msgid "FG%"
+msgstr "投籃％"
+
+#: templates/games/complete.html:95 templates/players/summary.html:168
+#: templates/teams/stats.html:34 templates/teams/stats.html.py:84
+msgid "3PTS"
+msgstr "三分球"
+
+#: templates/games/complete.html:96 templates/players/summary.html:88
+#: templates/players/summary.html.py:126 templates/players/summary.html:167
+#: templates/teams/stats.html:53
+msgid "3PTS%"
+msgstr "三分球％"
+
+#: templates/games/complete.html:97 templates/players/summary.html:170
+#: templates/teams/stats.html:35 templates/teams/stats.html.py:85
+msgid "FT"
+msgstr "罰球"
+
+#: templates/games/complete.html:98 templates/players/summary.html:89
+#: templates/players/summary.html.py:127 templates/players/summary.html:169
+#: templates/teams/stats.html:54
+msgid "FT%"
+msgstr "罰球％"
+
+#: templates/games/complete.html:99 templates/games/edit_complete.html:84
+#: templates/games/edit_states.html:78 templates/players/summary.html:90
+#: templates/players/summary.html.py:128 templates/players/summary.html:171
+#: templates/teams/stats.html:43 templates/teams/stats.html.py:92
+msgid "OREB"
+msgstr "進攻籃板"
+
+#: templates/games/complete.html:100 templates/games/edit_complete.html:85
+#: templates/games/edit_states.html:79 templates/players/summary.html:91
+#: templates/players/summary.html.py:129 templates/players/summary.html:172
+#: templates/teams/stats.html:55 templates/teams/stats.html.py:103
+msgid "DREB"
+msgstr "防守籃板"
+
+#: templates/games/complete.html:101 templates/players/summary.html:92
+#: templates/players/summary.html.py:130 templates/players/summary.html:173
+#: templates/teams/stats.html:36 templates/teams/stats.html.py:86
+msgid "REB"
+msgstr "籃板"
+
+#: templates/games/complete.html:102 templates/games/edit_complete.html:86
+#: templates/games/edit_states.html:80 templates/players/summary.html:93
+#: templates/players/summary.html.py:131 templates/players/summary.html:174
+#: templates/teams/stats.html:64 templates/teams/stats.html.py:112
+msgid "AST"
+msgstr "助攻"
+
+#: templates/games/complete.html:103 templates/games/edit_complete.html:87
+#: templates/games/edit_states.html:81 templates/players/summary.html:94
+#: templates/players/summary.html.py:132 templates/players/summary.html:175
+#: templates/teams/stats.html:65 templates/teams/stats.html.py:113
+msgid "STL"
+msgstr "抄截"
+
+#: templates/games/complete.html:104 templates/games/edit_complete.html:88
+#: templates/games/edit_states.html:82 templates/players/summary.html:95
+#: templates/players/summary.html.py:133 templates/players/summary.html:176
+#: templates/teams/stats.html:66 templates/teams/stats.html.py:114
+msgid "BLK"
+msgstr "阻攻"
+
+#: templates/games/complete.html:105 templates/games/edit_complete.html:89
+#: templates/games/edit_states.html:83 templates/players/summary.html:96
+#: templates/players/summary.html.py:134 templates/players/summary.html:177
+#: templates/teams/stats.html:67 templates/teams/stats.html.py:115
+msgid "TO"
+msgstr "失誤"
+
+#: templates/games/complete.html:106 templates/games/edit_complete.html:90
+#: templates/games/edit_states.html:84 templates/players/summary.html:97
+#: templates/players/summary.html.py:135 templates/players/summary.html:178
+#: templates/teams/stats.html:68 templates/teams/stats.html.py:116
+msgid "PF"
+msgstr "犯規"
+
+#: templates/games/complete.html:107 templates/players/summary.html:98
+#: templates/players/summary.html.py:136 templates/players/summary.html:179
+#: templates/teams/stats.html:32 templates/teams/stats.html.py:82
+msgid "PTS"
+msgstr "得分"
+
+#: templates/games/create.html:25 templates/games/edit.html:11
+msgid "SCHEDULE"
+msgstr "賽程"
+
+#: templates/games/create.html:25 templates/games/create.html.py:66
+#: templates/players/create.html:30 templates/players/create.html.py:66
+#: templates/teams/create.html:36 templates/teams/create.html.py:55
+msgid "CREATE"
+msgstr "新增"
+
+#: templates/games/create.html:29 templates/games/edit.html:16
+#: templates/games/mygames.html:50 templates/games/mygames.html.py:84
+#: templates/players/summary.html:163 templates/teams/summary.html:21
+#: templates/teams/summary.html.py:40
+msgid "OPPONENT"
+msgstr "對手"
+
+#: templates/games/create.html:33
+msgid "PLEASE_INSERT_OPPONENT_NAME"
+msgstr "請輸入對手名稱"
+
+#: templates/games/create.html:35 templates/games/edit.html:18
+msgid "LOCATION"
+msgstr "地點"
+
+#: templates/games/create.html:41 templates/games/edit.html:24
+msgid "TYPE"
+msgstr "型態"
+
+#: templates/games/create.html:43 templates/games/edit.html:27
+#: templates/games/edit.html.py:29
+msgid "SEASON"
+msgstr "季賽"
+
+#: templates/games/create.html:44 templates/games/edit.html:32
+#: templates/games/edit.html.py:34
+msgid "PRACTICE"
+msgstr "練習賽"
+
+#: templates/games/create.html:45 templates/games/edit.html:37
+#: templates/games/edit.html.py:39
+msgid "CASUAL"
+msgstr "一般"
+
+#: templates/games/create.html:47
+msgid "PERIODS"
+msgstr "期間"
+
+#: templates/games/create.html:49 templates/games/edit.html:45
+#: templates/games/edit.html.py:47
+msgid "QUARTERS"
+msgstr "四節"
+
+#: templates/games/create.html:50 templates/games/edit.html:50
+#: templates/games/edit.html.py:52
+msgid "HALVES"
+msgstr "上下半場"
+
+#: templates/games/create.html:52 templates/games/edit.html:55
+msgid "MINS_PER_PERIOD"
+msgstr "單位分鐘數"
+
+#: templates/games/create.html:56 templates/games/edit.html:59
+msgid "FAULS_PER_PLAYER"
+msgstr "個人犯規數"
+
+#: templates/games/create.html:58 templates/games/edit.html:61
+msgid "TIMEOUT_1ST_HALF"
+msgstr "上半場暫停數"
+
+#: templates/games/create.html:60 templates/games/edit.html:63
+msgid "TIMEOUT_2ND_HALF"
+msgstr "下半場暫停數"
+
+#: templates/games/edit_complete.html:78 templates/games/edit_states.html:72
+msgid "2PTA"
+msgstr "兩分球出手"
+
+#: templates/games/edit_complete.html:79 templates/games/edit_states.html:73
+msgid "2PTM"
+msgstr "兩分球命中"
+
+#: templates/games/edit_complete.html:80 templates/games/edit_states.html:74
+msgid "3PTA"
+msgstr "三分球出手"
+
+#: templates/games/edit_complete.html:81 templates/games/edit_states.html:75
+msgid "3PTM"
+msgstr "三分球命中"
+
+#: templates/games/edit_complete.html:82 templates/games/edit_states.html:76
+msgid "FTA"
+msgstr "罰球出手"
+
+#: templates/games/edit_complete.html:83 templates/games/edit_states.html:77
+msgid "FTM"
+msgstr "罰球命中"
+
+#: templates/games/mygames.html:36 templates/teams/summary.html:14
+msgid "UPCOMING_GAME"
+msgstr "即將到來的賽程"
+
+#: templates/games/mygames.html:51 templates/games/mygames.html.py:85
+#: templates/teams/summary.html:41
+msgid "RESULT"
+msgstr "結果"
+
+#: templates/games/mygames.html:52 templates/games/mygames.html.py:86
+#: templates/teams/summary.html:42
+msgid "SCORE"
+msgstr "分數"
+
+#: templates/games/mygames.html:54 templates/games/mygames.html.py:87
+#: templates/teams/roster.html:57
+msgid "ACTIONS"
+msgstr "動作"
+
+#: templates/games/mygames.html:67 templates/games/mygames.html.py:112
+#: templates/teams/myteams.html:64 templates/teams/roster.html:87
+msgid "DELETE"
+msgstr "刪除"
+
+#: templates/games/mygames.html:74 templates/teams/summary.html:30
+msgid "NO_UPCOMING_GAME"
+msgstr "沒有即將到來的賽程"
+
+#: templates/games/mygames.html:77 templates/teams/summary.html:33
+msgid "COMPLETED_GAMES"
+msgstr "已完成的賽程"
+
+#: templates/games/mygames.html:96 templates/teams/summary.html:51
+msgid "SHORT_WIN"
+msgstr "勝"
+
+#: templates/games/mygames.html:98 templates/teams/summary.html:52
+msgid "SHORT_LOSE"
+msgstr "敗"
+
+#: templates/games/mygames.html:103
+msgid "VIEW"
+msgstr "檢視"
+
+#: templates/games/mygames.html:118 templates/teams/summary.html:65
+msgid "NO_COMPLETED_GAME"
+msgstr "沒有已完成的賽程"
+
+#: templates/index.html:23 templates/login.html:38 templates/register.html:44
+msgid "ABOUT_US"
+msgstr "關於我們"
+
+#: templates/index.html:24 templates/login.html:39 templates/login.html.py:43
+#: templates/login.html:70 templates/register.html:45
+#: templates/register.html.py:67 templates/register.html:69
+msgid "SIGN_IN"
+msgstr "登入"
+
+#: templates/login.html:57 templates/my_account.html:42
+#: templates/players/create.html:56 templates/players/edit.html:65
+#: templates/register.html:57
+msgid "EMAIL"
+msgstr "Email"
+
+#: templates/login.html:59 templates/register.html:59
+msgid "PLEASE_INSERT_EMAIL"
+msgstr "請輸入Email"
+
+#: templates/login.html:60 templates/register.html:61
+msgid "PASSWORD"
+msgstr "密碼"
+
+#: templates/login.html:66 templates/login.html.py:68
+msgid "NOT_A_MEMBER"
+msgstr "沒有帳號嗎？"
+
+#: templates/login.html:68 templates/register.html:71
+msgid "SIGN_UP"
+msgstr "建立帳號"
+
+#: templates/my_account.html:44 templates/register.html:53
+msgid "FIRST_NAME"
+msgstr "名"
+
+#: templates/my_account.html:46 templates/register.html:55
+msgid "LAST_NAME"
+msgstr "姓"
+
+#: templates/navigation.html:3 templates/player_navigation.html:3
+msgid "NAV_SUMMARY"
+msgstr "SUMMARY"
+
+#: templates/navigation.html:6
+msgid "NAV_SCHEDULE"
+msgstr "賽程"
+
+#: templates/navigation.html:9
+msgid "NAV_ROSTER"
+msgstr "陣容"
+
+#: templates/navigation.html:12
+msgid "NAV_STATS"
+msgstr "數據"
+
+#: templates/navigation.html:14
+msgid "NAV_ANALYSIS"
+msgstr "分析"
+
+#: templates/players/create.html:30 templates/players/edit.html:27
+#: templates/teams/roster.html:38 templates/teams/summary.html:70
+msgid "ROSTER"
+msgstr "陣容"
+
+#: templates/players/create.html:36 templates/players/edit.html:33
+msgid "PLEASE_INSERT_PLAYER_NAME"
+msgstr "請輸入球員姓名"
+
+#: templates/players/create.html:37 templates/players/edit.html:34
+#: templates/teams/roster.html:55
+msgid "NUMBER"
+msgstr "背號"
+
+#: templates/players/create.html:39 templates/players/edit.html:36
+msgid "PLEASE_INSERT_PLAYER_NUMBER"
+msgstr "請輸入球員背號"
+
+#: templates/players/create.html:40 templates/players/edit.html:37
+#: templates/teams/roster.html:52
+msgid "POSITION"
+msgstr "位置"
+
+#: templates/players/create.html:42 templates/players/edit.html:40
+#: templates/players/edit.html.py:42 templates/players/player_info.html:15
+#: templates/teams/roster.html:74
+msgid "GUARD"
+msgstr "後衛"
+
+#: templates/players/create.html:43 templates/players/edit.html:45
+#: templates/players/edit.html.py:47 templates/players/player_info.html:17
+#: templates/teams/roster.html:76
+msgid "FORWARD"
+msgstr "前鋒"
+
+#: templates/players/create.html:44 templates/players/edit.html:50
+#: templates/players/edit.html.py:52 templates/players/player_info.html:19
+#: templates/teams/roster.html:78
+msgid "CENTER"
+msgstr "中鋒"
+
+#: templates/players/create.html:48 templates/players/edit.html:57
+#: templates/players/player_info.html:26 templates/teams/roster.html:53
+msgid "HEIGHT"
+msgstr "身高"
+
+#: templates/players/create.html:50 templates/players/edit.html:59
+#: templates/players/player_info.html:27 templates/teams/roster.html:54
+msgid "WEIGHT"
+msgstr "體重"
+
+#: templates/players/create.html:52 templates/players/edit.html:61
+#: templates/players/player_info.html:28 templates/teams/roster.html:56
+msgid "BIRTHDAY"
+msgstr "生日"
+
+#: templates/players/create.html:58 templates/players/edit.html:67
+#: templates/teams/create.html:49 templates/teams/edit.html:49
+msgid "IMAGE"
+msgstr "圖片"
+
+#: templates/players/edit.html:77
+msgid "IS_ADMIN"
+msgstr "是否為管理者？"
+
+#: templates/players/player_info.html:26
+msgid "CM"
+msgstr "公分"
+
+#: templates/players/player_info.html:27
+msgid "KG"
+msgstr "公斤"
+
+#: templates/players/player_info.html:32 templates/teams/team_info.html:34
+msgid "PPG"
+msgstr "平均得分："
+
+#: templates/players/player_info.html:36 templates/teams/team_info.html:38
+msgid "FG%PG"
+msgstr "命中率％"
+
+#: templates/players/player_info.html:40 templates/teams/team_info.html:42
+msgid "APG"
+msgstr "平均助攻："
+
+#: templates/players/player_info.html:44 templates/teams/team_info.html:46
+msgid "RPG"
+msgstr "平均籃板："
+
+#: templates/players/summary.html:72
+msgid "PERFORMANCE"
+msgstr "效率"
+
+#: templates/players/summary.html:78
+msgid "CAREER_STATS"
+msgstr "生涯數據"
+
+#: templates/players/summary.html:80 templates/players/summary.html.py:206
+#: templates/teams/stats.html:27
+msgid "AVERAGE"
+msgstr "平均"
+
+#: templates/players/summary.html:84 templates/players/summary.html.py:122
+msgid "GAMES"
+msgstr "已賽"
+
+#: templates/players/summary.html:85 templates/players/summary.html.py:123
+msgid "STARTED"
+msgstr "先發"
+
+#: templates/players/summary.html:158
+msgid "PAST_5_GAMES"
+msgstr "過去五場"
+
+#: templates/players/summary.html:254 templates/teams/stats.html:128
+msgid "NO_STATS"
+msgstr "沒有數據"
+
+#: templates/register.html:49
+msgid "SIGN_UP_TODAY"
+msgstr "建立帳號"
+
+#: templates/register.html:60
+msgid "INVALID_EMAIL"
+msgstr "請檢查Email格式"
+
+#: templates/register.html:67 templates/register.html.py:69
+msgid "ALREADY_ON"
+msgstr "已經有帳號嗎？"
+
+#: templates/teams/create.html:40 templates/teams/edit.html:40
+msgid "TEAM_NAME"
+msgstr "隊名"
+
+#: templates/teams/create.html:42 templates/teams/edit.html:42
+msgid "PLEASE_INSERT_TEAM_NAME"
+msgstr "請輸入球隊名稱"
+
+#: templates/teams/create.html:43 templates/teams/edit.html:43
+msgid "COACH"
+msgstr "教練"
+
+#: templates/teams/create.html:45 templates/teams/edit.html:45
+msgid "CAPTAIN"
+msgstr "隊長"
+
+#: templates/teams/create.html:47 templates/teams/edit.html:47
+#: templates/teams/registration.html:42
+msgid "CODE"
+msgstr "認證碼"
+
+#: templates/teams/myteams.html:75
+msgid "CREATE_TEAM"
+msgstr "新增球隊"
+
+#: templates/teams/registration.html:35
+msgid "JOIN_THE_TEAM"
+msgstr "加入球隊"
+
+#: templates/teams/registration.html:44
+msgid "PLEASE_INSERT_CODE"
+msgstr "請輸入認證碼"
+
+#: templates/teams/registration.html:47
+msgid "JOIN"
+msgstr "加入"
+
+#: templates/teams/roster.html:94 templates/teams/summary.html:85
+msgid "NO_PLAYER"
+msgstr "沒有球員"
+
+#: templates/teams/stats.html:25
+msgid "STATS"
+msgstr "數據"
+
+#: templates/teams/stats.html:40 templates/teams/stats.html.py:41
+#: templates/teams/stats.html:42 templates/teams/stats.html.py:89
+#: templates/teams/stats.html:90 templates/teams/stats.html.py:91
+msgid "ATTEMPT"
+msgstr "出手"
+
+#: templates/teams/stats.html:100 templates/teams/stats.html.py:101
+#: templates/teams/stats.html:102
+msgid "MADE"
+msgstr "命中"
+
+#: templates/teams/summary.html:92
+msgid "VIEW_FULL_SCHEDULE"
+msgstr "完整賽程"
+
+#: templates/teams/summary.html:97
+msgid "VIEW_FULL_ROSTER"
+msgstr "完整陣容"
+
+#: templates/teams/team_info.html:17
+msgid "WIN"
+msgstr "勝"
+
+#: templates/teams/team_info.html:19
+msgid "WINS"
+msgstr "勝"
+
+#: templates/teams/team_info.html:26
+msgid "LOSE"
+msgstr "敗"
+
+#: templates/teams/team_info.html:28
+msgid "LOSES"
+msgstr "敗"

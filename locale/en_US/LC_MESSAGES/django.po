@@ -1,0 +1,763 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-26 10:20+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: players/views.py:89 players/views.py:111
+msgid "UNABLED_TO_CREATE_PLAYER"
+msgstr "Unable to create player."
+
+#: players/views.py:130
+msgid "PLAYER_CREATED"
+msgstr "Player created."
+
+#: players/views.py:183 players/views.py:223 players/views.py:236
+msgid "UNABLED_TO_UPDATE_PLAYER"
+msgstr "Unable to update player."
+
+#: players/views.py:264
+msgid "PLAYER_UPDATED"
+msgstr "Player updated."
+
+#: players/views.py:320 players/views.py:332 players/views.py:341
+msgid "UNABLED_TO_DELETE_PLAYER"
+msgstr "Unable to delete player."
+
+#: players/views.py:345
+msgid "PLAYER_DELETED"
+msgstr "Player deleted."
+
+#: spacejam/views.py:51 spacejam/views.py:57
+msgid "INCORRECT_EMAIL_OR_PASSWORD"
+msgstr "Incorrect email or password."
+
+#: spacejam/views.py:125
+msgid "MY_ACCOUNT_UPDATED"
+msgstr "My account updated."
+
+#: spacejam/views.py:129
+msgid "UNABLED_TO_UPDATE_MY_ACCOUNT"
+msgstr "Unable to update my account."
+
+#: spacejam/views.py:147
+msgid "PASSWORD_UPDATED"
+msgstr "Password updated."
+
+#: spacejam/views.py:151
+msgid "UNABLED_TO_CHANGE_PASSWORD"
+msgstr "Unable to change password."
+
+#: teams/views.py:39 teams/views.py:58
+msgid "UNABLED_TO_CREATE_TEAM"
+msgstr "Unable to create team."
+
+#: teams/views.py:62
+msgid "TEAM_CREATED"
+msgstr "Team created."
+
+#: teams/views.py:87 teams/views.py:97 teams/views.py:106 teams/views.py:116
+msgid "UNABLED_TO_UPDATE_TEAM"
+msgstr "Unable to update team."
+
+#: teams/views.py:102
+msgid "TEAM_UPDATED"
+msgstr "Team updated."
+
+#: teams/views.py:127 teams/views.py:139 teams/views.py:149
+msgid "UNABLED_TO_DELETE_TEAM"
+msgstr "Unable to delete team."
+
+#: teams/views.py:145
+msgid "TEAM_DELETED"
+msgstr "Team deleted."
+
+#: teams/views.py:287
+msgid "NEW_GAME_CREATED"
+msgstr "New game created."
+
+#: teams/views.py:291
+msgid "UNABLED_TO_CREATE_A_GAME"
+msgstr "Unable to create game."
+
+#: teams/views.py:343 teams/views.py:669 teams/views.py:1046
+msgid "GAME_UPDATED"
+msgstr "Game updated."
+
+#: teams/views.py:347 teams/views.py:420 teams/views.py:429 teams/views.py:445
+#: teams/views.py:465 teams/views.py:617 teams/views.py:660 teams/views.py:772
+#: teams/views.py:781 teams/views.py:798 teams/views.py:953 teams/views.py:962
+#: teams/views.py:985 teams/views.py:1042
+msgid "UNABLED_TO_UPDATE_GAME"
+msgstr "Unable to update game."
+
+#: teams/views.py:1077 teams/views.py:1092 teams/views.py:1134
+#: teams/views.py:1143 teams/views.py:1153 teams/views.py:1161
+#: teams/views.py:1195 teams/views.py:1204 teams/views.py:1215
+msgid "UNABLED_TO_DELETE_GAME"
+msgstr "Unable to delete game."
+
+#: teams/views.py:1211
+msgid "GAME_DELETED"
+msgstr "Game deleted."
+
+#: templates/base.html:23 templates/change_password.html:35
+#: templates/my_account.html:22 templates/teams/create.html:30
+#: templates/teams/create.html.py:36 templates/teams/edit.html:30
+#: templates/teams/edit.html.py:36 templates/teams/myteams.html:29
+#: templates/teams/myteams.html.py:35 templates/teams/registration.html:29
+msgid "MY_TEAM"
+msgstr "My Team"
+
+#: templates/base.html:24 templates/change_password.html:36
+#: templates/change_password.html.py:41 templates/my_account.html:23
+#: templates/my_account.html.py:28 templates/teams/create.html:31
+#: templates/teams/edit.html:31 templates/teams/myteams.html:30
+#: templates/teams/registration.html:30
+msgid "MY_ACCOUNT"
+msgstr "My Account"
+
+#: templates/base.html:25 templates/change_password.html:37
+#: templates/my_account.html:24 templates/teams/create.html:32
+#: templates/teams/edit.html:32 templates/teams/myteams.html:31
+#: templates/teams/registration.html:31
+msgid "SIGN_OUT"
+msgstr "Sign Out"
+
+#: templates/change_password.html:41 templates/my_account.html:50
+msgid "CHANGE_PASSWORD"
+msgstr "Change Password"
+
+#: templates/change_password.html:56
+msgid "NEW_PASSWORD"
+msgstr "New Password"
+
+#: templates/change_password.html:58 templates/login.html:62
+#: templates/register.html:63
+msgid "PLEASE_INSERT_PASSWORD"
+msgstr "Please insert password."
+
+#: templates/change_password.html:59
+msgid "CONFIRM_PASSWORD"
+msgstr "Confirm Password"
+
+#: templates/change_password.html:61
+msgid "PLEASE_CONFIRM_YOUR_PASSWORD_AGAIN"
+msgstr "Please confirm your password again."
+
+#: templates/change_password.html:64 templates/games/create.html:65
+#: templates/games/edit.html:68 templates/games/edit_complete.html:14
+#: templates/games/edit_states.html:12 templates/players/create.html:65
+#: templates/players/edit.html:87 templates/teams/create.html:54
+#: templates/teams/edit.html:60
+msgid "CANCEL"
+msgstr "Cancel"
+
+#: templates/change_password.html:65 templates/games/edit.html:69
+#: templates/games/edit_complete.html:13 templates/games/edit_states.html:11
+#: templates/my_account.html:51 templates/players/edit.html:88
+#: templates/teams/edit.html:61
+msgid "SAVE"
+msgstr "Save"
+
+#: templates/games/complete.html:12 templates/games/mygames.html:48
+#: templates/games/mygames.html.py:82 templates/players/summary.html:162
+#: templates/teams/summary.html:19 templates/teams/summary.html.py:38
+msgid "DATE"
+msgstr "Date"
+
+#: templates/games/complete.html:12 templates/games/create.html:37
+#: templates/games/edit.html:20 templates/games/mygames.html:49
+#: templates/games/mygames.html.py:83 templates/players/summary.html:86
+#: templates/players/summary.html.py:124 templates/players/summary.html:164
+#: templates/teams/summary.html:20 templates/teams/summary.html.py:39
+msgid "TIME"
+msgstr "Time"
+
+#: templates/games/complete.html:15 templates/games/edit.html:11
+#: templates/games/edit_complete.html:11 templates/games/edit_states.html:10
+#: templates/games/mygames.html:66 templates/games/mygames.html.py:108
+#: templates/games/mygames.html:122 templates/players/edit.html:27
+#: templates/teams/edit.html:36 templates/teams/myteams.html:63
+#: templates/teams/roster.html:86
+msgid "EDIT"
+msgstr "Edit"
+
+#: templates/games/complete.html:52
+msgid "BOX_SCORE"
+msgstr "Box Score"
+
+#: templates/games/complete.html:58 templates/games/edit_complete.html:21
+#: templates/games/edit_states.html:19
+msgid "Q1"
+msgstr "Q1"
+
+#: templates/games/complete.html:59 templates/games/edit_complete.html:22
+#: templates/games/edit_states.html:20
+msgid "Q2"
+msgstr "Q2"
+
+#: templates/games/complete.html:60 templates/games/edit_complete.html:23
+#: templates/games/edit_states.html:21
+msgid "Q3"
+msgstr "Q3"
+
+#: templates/games/complete.html:61 templates/games/edit_complete.html:24
+#: templates/games/edit_states.html:22
+msgid "Q4"
+msgstr "Q4"
+
+#: templates/games/complete.html:62 templates/games/edit_complete.html:25
+#: templates/games/edit_states.html:23
+msgid "OT"
+msgstr "OT"
+
+#: templates/games/complete.html:63 templates/games/complete.html.py:143
+#: templates/players/summary.html:79 templates/players/summary.html.py:229
+#: templates/teams/stats.html:26
+msgid "TOTAL"
+msgstr "Total"
+
+#: templates/games/complete.html:85
+msgid "PLAYER_STATS"
+msgstr "Player Stats"
+
+#: templates/games/complete.html:90 templates/games/edit_complete.html:75
+#: templates/games/edit_states.html:69 templates/players/create.html:34
+#: templates/players/edit.html:31 templates/teams/registration.html:39
+#: templates/teams/roster.html:51
+msgid "NAME"
+msgstr "Name"
+
+#: templates/games/complete.html:91 templates/games/edit_complete.html:76
+#: templates/games/edit_states.html:70
+msgid "GS"
+msgstr "GS"
+
+#: templates/games/complete.html:92 templates/games/edit_complete.html:77
+#: templates/games/edit_states.html:71
+msgid "MINS"
+msgstr "Mins"
+
+#: templates/games/complete.html:93 templates/players/summary.html:166
+#: templates/teams/stats.html:33 templates/teams/stats.html.py:83
+msgid "FG"
+msgstr "FG"
+
+#: templates/games/complete.html:94 templates/players/summary.html:87
+#: templates/players/summary.html.py:125 templates/players/summary.html:165
+#: templates/teams/stats.html:52
+msgid "FG%"
+msgstr "FG%"
+
+#: templates/games/complete.html:95 templates/players/summary.html:168
+#: templates/teams/stats.html:34 templates/teams/stats.html.py:84
+msgid "3PTS"
+msgstr "3PTS"
+
+#: templates/games/complete.html:96 templates/players/summary.html:88
+#: templates/players/summary.html.py:126 templates/players/summary.html:167
+#: templates/teams/stats.html:53
+msgid "3PTS%"
+msgstr "3PTS%"
+
+#: templates/games/complete.html:97 templates/players/summary.html:170
+#: templates/teams/stats.html:35 templates/teams/stats.html.py:85
+msgid "FT"
+msgstr "FT"
+
+#: templates/games/complete.html:98 templates/players/summary.html:89
+#: templates/players/summary.html.py:127 templates/players/summary.html:169
+#: templates/teams/stats.html:54
+msgid "FT%"
+msgstr "FT%"
+
+#: templates/games/complete.html:99 templates/games/edit_complete.html:84
+#: templates/games/edit_states.html:78 templates/players/summary.html:90
+#: templates/players/summary.html.py:128 templates/players/summary.html:171
+#: templates/teams/stats.html:43 templates/teams/stats.html.py:92
+msgid "OREB"
+msgstr "OREB"
+
+#: templates/games/complete.html:100 templates/games/edit_complete.html:85
+#: templates/games/edit_states.html:79 templates/players/summary.html:91
+#: templates/players/summary.html.py:129 templates/players/summary.html:172
+#: templates/teams/stats.html:55 templates/teams/stats.html.py:103
+msgid "DREB"
+msgstr "DREB"
+
+#: templates/games/complete.html:101 templates/players/summary.html:92
+#: templates/players/summary.html.py:130 templates/players/summary.html:173
+#: templates/teams/stats.html:36 templates/teams/stats.html.py:86
+msgid "REB"
+msgstr "REB"
+
+#: templates/games/complete.html:102 templates/games/edit_complete.html:86
+#: templates/games/edit_states.html:80 templates/players/summary.html:93
+#: templates/players/summary.html.py:131 templates/players/summary.html:174
+#: templates/teams/stats.html:64 templates/teams/stats.html.py:112
+msgid "AST"
+msgstr "AST"
+
+#: templates/games/complete.html:103 templates/games/edit_complete.html:87
+#: templates/games/edit_states.html:81 templates/players/summary.html:94
+#: templates/players/summary.html.py:132 templates/players/summary.html:175
+#: templates/teams/stats.html:65 templates/teams/stats.html.py:113
+msgid "STL"
+msgstr "STL"
+
+#: templates/games/complete.html:104 templates/games/edit_complete.html:88
+#: templates/games/edit_states.html:82 templates/players/summary.html:95
+#: templates/players/summary.html.py:133 templates/players/summary.html:176
+#: templates/teams/stats.html:66 templates/teams/stats.html.py:114
+msgid "BLK"
+msgstr "BLK"
+
+#: templates/games/complete.html:105 templates/games/edit_complete.html:89
+#: templates/games/edit_states.html:83 templates/players/summary.html:96
+#: templates/players/summary.html.py:134 templates/players/summary.html:177
+#: templates/teams/stats.html:67 templates/teams/stats.html.py:115
+msgid "TO"
+msgstr "TO"
+
+#: templates/games/complete.html:106 templates/games/edit_complete.html:90
+#: templates/games/edit_states.html:84 templates/players/summary.html:97
+#: templates/players/summary.html.py:135 templates/players/summary.html:178
+#: templates/teams/stats.html:68 templates/teams/stats.html.py:116
+msgid "PF"
+msgstr "PF"
+
+#: templates/games/complete.html:107 templates/players/summary.html:98
+#: templates/players/summary.html.py:136 templates/players/summary.html:179
+#: templates/teams/stats.html:32 templates/teams/stats.html.py:82
+msgid "PTS"
+msgstr "PTS"
+
+#: templates/games/create.html:25 templates/games/edit.html:11
+msgid "SCHEDULE"
+msgstr "Schedule"
+
+#: templates/games/create.html:25 templates/games/create.html.py:66
+#: templates/players/create.html:30 templates/players/create.html.py:66
+#: templates/teams/create.html:36 templates/teams/create.html.py:55
+msgid "CREATE"
+msgstr "Create"
+
+#: templates/games/create.html:29 templates/games/edit.html:16
+#: templates/games/mygames.html:50 templates/games/mygames.html.py:84
+#: templates/players/summary.html:163 templates/teams/summary.html:21
+#: templates/teams/summary.html.py:40
+msgid "OPPONENT"
+msgstr "Opponent"
+
+#: templates/games/create.html:33
+msgid "PLEASE_INSERT_OPPONENT_NAME"
+msgstr "Please insert opponent's name."
+
+#: templates/games/create.html:35 templates/games/edit.html:18
+msgid "LOCATION"
+msgstr "Location"
+
+#: templates/games/create.html:41 templates/games/edit.html:24
+msgid "TYPE"
+msgstr "Type"
+
+#: templates/games/create.html:43 templates/games/edit.html:27
+#: templates/games/edit.html.py:29
+msgid "SEASON"
+msgstr "Season"
+
+#: templates/games/create.html:44 templates/games/edit.html:32
+#: templates/games/edit.html.py:34
+msgid "PRACTICE"
+msgstr "Practice"
+
+#: templates/games/create.html:45 templates/games/edit.html:37
+#: templates/games/edit.html.py:39
+msgid "CASUAL"
+msgstr "Casual"
+
+#: templates/games/create.html:47
+msgid "PERIODS"
+msgstr "Periods"
+
+#: templates/games/create.html:49 templates/games/edit.html:45
+#: templates/games/edit.html.py:47
+msgid "QUARTERS"
+msgstr "Quarters"
+
+#: templates/games/create.html:50 templates/games/edit.html:50
+#: templates/games/edit.html.py:52
+msgid "HALVES"
+msgstr "Halves"
+
+#: templates/games/create.html:52 templates/games/edit.html:55
+msgid "MINS_PER_PERIOD"
+msgstr "Mins Per Period"
+
+#: templates/games/create.html:56 templates/games/edit.html:59
+msgid "FAULS_PER_PLAYER"
+msgstr "Fauls Per Player"
+
+#: templates/games/create.html:58 templates/games/edit.html:61
+msgid "TIMEOUT_1ST_HALF"
+msgstr "Timeout - 1st Half"
+
+#: templates/games/create.html:60 templates/games/edit.html:63
+msgid "TIMEOUT_2ND_HALF"
+msgstr "Timeout - 2nd Half"
+
+#: templates/games/edit_complete.html:78 templates/games/edit_states.html:72
+msgid "2PTA"
+msgstr "2PTA"
+
+#: templates/games/edit_complete.html:79 templates/games/edit_states.html:73
+msgid "2PTM"
+msgstr "2PTM"
+
+#: templates/games/edit_complete.html:80 templates/games/edit_states.html:74
+msgid "3PTA"
+msgstr "3PTA"
+
+#: templates/games/edit_complete.html:81 templates/games/edit_states.html:75
+msgid "3PTM"
+msgstr "3PTM"
+
+#: templates/games/edit_complete.html:82 templates/games/edit_states.html:76
+msgid "FTA"
+msgstr "FTA"
+
+#: templates/games/edit_complete.html:83 templates/games/edit_states.html:77
+msgid "FTM"
+msgstr "FTM"
+
+#: templates/games/mygames.html:36 templates/teams/summary.html:14
+msgid "UPCOMING_GAME"
+msgstr "Upcoming Game"
+
+#: templates/games/mygames.html:51 templates/games/mygames.html.py:85
+#: templates/teams/summary.html:41
+msgid "RESULT"
+msgstr "Result"
+
+#: templates/games/mygames.html:52 templates/games/mygames.html.py:86
+#: templates/teams/summary.html:42
+msgid "SCORE"
+msgstr "Score"
+
+#: templates/games/mygames.html:54 templates/games/mygames.html.py:87
+#: templates/teams/roster.html:57
+msgid "ACTIONS"
+msgstr "Actions"
+
+#: templates/games/mygames.html:67 templates/games/mygames.html.py:112
+#: templates/teams/myteams.html:64 templates/teams/roster.html:87
+msgid "DELETE"
+msgstr "Delete"
+
+#: templates/games/mygames.html:74 templates/teams/summary.html:30
+msgid "NO_UPCOMING_GAME"
+msgstr "No upcoming game avaliable."
+
+#: templates/games/mygames.html:77 templates/teams/summary.html:33
+msgid "COMPLETED_GAMES"
+msgstr "Completed Games"
+
+#: templates/games/mygames.html:96 templates/teams/summary.html:51
+msgid "SHORT_WIN"
+msgstr "W"
+
+#: templates/games/mygames.html:98 templates/teams/summary.html:52
+msgid "SHORT_LOSE"
+msgstr "L"
+
+#: templates/games/mygames.html:103
+msgid "VIEW"
+msgstr "View"
+
+#: templates/games/mygames.html:118 templates/teams/summary.html:65
+msgid "NO_COMPLETED_GAME"
+msgstr "No completed game available."
+
+#: templates/index.html:23 templates/login.html:38 templates/register.html:44
+msgid "ABOUT_US"
+msgstr "About Us"
+
+#: templates/index.html:24 templates/login.html:39 templates/login.html.py:43
+#: templates/login.html:70 templates/register.html:45
+#: templates/register.html.py:67 templates/register.html:69
+msgid "SIGN_IN"
+msgstr "Sign In"
+
+#: templates/login.html:57 templates/my_account.html:42
+#: templates/players/create.html:56 templates/players/edit.html:65
+#: templates/register.html:57
+msgid "EMAIL"
+msgstr "Email"
+
+#: templates/login.html:59 templates/register.html:59
+msgid "PLEASE_INSERT_EMAIL"
+msgstr "Please insert email."
+
+#: templates/login.html:60 templates/register.html:61
+msgid "PASSWORD"
+msgstr "Password"
+
+#: templates/login.html:66 templates/login.html.py:68
+msgid "NOT_A_MEMBER"
+msgstr "Not a member?"
+
+#: templates/login.html:68 templates/register.html:71
+msgid "SIGN_UP"
+msgstr "Sign Up"
+
+#: templates/my_account.html:44 templates/register.html:53
+msgid "FIRST_NAME"
+msgstr "First Name"
+
+#: templates/my_account.html:46 templates/register.html:55
+msgid "LAST_NAME"
+msgstr "Last Name"
+
+#: templates/navigation.html:3 templates/player_navigation.html:3
+msgid "NAV_SUMMARY"
+msgstr "SUMMARY"
+
+#: templates/navigation.html:6
+msgid "NAV_SCHEDULE"
+msgstr "SCHEDULE"
+
+#: templates/navigation.html:9
+msgid "NAV_ROSTER"
+msgstr "ROSTER"
+
+#: templates/navigation.html:12
+msgid "NAV_STATS"
+msgstr "STATS"
+
+#: templates/navigation.html:14
+msgid "NAV_ANALYSIS"
+msgstr "ANALYSIS"
+
+#: templates/players/create.html:30 templates/players/edit.html:27
+#: templates/teams/roster.html:38 templates/teams/summary.html:70
+msgid "ROSTER"
+msgstr "Roster"
+
+#: templates/players/create.html:36 templates/players/edit.html:33
+msgid "PLEASE_INSERT_PLAYER_NAME"
+msgstr "Please insert player's name."
+
+#: templates/players/create.html:37 templates/players/edit.html:34
+#: templates/teams/roster.html:55
+msgid "NUMBER"
+msgstr "NO."
+
+#: templates/players/create.html:39 templates/players/edit.html:36
+msgid "PLEASE_INSERT_PLAYER_NUMBER"
+msgstr "Please insert player's number."
+
+#: templates/players/create.html:40 templates/players/edit.html:37
+#: templates/teams/roster.html:52
+msgid "POSITION"
+msgstr "Position"
+
+#: templates/players/create.html:42 templates/players/edit.html:40
+#: templates/players/edit.html.py:42 templates/players/player_info.html:15
+#: templates/teams/roster.html:74
+msgid "GUARD"
+msgstr "Guard"
+
+#: templates/players/create.html:43 templates/players/edit.html:45
+#: templates/players/edit.html.py:47 templates/players/player_info.html:17
+#: templates/teams/roster.html:76
+msgid "FORWARD"
+msgstr "Forward"
+
+#: templates/players/create.html:44 templates/players/edit.html:50
+#: templates/players/edit.html.py:52 templates/players/player_info.html:19
+#: templates/teams/roster.html:78
+msgid "CENTER"
+msgstr "Center"
+
+#: templates/players/create.html:48 templates/players/edit.html:57
+#: templates/players/player_info.html:26 templates/teams/roster.html:53
+msgid "HEIGHT"
+msgstr "Height"
+
+#: templates/players/create.html:50 templates/players/edit.html:59
+#: templates/players/player_info.html:27 templates/teams/roster.html:54
+msgid "WEIGHT"
+msgstr "Weight"
+
+#: templates/players/create.html:52 templates/players/edit.html:61
+#: templates/players/player_info.html:28 templates/teams/roster.html:56
+msgid "BIRTHDAY"
+msgstr "Birthday"
+
+#: templates/players/create.html:58 templates/players/edit.html:67
+#: templates/teams/create.html:49 templates/teams/edit.html:49
+msgid "IMAGE"
+msgstr "Image"
+
+#: templates/players/edit.html:77
+msgid "IS_ADMIN"
+msgstr "isAdmin"
+
+#: templates/players/player_info.html:26
+msgid "CM"
+msgstr "cm"
+
+#: templates/players/player_info.html:27
+msgid "KG"
+msgstr "kg"
+
+#: templates/players/player_info.html:32 templates/teams/team_info.html:34
+msgid "PPG"
+msgstr "Pts. / Game:"
+
+#: templates/players/player_info.html:36 templates/teams/team_info.html:38
+msgid "FG%PG"
+msgstr "FG% / Game:"
+
+#: templates/players/player_info.html:40 templates/teams/team_info.html:42
+msgid "APG"
+msgstr "Ast. / Game:"
+
+#: templates/players/player_info.html:44 templates/teams/team_info.html:46
+msgid "RPG"
+msgstr "Reb. / Game:"
+
+#: templates/players/summary.html:72
+msgid "PERFORMANCE"
+msgstr "Performance"
+
+#: templates/players/summary.html:78
+msgid "CAREER_STATS"
+msgstr "Career Stats"
+
+#: templates/players/summary.html:80 templates/players/summary.html.py:206
+#: templates/teams/stats.html:27
+msgid "AVERAGE"
+msgstr "Average"
+
+#: templates/players/summary.html:84 templates/players/summary.html.py:122
+msgid "GAMES"
+msgstr "Games"
+
+#: templates/players/summary.html:85 templates/players/summary.html.py:123
+msgid "STARTED"
+msgstr "Started"
+
+#: templates/players/summary.html:158
+msgid "PAST_5_GAMES"
+msgstr "Past 5 Games"
+
+#: templates/players/summary.html:254 templates/teams/stats.html:128
+msgid "NO_STATS"
+msgstr "No stats available."
+
+#: templates/register.html:49
+msgid "SIGN_UP_TODAY"
+msgstr "Sign up today. It's free and awesome."
+
+#: templates/register.html:60
+msgid "INVALID_EMAIL"
+msgstr "Invalid email."
+
+#: templates/register.html:67 templates/register.html.py:69
+msgid "ALREADY_ON"
+msgstr "Have an account?"
+
+#: templates/teams/create.html:40 templates/teams/edit.html:40
+msgid "TEAM_NAME"
+msgstr "Name"
+
+#: templates/teams/create.html:42 templates/teams/edit.html:42
+msgid "PLEASE_INSERT_TEAM_NAME"
+msgstr "Please insert team's name."
+
+#: templates/teams/create.html:43 templates/teams/edit.html:43
+msgid "COACH"
+msgstr "Coach"
+
+#: templates/teams/create.html:45 templates/teams/edit.html:45
+msgid "CAPTAIN"
+msgstr "Captain"
+
+#: templates/teams/create.html:47 templates/teams/edit.html:47
+#: templates/teams/registration.html:42
+msgid "CODE"
+msgstr "Code"
+
+#: templates/teams/myteams.html:75
+msgid "CREATE_TEAM"
+msgstr "Create Team"
+
+#: templates/teams/registration.html:35
+msgid "JOIN_THE_TEAM"
+msgstr "Join the Team"
+
+#: templates/teams/registration.html:44
+msgid "PLEASE_INSERT_CODE"
+msgstr "Please insert team's code."
+
+#: templates/teams/registration.html:47
+msgid "JOIN"
+msgstr "Join"
+
+#: templates/teams/roster.html:94 templates/teams/summary.html:85
+msgid "NO_PLAYER"
+msgstr "No player available."
+
+#: templates/teams/stats.html:25
+msgid "STATS"
+msgstr "Stats"
+
+#: templates/teams/stats.html:40 templates/teams/stats.html.py:41
+#: templates/teams/stats.html:42 templates/teams/stats.html.py:89
+#: templates/teams/stats.html:90 templates/teams/stats.html.py:91
+msgid "ATTEMPT"
+msgstr "Attempt"
+
+#: templates/teams/stats.html:100 templates/teams/stats.html.py:101
+#: templates/teams/stats.html:102
+msgid "MADE"
+msgstr "Made"
+
+#: templates/teams/summary.html:92
+msgid "VIEW_FULL_SCHEDULE"
+msgstr "VIEW FULL SCHEDULE"
+
+#: templates/teams/summary.html:97
+msgid "VIEW_FULL_ROSTER"
+msgstr "VIEW FULL ROSTER"
+
+#: templates/teams/team_info.html:17
+msgid "WIN"
+msgstr "Win"
+
+#: templates/teams/team_info.html:19
+msgid "WINS"
+msgstr "Wins"
+
+#: templates/teams/team_info.html:26
+msgid "LOSE"
+msgstr "Lose"
+
+#: templates/teams/team_info.html:28
+msgid "LOSES"
+msgstr "Loses"

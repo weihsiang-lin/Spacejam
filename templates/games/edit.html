@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block navigation %}
+    {% include 'navigation.html' %}
+{% endblock %}
+
+{% block content %}
+    {% include 'teams/team_info.html' %}
+    <div id="BodyHeadline">{% trans "SCHEDULE" %} > {% trans "EDIT" %}</div>
+    <form id="edit_game" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <input type="hidden" name="opponent_id" value="{{ opponent.id}}">
+            <p>{% trans "OPPONENT" %}</p>
+            <input type="text" name="opponent" value="{{ opponent.name }}" disabled><br>
+            <p>{% trans "LOCATION" %}</p>
+            <input type="text" name="location" value="{{ game.location }}"><br>
+            <p>{% trans "TIME" %}</p>
+            <input type="text" name="time" value="{{ game_time_isoformat }}"><br>
+        </div>
+        <div>
+            <p>{% trans "TYPE" %}</p>
+            <select name="game_type">
+                {% if game.type == 1 %}
+                <option value="1" selected="selected">{% trans "SEASON" %}</option>
+                {% else %}
+                <option value="1">{% trans "SEASON" %}</option>
+                {% endif %}
+                {% if game.type == 2 %}
+                <option value="2" selected="selected">{% trans "PRACTICE" %}</option>
+                {% else %}
+                <option value="2">{% trans "PRACTICE" %}</option>
+                {% endif %}
+                {% if game.type == 3 %}
+                <option value="3" selected="selected">{% trans "CASUAL" %}</option>
+                {% else %}
+                <option value="3">{% trans "CASUAL" %}</option>
+                {% endif %}
+            </select><br>
+            <p>Periods</p>
+            <select name="periods">
+                {% if game.quarter == 1 %}
+                <option value="1" selected="selected">{% trans "QUARTERS" %}</option>
+                {% else %}
+                <option value="1">{% trans "QUARTERS" %}</option>
+                {% endif %}
+                {% if game.quarter == 2 %}
+                <option value="2" selected="selected">{% trans "HALVES" %}</option>
+                {% else %}
+                <option value="2">{% trans "HALVES" %}</option>
+                {% endif %}
+            </select><br>
+            <p>{% trans "MINS_PER_PERIOD" %}</p>
+            <input type="number" name="mins_per_period" min="1" value={{ game.minute }}><br>
+        </div>
+        <div>
+            <p>{% trans "FAULS_PER_PLAYER" %}</p>
+            <input type="number" name="fouls_per_player" min="1" value={{ game.foul }}><br>
+            <p>{% trans "TIMEOUT_1ST_HALF" %}</p>
+            <input type="number" name="1st_half_timeouts" min="1" value={{ game.first_timeout }}><br>
+            <p>{% trans "TIMEOUT_2ND_HALF" %}</p>
+            <input type="number" name="2nd_half_timeouts" min="1" value={{ game.second_timeout }}><br>
+            <p></p>
+        </div>
+    </form>
+    <button type="button" style="float: right; margin-right: 3.25vw" onclick="location.href='{% url 'mygames' team.id %}'">{% trans "CANCEL" %}</button>
+    <button type="submit" style="float: right; margin-right: 1vw" form="edit_game">{% trans "SAVE" %}</button>
+{% endblock %}

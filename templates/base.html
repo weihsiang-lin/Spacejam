@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset='UTF-8'>
+        <title>Improvement Goes With Data - DataHoops</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link href='https://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
+
+    <!-- JavaScript -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {% block javascript %}{% endblock %}
+    </script>
+    </head>
+
+    <body>
+        <div id="Header">
+            <div id="HeaderLeft">DataHoops</div>
+            {% if user.is_authenticated %}
+            <div id="HeaderRight">
+                <a href="{% url 'myteams' %}" style="text-decoration: underline">{% trans "MY_TEAM" %}</a> | 
+                <a href="/accounts/my/" style="text-decoration: underline">{% trans "MY_ACCOUNT" %}</a> |
+                <a href="/accounts/logout/" style="text-decoration: underline">{% trans "SIGN_OUT" %}</a>
+            </div>
+            {% endif %}
+        </div>
+        <div id="Sidebar">
+            {% block navigation %}{% endblock %}
+        </div>
+        <div id="Body">
+            {% block content %}{% endblock %}
+        </div>
+        <div style='clear:both;'></div>
+    </body>
+</html>

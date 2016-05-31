@@ -1,0 +1,14 @@
+{% load i18n %}
+<div id="Navigation" onclick="location.href='{% url 'team_summary' team_id %}'">
+    {% trans "NAV_SUMMARY" %}
+</div>
+<div id="Navigation" onclick="location.href='{% url 'mygames' team_id %}'">
+    {% trans "NAV_SCHEDULE" %}
+</div>
+<div id="Navigation" onclick="location.href='{% url 'player_index' team_id %}'">
+    {% trans "NAV_ROSTER" %}
+</div>
+<div id="Navigation" onclick="location.href='{% url 'stats' team_id %}'">
+    {% trans "NAV_STATS" %}
+</div>
+<div id="Navigation">{% trans "NAV_ANALYSIS" %}</div>

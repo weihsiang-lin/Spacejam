@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset='UTF-8'>
+        <title>Improvement Goes With Data - DataHoops</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
+
+    <!-- JavaScript -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {% block javascript %}{% endblock %}
+    </script>
+    </head>
+    <body>
+        <div id="Header">
+            <div id="HeaderLeft">DataHoops</div>
+            <div id="HeaderRight">
+                <a href="#" style="text-decoration: underline">{% trans "ABOUT_US" %}</a> |
+                <a href="/accounts/login/" style="text-decoration: underline">{% trans "SIGN_IN" %}</a>
+            </div>
+        </div>
+        <div class="HeroImage">
+            <div class="HeroTitle">IMPROVEMENT GOES WITH DATA</div>
+            <div class="HeroSubtitle">Track your stats & improve your game.</div>
+            <div class="HeroHyperLink"><a style="color: #BFFF00" href="/accounts/register/">{% trans "SIGN_UP" %} >></a></div>
+            <div class="Footer">&copy Copyright DataHoops 2016.</div>
+        </div>
+    </body>
+</html>

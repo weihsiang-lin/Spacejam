@@ -1,0 +1,52 @@
+<DOCTYPE html>
+{% load i18n %}
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Spacejam</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
+
+        <!-- JavaScript -->
+        <script type="text/javascript">
+            function form_check()
+            {
+                if (join_the_team.team_code.value == "")
+                {
+                    document.getElementById('team_code').focus();
+                    document.getElementById('empty_code').style.display = "block";
+                }
+                else join_the_team.submit();
+            }
+        </script>
+    </head>
+    <body>
+        <div id="Header">
+            <div id="HeaderLeft">Spacejam</div>
+            <div id="HeaderRight">
+                <a href="{% url 'myteams' %}" style="text-decoration: underline">{% trans "MY_TEAM" %}</a> |
+                <a href="/accounts/my/" style="text-decoration: underline">{% trans "MY_ACCOUNT" %}</a> |
+                <a href="/accounts/logout/" style="text-decoration: underline">{% trans "SIGN_OUT" %}</a>
+            </div>
+        </div>
+        <div style="height: auto; min-height: 90vh; font-family: 'Raleway', sans-serif">
+            <div style="height: 15vh; line-height: 15vh; text-align: center; font-size: 1.5em">{% trans "JOIN_THE_TEAM" %} > {{ team.name }}</div>
+            <div style="width: 100vw; height: 75vh; text-align: center">
+                <form id="join_the_team" name="join_the_team" action="" method="post" style="width: 30vw; margin: auto">
+                    {% csrf_token %}
+                    <p style="float: left">{% trans "NAME" %}</p>
+                    <input type="text" name="player_name" value="{{ player.name }}" style="width: 100%" disabled><br>
+                    <input type="hidden" name="player_id" value="{{ player.id }}">
+                    <p style="float: left">{% trans "CODE" %}</p>
+                    <input type="text" id="team_code" name="team_code" style="width: 100%"><br>
+                    <div id="empty_code" style="text-align: left; display: none; color: red">{% trans "PLEASE_INSERT_CODE" %}</div>
+                </form>
+                <div style="width: 30vw; margin: auto">
+                    <button type="submit" style="float: right; margin-top: 10px" onclick="form_check()">{% trans "JOIN" %}</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

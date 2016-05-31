@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset='UTF-8'>
+        <title>Improvement Goes With Data - DataHoops</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link href='https://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
+
+    <!-- JavaScript -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        function form_check()
+        {
+            if (create_team.name.value == "")
+            {
+                document.getElementById('name').focus();
+                document.getElementById('empty_name').style.display = "block"; 
+            }
+            else create_team.submit();
+        }
+    </script>
+    </head>
+    <body>
+        <div id="Header">
+            <div id="HeaderLeft">DataHoops</div>
+            <div id="HeaderRight">
+                <a href="{% url 'myteams' %}" style="text-decoration: underline">{% trans "MY_TEAM" %}</a> |
+                <a href="/accounts/my/" style="text-decoration: underline">{% trans "MY_ACCOUNT" %}</a> |
+                <a href="/accounts/logout/" style="text-decoration: underline">{% trans "SIGN_OUT" %}</a>
+            </div>
+        </div>
+        <div style="height: auto; min-height: 90vh; font-family: 'Raleway', sans-serif">
+            <div style="height: 15vh; line-height: 15vh; text-align: center; font-size: 1.5rem">{% trans "MY_TEAM" %} > {% trans "CREATE" %}</div>
+            <div style="text-align: center">
+                <form id="create_team" name="create_team" action="" method="post" enctype="multipart/form-data" style="width: 30vw; margin: auto">
+                    {% csrf_token %}            
+                    <p style="float: left">{% trans "TEAM_NAME" %}</p>
+                    <input type="text" id="name" name="name" style="width: 100%"><br>
+                    <div id="empty_name" style="color: red; text-align: left; display: none">{% trans "PLEASE_INSERT_TEAM_NAME" %}</div>
+                    <p style="float: left">{% trans "COACH" %}</p>
+                    <input type="text" name="coach" style="width: 100%"><br>
+                    <p style="float: left">{% trans "CAPTAIN" %}</p>
+                    <input type="text" name="captain" style="width: 100%"><br>
+                    <p style="float: left">{% trans "CODE" %}</p>
+                    <input type="text" name="code" style="width: 100%"><br>
+                    <p style="float: left">{% trans "IMAGE" %}</p>
+                    <input type="file" name="figure" style="width: 100%"><br>
+                </form>
+            </div>
+            <div style="width: 30vw; margin: auto">
+                <button type="button" style="float: left; width: 14.75vw; margin-top: 10px" onclick="location.href='{% url 'myteams' %}'">{% trans "CANCEL" %}</button>
+                <button type="submit" style="float: left; width: 14.75vw; margin-top: 10px; margin-left: 0.5vw" onclick="form_check()">{% trans "CREATE" %}</button>
+            </div>
+        </div>
+    </body>
+</html>

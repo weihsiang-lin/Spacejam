@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+
+{% block navigation %}
+    {% include 'navigation.html' %}
+{% endblock %}
+
+{% block content %}
+    {% include 'teams/team_info.html' %}
+    <div style="height: 60vh">
+        <div style="float: left; width: 43.5vw">
+            <div id="BodyHeadline">{% trans "UPCOMING_GAME" %}</div>
+            <div>
+                {% if upcoming_game %}
+                <table width="90%">
+                    <tr>
+                        <th>{% trans "DATE" %}</th>
+                        <th>{% trans "TIME" %}</th>
+                        <th>{% trans "OPPONENT" %}</th>
+                    </tr>
+                    <tr>
+                        <td>{{ upcoming_game.0.time|date:"SHORT_DATE_FORMAT" }}</td>
+                        <td>{{ upcoming_game.0.time|time:"H:i" }}</td>
+                        <td>vs. {{ upcoming_game.0.opponent }}</td>
+                    </tr>
+                </table>
+                {% else %}
+                <p>{% trans "NO_UPCOMING_GAME" %}</p>
+                {% endif %}
+            </div>
+            <div id="BodyHeadline">{% trans "COMPLETED_GAMES" %}</div>
+            <div>
+                {% if games %}
+                <table width="90%">
+                    <tr>
+                        <th>{% trans "DATE" %}</th>
+                        <th>{% trans "TIME" %}</th>
+                        <th>{% trans "OPPONENT" %}</th>
+                        <th>{% trans "RESULT" %}</th>
+                        <th>{% trans "SCORE" %}</th>
+                    </tr>
+                    {% for past_5_game in past_5_games %}
+                    <tr>
+                        <td>{{ past_5_game.game.time|date:"SHORT_DATE_FORMAT" }}</td>
+                        <td>{{ past_5_game.game.time|time:"H:i" }}</td>
+                        <td>vs. {{ past_5_game.game.opponent }}</td>
+                        {% if past_5_game.game.isComplete %} 
+                            <td>
+                                {% if past_5_game.team_state.isWin %} {% trans "SHORT_WIN" %} 
+                                {% elif past_5_game.team_state.isWin == False %} {% trans "SHORT_LOSE" %}
+                                {% else %} -
+                                {% endif %}
+                            </td>
+                            <td>{{ past_5_game.team_state.PTS }}-{{ past_5_game.opponent_state.score }}</td>
+                        {% else %}
+                            <td>-</td>
+                            <td>-</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+                {% else %}
+                    <p>{% trans "NO_COMPLETED_GAME" %}</p>
+                {% endif %}
+             </div>
+        </div>
+    <div style="float: left; width: 40vw">
+        <div id="BodyHeadline">{% trans "ROSTER" %}</div>
+        {% if players %}
+            {% for player in players %}
+            <div style="float: left">
+                <a href="{% url 'player_summary' team.id player.id %}">
+                    {% if player.figure %}
+                        <img src="{{ player.figure.url }}" height="90px" width="90px"/>
+                    {% else %}
+                        <img src="{% static "images/default-player" %}" height="90px" width="90px"/>
+                    {% endif %}
+                </a>
+                <div style="width: 90px; height: 15px; text-align: center; font-size: 0.75rem">{{ player.name }}</div>
+            </div>
+            {% endfor %}
+        {% else %}
+        <p>{% trans "NO_PLAYER" %}</p>
+        {% endif %}
+    </div>
+    </div>
+    <div style="height: 5vh">
+        <div style="float: left; width: 43.5vw">
+            <div style="padding-right: 1vw; text-align: right">
+                <a href="{% url 'mygames' team.id %}">{% trans "VIEW_FULL_SCHEDULE" %}</a>
+            </div>
+        </div>
+        <div style="float: left; width: 40vw">
+            <div style="padding-right: 1vw; text-align: right">
+                <a href="{% url 'player_index' team.id %}">{% trans "VIEW_FULL_ROSTER" %}</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

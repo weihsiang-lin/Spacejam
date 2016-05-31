@@ -1,0 +1,51 @@
+{% load i18n %}
+{% load staticfiles %}
+    <div id="TeamInfo">
+        <div id="TeamImage">
+            {% if team.figure %}
+                <img src="{{ team.figure.url }}"/>
+            {% else %}
+                <img src="{% static "images/images.jpeg" %}"/>
+            {% endif %}
+        </div>
+        <div id="TeamName">{{ team.name }}</div>
+        <div id="TeamStats">
+            <div id="TeamWinOrLose">
+                <div style="font-size: 2rem">{{ stats.Win }}</div>
+                <div style="margin-left: 5px">
+                    {% if stats.Win <= 1 %}
+                        {% trans "WIN" %}
+                    {% else %}
+                        {% trans "WINS" %}
+                    {% endif %}
+                </div>
+                <div style="margin-left: 10px; font-size: 1rem">-</div>
+                <div style="margin-left: 10px; font-size: 2rem">{{ stats.Lose }}</div>
+                <div style="float: left; margin-left: 5px">
+                    {% if stats.Lose <= 1 %}
+                        {% trans "LOSE" %}
+                    {% else %}
+                        {% trans "LOSES" %}
+                    {% endif %}
+                </div>
+            </div>
+            <div id="TeamAvgStats">
+                <div>
+                    {% trans "PPG" %}<br>
+                    <p>{{ PPG|floatformat:1 }}</p>
+                </div>
+                <div>
+                    {% trans "FG%PG" %}<br>
+                    <p>{{ FG|floatformat:1 }}%</p>
+                </div>
+                <div>
+                    {% trans "APG" %}<br>
+                    <p>{{ AST|floatformat:1 }}</p>
+                </div>
+                <div>
+                    {% trans "RPG" %}<br>
+                    <p>{{ REB|floatformat:1 }}</p>
+                </div>
+            </div>
+        </div>
+    </div>

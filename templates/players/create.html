@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+    {% load i18n %}
+
+    {% block javascript %}
+
+    function form_check()
+    {
+        if (create_player.name.value == "")
+        {
+            document.getElementById('name').focus();
+            document.getElementById('empty_name').style.display = "block";
+        }
+        else if (create_player.number.value == "")
+        {
+            document.getElementById('number').focus();
+            document.getElementById('empty_number').style.display = "block";
+        }
+        else create_player.submit();
+    }
+
+    {% endblock %}
+
+    {% block navigation %}
+        {% include 'navigation.html' %}
+    {% endblock %}
+
+    {% block content %}
+        {% include 'teams/team_info.html' %}
+        <div id="BodyHeadline">{% trans "ROSTER" %} > {% trans "CREATE" %}</div>
+        <form id="create_player" name="create_player" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <p>{% trans "NAME" %}</p>
+                <input type="text" id="name" name="name"><br>
+                <div class="ErrorMsg" id="empty_name">{% trans "PLEASE_INSERT_PLAYER_NAME" %}</div>
+                <p>{% trans "NUMBER" %}</p>
+                <input type="number" id="number" name="number" min="0"><br>
+                <div class="ErrorMsg" id="empty_number">{% trans "PLEASE_INSERT_PLAYER_NUMBER" %}</div>
+                <p>{% trans "POSITION" %}</p>
+                <select name="position">
+                    <option value="1">{% trans "GUARD" %}</option>
+                    <option value="2">{% trans "FORWARD" %}</option>
+                    <option value="3">{% trans "CENTER" %}</option>
+                </select>
+            </div>
+            <div>
+                <p>{% trans "HEIGHT" %}</p>
+                <input type="number" name="height" min="0" value="0.0"><br>
+                <p>{% trans "WEIGHT" %}</p>
+                <input type="number" name="weight" min="0" value="0.0"><br>
+                <p>{% trans "BIRTHDAY" %}</p>
+                <input type="date" name="birthday" value="1900-01-01"><br>
+            </div>
+            <div>
+                <p>{% trans "EMAIL" %}</p>
+                <input type="email" name="email"><br>
+                <p>{% trans "IMAGE" %}</p>
+                <input type="file" name="image">
+            <!-- isAdmin:
+            <input type="checkbox" name="isAdmin" value="true"><br> -->
+                <p></p>
+            </div>
+        </form>
+        <button type="button" style="float: right; margin-right: 3.25vw" onclick="location.href='{% url 'player_index' team_id %}'">{% trans "CANCEL" %}</button>
+        <button type="submit" style="float: right; margin-right: 1vw" onclick="form_check()">{% trans "CREATE" %}</button>
+    {% endblock %}

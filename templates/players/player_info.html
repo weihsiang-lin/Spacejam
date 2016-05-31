@@ -1,0 +1,49 @@
+{% load i18n %}
+{% load staticfiles %}
+    <div id="TeamInfo">
+        <div id="TeamImage">
+            {% if player.figure %}
+                <img src="{{ player.figure.url }}">
+            {% else %}
+                <img src="{% static "images/default-player"%}">
+            {% endif %}
+        </div>
+        <div id="TeamName" style="line-height: 20vh">
+            {{ player.number }} | {{ player.name }}
+            <div style="line-height: 0vh; font-size: 1rem">
+                {% if player.position == 1 %}
+                    {% trans "GUARD" %} 
+                {% elif player.position == 2 %}
+                    {% trans "FORWARD" %}
+                {% else %}
+                    {% trans "CENTER" %} 
+                {% endif %}
+                / <a href="{% url 'team_summary' team.id %}">{{ team.name }}</a>
+            </div>
+        </div>
+        <div id="TeamStats">
+            <div style="height: 12.5vh">
+                <div style="padding-top: 10px">{% trans "HEIGHT" %}: {{ player.height }} {% trans "CM" %}</div>
+                <div>{% trans "WEIGHT" %}: {{ player.weight }} {% trans "KG" %}</div>
+                <div>{% trans "BIRTHDAY" %}: {{ player.birthday|date:"Y-m-d" }}</div>
+            </div>
+            <div id="TeamAvgStats">
+                <div>
+                    {% trans "PPG" %}<br>
+                    <p>{{ career_PTS_avg|floatformat:1 }}</p>
+                </div>
+                <div>
+                    {% trans "FG%PG" %}<br>
+                    <p>{{ career_FG_avg|floatformat:1 }}%</p>
+                </div>
+                <div>
+                    {% trans "APG" %}<br>
+                    <p>{{ career_AST_avg|floatformat:1 }}</p>
+                </div>
+                <div>
+                    {% trans "RPG" %}<br>
+                    <p>{{ career_REB_avg|floatformat:1 }}</p>
+                </div>
+            </div>
+        </div>
+    </div>

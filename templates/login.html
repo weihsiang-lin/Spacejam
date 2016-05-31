@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset='UTF-8'>
+        <title>Improvement Goes With Data - DataHoops</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link href='https://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
+
+        <!-- JavaScript -->
+        <script type="text/javascript">
+            function form_check()
+            {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if (sign_in.email.value == "")
+                {
+                    document.getElementById("email").focus();
+                    document.getElementById("empty_email").style.display = "block";
+                    document.getElementById("invalid_email").style.display = "none";
+                }
+                else if (!re.test(sign_in.email.value))
+                {
+                    document.getElementById("email").focus();
+                    document.getElementById("empty_email").style.display = "none";
+                    document.getElementById("invalid_email").style.display = "block";
+                }
+                else if (sign_in.password.value == "")
+                {
+                    document.getElementById("password").focus();
+                    document.getElementById("empty_email").style.display = "none";
+                    document.getElementById("invalid_email").style.display = "none";
+                    document.getElementById("empty_password").style.display = "block";
+                }
+                else sign_in.submit();
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="Header">
+            <div id="HeaderLeft">
+                <a style="color: black" href="/">DataHoops</a>
+            </div>
+            <div id="HeaderRight">
+                <a href="#" style="text-decoration: underline">{% trans "ABOUT_US" %}</a> |
+                <a href="/accounts/login/" style="text-decoration: underline">{% trans "SIGN_IN" %}</a>
+            </div>
+        </div>
+        <div style="height: auto; min-height: 90vh; font-family: 'Raleway', sans-serif">
+            <div style="height: 15vh; line-height: 15vh; text-align: center; font-size: 1.5em">{% trans "SIGN_IN" %}</div>
+            <div style="width: 100vw; height: 75vh; text-align: center">
+                <!-- 2016.05.24 Message framework. -->
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                        <p style="color: green">{{ message }}</p>
+                        {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        <p style="color: red">{{ message }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <form id="sign_in" name="sign_in" action="" method="post" style="width: 30vw; margin: auto">
+                    {% csrf_token %}
+                    <p style="float: left">{% trans "EMAIL" %}</p>
+                    <input type="text" id="email" name="email" style="width: 100%"><br>
+                    <div id="empty_email" style="color: red; display: none; text-align: left;">{% trans "PLEASE_INSERT_EMAIL" %}</div>
+                    <div id="invalid_email" style="text-align: left; color: red; display: none">{% trans "INVALID_EMAIL" %}</div>
+                    <p style="float: left">{% trans "PASSWORD" %}</p>
+                    <input type="password" id="password" name="password" style="width: 100%; height: 25px"><br>
+                    <div id="empty_password" style="color: red; display: none; text-align: left;">{% trans "PLEASE_INSERT_PASSWORD" %}</div>
+                </form>
+                <div style="width: 30vw; margin: auto">
+                    {% if isInvited %}
+                        <p style="float: left">{% trans "NOT_A_MEMBER" %}<a href="/accounts/register/?Invitation={{ isInvited }}&Team={{ team_id }}&Player={{ player_id }}"> {% trans "SIGN_UP" %}</a></p>
+                    {% else %}
+                        <p style="float: left">{% trans "NOT_A_MEMBER" %}<a href="/accounts/register/"> {% trans "SIGN_UP" %}</a></p>
+                    {% endif %}
+                    <button type="submit" style="float: right; margin-top: 10px" onclick="form_check()">{% trans "SIGN_IN" %}</button>
+                 </div>
+            </div>
+        </div>
+    </body>
+</html>
