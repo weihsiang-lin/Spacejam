@@ -3,6 +3,10 @@
 {% load i18n %}
 {% load staticfiles %}
 
+{% block share_to_fb %}
+    <meta property="og:url" content="http://{{ request.META.HTTP_HOST }}{% url 'complete_game' team.id game.id %}" />
+{% endblock %}
+
 {% block navigation %}
     {% include 'navigation.html' %}
 {% endblock %}
@@ -11,6 +15,7 @@
     <div id="TeamInfo">
         <div style="float: left; padding-top: 10px">{% trans "DATE" %}: {{ game.time | date:"Y-m-d" }} {% trans "TIME" %}: {{ game.time | time:"H:i" }}</div>
         <div style="float: left; padding-left: 10px; padding-top: 10px;">
+            <a href="javascript: void(window.open('http://www.facebook.com/share.php?u='.concat(encodeURIComponent('http://{{ request.META.HTTP_HOST }}{% url 'complete_game' team.id game.id %}'))));">{% trans "SHARE_TO_FB" %}</a>
             {% if is_admin %}
                 <a href="{% url 'edit_complete_game' team.id game.id %}">{% trans "EDIT" %}</a>
             {% endif %}
