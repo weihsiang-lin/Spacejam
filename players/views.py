@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.utils.encoding import smart_unicode # 2016.05.31 Fix send Chinese email issue.
 from django.utils.translation import ugettext as _
 from teams.models import Team, TeamState, Game, Opponent
 from players.models import Player, PlayerState, PlayerStatePerGame
@@ -116,9 +117,9 @@ def create(request, team_id):
             try:
                 # 2016.05.17 Version 1 email.
                 subject = "Welcome to the DataHoops - Sign Up and Join the Team"
-                from_email = settings.EMAIL_HOST_USER
+                from_email = settings.DEFAULT_FROM_EMAIL
                 to = email
-                html_content = "<h2>Welcome to the DataHoops!</h2><p>Hi str(name),</p><p>You can use DataHoops to track your stats and improve your game!</p><p>To get started, <a href='http://localhost:8000/teams/myteams/"+str(team_id)+"/players/"+str(player.id)+"/invitation/'>click to log in/register</a> now.</p>"
+                html_content = "<h2>Welcome to the DataHoops!</h2><p>Hi "+smart_unicode(name)+",</p><p>You can use DataHoops to track your stats and improve your game!</p><p>To get started, <a href='http://datahoops.com/teams/myteams/"+str(team_id)+"/players/"+str(player.id)+"/invitation/'>click to log in/register</a> now.</p>"
                 msg = EmailMessage(subject, html_content, from_email, [to])
                 msg.content_subtype = "html"
                 msg.send()
@@ -248,9 +249,9 @@ def edit(request, team_id, player_id):
                     try:
                         # 2016.05.17 Version 1 email.
                         subject = "Welcome to the DataHoops - Sign Up and Join the Team"
-                        from_email = settings.EMAIL_HOST_USER
+                        from_email = settings.DEFAULT_FROM_EMAIL
                         to = email
-                        html_content = "<h2>Welcome to the DataHoops!</h2><p>Hi str(name),</p><p>You can use DataHoops to track your stats and improve your game!</p><p>To get started, <a href='http://localhost:8000/teams/myteams/"+str(team_id)+"/players/"+str(player.id)+"/invitation/'>click to log in/register</a> now.</p>"
+                        html_content = "<h2>Welcome to the DataHoops!</h2><p>Hi "+smart_unicode(name)+",</p><p>You can use DataHoops to track your stats and improve your game!</p><p>To get started, <a href='http://datahoops.com/teams/myteams/"+str(team_id)+"/players/"+str(player.id)+"/invitation/'>click to log in/register</a> now.</p>"
                         msg = EmailMessage(subject, html_content, from_email, [to])
                         msg.content_subtype = "html"
                         msg.send()

@@ -136,8 +136,9 @@ FILE_UPLOAD_HANDLERS = [
 # https://docs.djangoproject.com/en/1.8/topics/email/
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'weihsiang.lin@gmail.com'
-EMAIL_HOST_PASSWORD = '!@#$qwerASDF'
-EMAIL_PORT = '587'
-EMAIL_USE_TLS = True
+EMAIL_HOST = 'localhost'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = '25'
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'DataHoops <do-not-reply@datahoops.com>'
