@@ -119,7 +119,7 @@ def create(request, team_id):
                 subject = "Welcome to the DataHoops - Sign Up and Join the Team"
                 from_email = settings.DEFAULT_FROM_EMAIL
                 to = email
-                html_content = "<h2>Welcome to the DataHoops!</h2><p>Hi "+smart_unicode(name)+",</p><p>You can use DataHoops to track your stats and improve your game!</p><p>To get started, <a href='http://datahoops.com/teams/myteams/"+str(team_id)+"/players/"+str(player.id)+"/invitation/'>click to log in/register</a> now.</p>"
+                html_content = "<h2>Welcome to the DataHoops!</h2><p>Hi "+smart_unicode(name)+",</p><p>You can use DataHoops to track your stats and improve your game!</p><p>To get started, <a href='http://www.datahoops.com/teams/myteams/"+str(team_id)+"/players/"+str(player.id)+"/invitation/'>click to log in/register</a> now.</p>"
                 msg = EmailMessage(subject, html_content, from_email, [to])
                 msg.content_subtype = "html"
                 msg.send()
@@ -251,7 +251,7 @@ def edit(request, team_id, player_id):
                         subject = "Welcome to the DataHoops - Sign Up and Join the Team"
                         from_email = settings.DEFAULT_FROM_EMAIL
                         to = email
-                        html_content = "<h2>Welcome to the DataHoops!</h2><p>Hi "+smart_unicode(name)+",</p><p>You can use DataHoops to track your stats and improve your game!</p><p>To get started, <a href='http://datahoops.com/teams/myteams/"+str(team_id)+"/players/"+str(player.id)+"/invitation/'>click to log in/register</a> now.</p>"
+                        html_content = "<h2>Welcome to the DataHoops!</h2><p>Hi "+smart_unicode(name)+",</p><p>You can use DataHoops to track your stats and improve your game!</p><p>To get started, <a href='http://www.datahoops.com/teams/myteams/"+str(team_id)+"/players/"+str(player.id)+"/invitation/'>click to log in/register</a> now.</p>"
                         msg = EmailMessage(subject, html_content, from_email, [to])
                         msg.content_subtype = "html"
                         msg.send()
