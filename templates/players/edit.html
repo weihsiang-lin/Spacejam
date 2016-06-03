@@ -63,7 +63,8 @@
             </div>
             <div>
                 <p>{% trans "EMAIL" %}</p>
-                <input type="email" name="email" value="{{ player.email }}">
+                <!-- 2016.06.04 If connect to an user then disabled to edit email. -->
+                <input type="email" name="email" value="{{ player.email }}" {% if player.user %}readonly="readonly"{% endif %}>
                 <p>{% trans "IMAGE" %}</p>
                 {% if player.figure %}
                     <img src="{{ player.figure.url }}" height="85px" width="85px"/>

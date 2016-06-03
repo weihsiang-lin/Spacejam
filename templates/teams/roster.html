@@ -82,8 +82,10 @@ function ConfirmDeletion(team_id, player_id)
                     <td>{{ player.number }}</td>
                     <td>{{ player.birthday|date:"Y-m-d" }}</td>
                     <td>
-                        {% if is_admin %}
+                        {% if is_admin or player.user == request.user %}
                             <a href="{% url 'edit_player' team.id player.id %}">{% trans "EDIT" %}</a>
+                        {% endif %}
+                        {% if is_admin %}
                             <a href="javascript: return false;" onclick="return ConfirmDeletion({{ team.id }}, {{ player.id }})">{% trans "DELETE" %}</a>
                         {% endif %}
                     </td>
