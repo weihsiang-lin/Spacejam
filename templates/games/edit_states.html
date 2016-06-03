@@ -88,7 +88,8 @@
                     <tr>
                         <td>{{ player.name }}</td>
                         <td><input type="checkbox" name="{{ player.id}}_started" value="1">
-                        <td><input type="time" name="{{ player.id }}_time" value="00:00"></td>
+                        <!-- 2016.06.04 Revise as tpye="text" because of Chrome. -->
+                        <td><input type="text" name="{{ player.id }}_time" value="00:00"></td>
                         <td><input type="number" name="{{ player.id }}_attempt_2pt" min="0" value="0"></td>
                         <td><input type="number" name="{{ player.id }}_made_2pt" min="0" value="0"></td>
                         <td><input type="number" name="{{ player.id }}_attempt_3pt" min="0" value="0"></td>

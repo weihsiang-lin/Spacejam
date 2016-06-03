@@ -102,9 +102,11 @@
                 <td><input type="checkbox" name="{{ player_state.player.id }}_started" value="1"></td>
             {% endif %}
             {% if player_state.game_played %}
-                <td><input type="time" name="{{ player_state.player.id }}_time" value="{{ player_state.time | time:"i:s" }}"></td>
+                <!-- 2016.06.04 Revise as type="text" because of Chrome. -->
+                <td><input type="text" name="{{ player_state.player.id }}_time" value="{{ player_state.time | time:"i:s" }}"></td>
             {% else %}
-                <td><input type="time" name="{{ player_state.player.id }}_time" value="00:00"></td>
+                <!-- 2016.06.04 Revise as type="text" because of Chrome. -->
+                <td><input type="text" name="{{ player_state.player.id }}_time" value="00:00"></td>
             {% endif %}
             <td><input type="number" name="{{ player_state.player.id }}_attempt_2pt" min="0" value="{{ player_state.two_points_attempt }}"></td>
             <td><input type="number" name="{{ player_state.player.id }}_made_2pt" min="0" value="{{ player_state.two_points_made }}"></td>
