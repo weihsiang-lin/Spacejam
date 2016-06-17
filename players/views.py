@@ -196,7 +196,7 @@ def edit(request, team_id, player_id):
                 image = request.FILES['image']
             
                 # Remove old image.
-                if filepath != '':
+                if filepath != None: # 2016.06.17 Fixed unable to revise photo of player.
                     abs_filepath = os.path.join(settings.BASE_DIR, filepath)[1:]
                     if os.path.exists(abs_filepath):
                         os.remove(abs_filepath)

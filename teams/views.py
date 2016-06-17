@@ -70,13 +70,13 @@ def edit_team(request, team_id):
         coach = request.POST.get('coach')
         captain = request.POST.get('captain')
         code = request.POST.get('code')
-        img_filepath = request.POST.get('img_filepath', '')
+        img_filepath = request.POST.get('img_filepath') # 2016.06.17 Normalize coding style.
 
         try:
             figure = request.FILES['figure']
 
             # Remove old image.
-            if img_filepath != '':
+            if img_filepath != None:
                 if os.path.exists(os.path.join(settings.BASE_DIR, img_filepath[1:])):
                     try:
                         os.remove(os.path.join(settings.BASE_DIR, img_filepath[1:]))
