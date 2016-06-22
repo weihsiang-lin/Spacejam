@@ -24,16 +24,16 @@
             <div id="GameStatsTeamName" style="text-align: right">{{ game.team.name }}</div>
             <div id="GameStatsTeamScore" style="margin-left: 1vw">{{ team_state.PTS }}</div>
             <div id="GameStatsTeamImage" style="margin-left: 0.5vw">
-                {% if game.opponent.figure %}
-                <img src="{{ game.opponent.figure.url }}" />
+                {% if game.team.figure %}
+                <img src="{{ game.team.figure.url }}" />
                 {% else %}
                 <img src="{% static "images/images.jpeg" %}" />
                 {% endif %}
             </div>
             <div id="GameStatsVersus">vs.</div>
             <div id="GameStatsTeamImage" style="margin-right: 0.5vw">
-                {% if game.team.figure %}
-                <img src="{{ game.team.figure.url }}" />
+                {% if game.opponent.figure %}
+                <img src="{{ game.opponent.figure.url }}" />
                 {% else %}
                 <img src="{% static "images/images.jpeg" %}" />
                 {% endif %}
