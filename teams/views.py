@@ -312,7 +312,9 @@ def create_game(request, team_id):
         else:
             PPG = AST = REB = 0.0
 
-        game_time = datetime.datetime.now().isoformat()
+        # 2016.06.24 Shorten time while creating game.
+        game_time = datetime.datetime.strftime(datetime.datetime.now(), 
+                                               "%Y-%m-%dT%H:%M")
         return render(request, 'games/create.html', locals())
 
 def edit_game(request, team_id, game_id):
@@ -380,7 +382,8 @@ def edit_game(request, team_id, game_id):
             # TODO: Log system.
             return HttpResponseRedirect('/teams/myteams/%s/games/' % team_id)
 
-        game_time_isoformat = game.time.isoformat()
+        # 2016.06.24 Incorrect time (timezone) while updating game.
+        # game_time_isoformat = game.time.isoformat()
 
         return render(request, 'games/edit.html', locals())
 

@@ -18,7 +18,8 @@
             <p>{% trans "LOCATION" %}</p>
             <input type="text" name="location" value="{{ game.location }}"><br>
             <p>{% trans "TIME" %}</p>
-            <input type="text" name="time" value="{{ game_time_isoformat }}"><br>
+            <!-- 2016.06.24 Incorrect time (timezone) while updating game. -->
+            <input type="text" name="time" value="{{ game.time|date:'Y-m-d' }}T{{ game.time|time:'H:i' }}"><br>
         </div>
         <div>
             <p>{% trans "TYPE" %}</p>
