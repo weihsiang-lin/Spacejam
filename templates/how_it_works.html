@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta charset='UTF-8'>
-        <title>Improvement Goes With Data - DataHoops</title>
+        <title>How it works - DataHoops</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
         <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
@@ -30,17 +30,11 @@
     <body>
         <div id="Header">
             <div id="HeaderLeft">DataHoops</div>
-            <div id="HeaderRight">
-                <a target="_blank" href="{% url 'how_it_works' %}" style="text-decoration: underline">How It Works</a> |
-                <a href="#" style="text-decoration: underline">{% trans "ABOUT_US" %}</a> |
-                <a href="/accounts/login/" style="text-decoration: underline">{% trans "SIGN_IN" %}</a>
-            </div>
         </div>
-        <div class="HeroImage">
-            <div class="HeroTitle">IMPROVEMENT GOES WITH DATA</div>
-            <div class="HeroSubtitle">Track your stats & improve your game.</div>
-            <div class="HeroHyperLink"><a style="color: #BFFF00" href="/accounts/register/">{% trans "SIGN_UP" %} >></a></div>
-            <div class="Footer">&copy Copyright DataHoops 2016.</div>
+        <div style="height: auto; min-height: 90vh; font-family: 'Raleway', sans-serif">
+            <div style="width: 100vw; height: 90vh; text-align: center">
+                <iframe src="http://docs.google.com/gview?url=http://www.datahoops.com/static/docs/DataHoops_Howitworks.pdf&embedded=true" style="width:100vw; height:90vh;" frameborder="0"></iframe>
+            </div>
         </div>
     </body>
 </html>
