@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^accounts/change_password/$', views.change_password, name='change_password'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^teams/', include('teams.urls')),
+    url(r'^how_it_works$', views.how_it_works, name='how_it_works'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

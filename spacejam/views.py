@@ -9,6 +9,10 @@ from teams.models import Team
 def index(request):
     return render(request, 'index.html')
 
+# 2016.06.30 How it works.
+def how_it_works(request):
+    return render(request, 'how_it_works.html')
+
 def login(request):
 
     # Get URL parameter.
