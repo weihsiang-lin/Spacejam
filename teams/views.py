@@ -1256,3 +1256,42 @@ def stats(request, team_id):
         # 2016.05.05 FGA, 3PTSA, FTA average measurements.
         FGA_avg = threePTSA_avg = FTA_avg = 0.0
     return render(request, 'teams/stats.html', locals())
+
+def analytics(request, team_id):
+    try:
+        team = Team.objects.get(pk=team_id)
+    except:
+        # TODO: Log system.
+        team = None
+    if team:
+        try:
+            team_stats = TeamState.objects.get(team=team)
+        except:
+            # TODO: Log system.
+            team_stats = None
+        try:
+            team_stats_per_games = TeamStatePerGame.objects.filter(team=team).order_by('game__time')
+        except:
+            # TODO: Log system.
+            team_stats_per_games = None
+
+    # General team information.
+    # Query team stats instance.
+    stats = TeamState.objects.get(team=team)
+
+    # FG measurement.
+    if stats.two_points_attempt or stats.three_points_attempt:
+        FG = (stats.two_points_made + stats.three_points_made) / (stats.two_points_attempt + stats.three_points_attempt) * 100
+    else:
+        FG = 0.0
+
+    if stats.game:
+        # PPG measurement.
+        PPG = stats.PTS / stats.game
+        # AST/Game measurement.
+        AST = stats.AST / stats.game
+        # REB/Game measurement.
+        REB = stats.REB / stats.game
+    else:
+        PPG = AST = REB = 0.0
+    return render(request, 'teams/analytics.html', locals())
