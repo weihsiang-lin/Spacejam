@@ -1,4 +1,3 @@
 {% load i18n %}
-<div id="Navigation">
-    <a href="{% url 'player_summary' team.id player.id %}">{% trans "NAV_SUMMARY" %}</a>
-</div>
+<div id="Navigation" onclick="location.href='{% url 'player_summary' team.id player.id %}'">{% trans "NAV_SUMMARY" %}</div>
+<div id="Navigation" onclick="location.href='{% url 'player_analytics' team.id player.id %}'">{% trans "NAV_ANALYSIS" %}</div>

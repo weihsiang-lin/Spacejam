@@ -555,3 +555,40 @@ def invite_registration(request, team_id, player_id):
         team = Team.objects.get(id=team_id)
         player = Player.objects.get(id=player_id)
         return render(request, 'teams/registration.html', locals())
+
+def analytics(request, team_id, player_id):
+    team = Team.objects.get(pk=team_id)
+
+    try:
+        player = Player.objects.get(pk=player_id)
+    except:
+        # TODO: Log system.
+        player = None
+
+    if player:
+        try: 
+            player_stats = PlayerState.objects.get(player=player)
+        except:
+            # TODO: Log system.
+            player_stats = None
+    try:
+        player_stats_per_games = PlayerStatePerGame.objects.filter(player=player_id).order_by('-game_id__time')
+    except:
+        # TODO: Log system.
+        player_stats_per_games = None
+
+    if player_stats:
+        # Player's career avg. stats measurement.
+        if player_stats.two_points_attempt or player_stats.three_points_attempt:
+            career_FG_avg = (player_stats.two_points_made + player_stats.three_points_made) / (player_stats.two_points_attempt + player_stats.three_points_attempt) * 100
+        else:
+            career_FG_avg = 0.0
+
+        if player_stats.game_played:
+            career_PTS_avg = player_stats.PTS / player_stats.game_played
+            career_AST_avg = player_stats.AST / player_stats.game_played
+            career_REB_avg = player_stats.REB / player_stats.game_played
+        else:
+            career_PTS_avg = career_AST_avg = career_REB_avg = 0.0
+
+    return render(request, 'players/analytics.html', locals())

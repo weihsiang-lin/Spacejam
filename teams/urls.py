@@ -18,4 +18,5 @@ urlpatterns = [
     url(r'^myteams/(?P<team_id>[0-9]+)/stats/', views.stats, name='stats'),
     url(r'^myteams/(?P<team_id>[0-9]+)/players/', include('players.urls')),
     url(r'^myteams/create/$', views.create_team, name='create_team'),
+    url(r'^myteams/(?P<team_id>[0-9]+)/analytics/', views.analytics, name='analytics'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

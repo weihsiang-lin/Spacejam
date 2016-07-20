@@ -1256,3 +1256,119 @@ def stats(request, team_id):
         # 2016.05.05 FGA, 3PTSA, FTA average measurements.
         FGA_avg = threePTSA_avg = FTA_avg = 0.0
     return render(request, 'teams/stats.html', locals())
+
+def analytics(request, team_id):
+    team_secs_played = 0
+    avg_team_secs_played = 0
+
+    try:
+        team = Team.objects.get(pk=team_id)
+    except:
+        # TODO: Log system.
+        team = None
+
+    if team:
+        # General team information.
+        # Query team stats instance.
+        stats = TeamState.objects.get(team=team)
+
+        # FG measurement.
+        if stats.two_points_attempt or stats.three_points_attempt:
+            FGA = stats.two_points_attempt + stats.three_points_attempt
+            FG = (stats.two_points_made + stats.three_points_made) / FGA * 100
+        else:
+            FGA = FG = 0.0
+
+        if stats.game:
+            # PPG measurement.
+            PPG = stats.PTS / stats.game
+            # AST/Game measurement.
+            AST = stats.AST / stats.game
+            # REB/Game measurement.
+            REB = stats.REB / stats.game
+        else:
+            PPG = AST = REB = 0.0
+
+        try:
+            team_stats_per_games = TeamStatePerGame.objects.filter(team=team).order_by('game__time')
+        except:
+            # TODO: Log system.
+            team_stats_per_games = None
+
+        if team_stats_per_games:
+            for tspg in team_stats_per_games:
+                team_secs_played += (tspg.time.hour * 3600 + tspg.time.minute * 60 + tspg.time.second)
+
+            avg_team_secs_played = team_secs_played / len(team_stats_per_games)
+            avg_team_mins, avg_team_secs = divmod(int(avg_team_secs_played), 60)
+
+        # 2016.07.11 Advanced player stats.
+        advanced_players = []
+
+        try:
+            players = Player.objects.filter(team=team_id)
+        except:
+            # TODO: Log system.
+            players = None
+
+        if players:
+            for player in players:
+                # Init. advanced player stats dict.
+                advanced_player_stats = {}
+                advanced_player_stats['MIN'] = 0.0
+                advanced_player_stats['EFF'] = 0.0
+                advanced_player_stats['USG'] = 0.0
+                advanced_player_stats['EFF_USG'] = 0.0
+
+                player_stats = PlayerState.objects.get(player=player)
+
+                player_FG = player_stats.two_points_made + player_stats.three_points_made
+
+                if player_stats.two_points_attempt or player_stats.three_points_attempt:
+                    player_FGA = player_stats.two_points_attempt + player_stats.three_points_attempt
+
+                    # eFG% = (FG + 0.5 * 3P) / FGA
+                    advanced_player_stats['eFG'] = 100 * (player_FG
+                                                 + 0.5 * player_stats.three_points_made) / player_FGA
+
+                    # TS% = PTS / (2 * (FGA + 0.44 * FTA))
+                    advanced_player_stats['TS'] = player_stats.PTS / (2 * (player_FGA
+                                                  + 0.44 * player_stats.FTA )) * 100
+                else:
+                    player_FGA = 0.0
+                    advanced_player_stats['eFG'] = 0.0
+                    advanced_player_stats['TS'] = 0.0
+
+                if player_stats.game_played:
+                    # Average minutes played measurement.
+                    player_secs_played = player_stats.time.hour * 3600 + player_stats.time.minute * 60 + player_stats.time.second
+            
+                    avg_player_secs_played = player_secs_played / player_stats.game_played
+
+                    player_mins, player_secs = divmod(int(avg_player_secs_played), 60)
+
+                    player_mins += round(player_secs / 60, 1)
+
+                    advanced_player_stats['MIN'] = player_mins
+
+                    # EFF = (PTS + REB + AST + STL + BLK
+                    #         - Missed FG - Missed FT - TO) / GP
+                    advanced_player_stats['EFF'] = (player_stats.PTS + player_stats.REB
+                                                 + player_stats.AST + player_stats.STL
+                                                 + player_stats.BLK
+                                                 + (player_FGA - player_FG)
+                                                 + (player_stats.FTA - player_stats.FTM)
+                                                 - player_stats.TO) / player_stats.game_played
+
+                    # USG% = 100 * ((FGA + 0.44 * FTA + TOV) * (Tm MP / 5))
+                    #            / (MP * (Tm FGA + 0.44 * Tm FTA + Tm TOV))
+                    advanced_player_stats['USG'] = 100 * ((player_FGA + 0.44 * player_stats.FTA + player_stats.TO) 
+                                                   * (avg_team_mins / 5)) / (player_mins * ( FGA+ 0.44 * stats.FTA + stats.TO))
+
+                    advanced_player_stats['EFF_USG'] = advanced_player_stats['EFF'] / advanced_player_stats['USG']
+
+                advanced_player_stats['object'] = player_stats
+
+                advanced_players.append(advanced_player_stats)
+
+    return render(request, 'teams/analytics.html', locals())

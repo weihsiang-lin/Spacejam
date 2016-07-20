@@ -1,0 +1,471 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+
+{% block javascript %}
+
+var SIZE = 5;
+var WIDTH = window.innerWidth 
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+
+// Google chart - Line chart.
+google.charts.load('current', {packages: ['corechart']});
+google.charts.setOnLoadCallback(drawBasic);
+
+
+function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Date');
+      data.addColumn('number', '{% trans "PTS" %}');
+
+      data.addRows([
+        {% for player_stats_per_game in  player_stats_per_games %}
+        [new Date('{{ player_stats_per_game.game.time|date:"Y-m-d" }}'), {{ player_stats_per_game.PTS }}],
+        {% endfor %}
+      ]);
+
+      var options = {
+        hAxis: {
+          title: '{% trans "DATE" %}'
+        },
+        vAxis: {
+          title: '{% trans "PTS" %}',
+          minValue: 0,
+          viewWindow: {
+            min: 0
+          }
+        },
+        pointSize: SIZE,
+        width: WIDTH * 0.8
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('divPTS'));
+
+      chart.draw(data, options);
+
+      // FGA
+      var data_FGA = new google.visualization.DataTable();
+      data_FGA.addColumn('date', 'Date');
+      data_FGA.addColumn('number', '{% trans "FG" %}{% trans "ATTEMPT" %}');
+
+      data_FGA.addRows([
+        {% for player_stats_per_game in player_stats_per_games %}
+        [new Date('{{ player_stats_per_game.game.time|date:"Y-m-d" }}'), {{ player_stats_per_game.two_points_attempt|add:player_stats_per_game.three_points_attempt }}],
+        {% endfor %}
+      ]);
+
+      var options_FGA = {
+        hAxis: {
+          title: '{% trans "DATE" %}'
+        },
+        vAxis: {
+          title: '{% trans "FG" %}{% trans "ATTEMPT" %}',
+          minValue: 0,
+          viewWindow: {
+            min: 0
+          }
+        },
+        pointSize: SIZE,
+        width: WIDTH * 0.8
+      };
+
+      var chart_FGA = new google.visualization.LineChart(document.getElementById('divFGA'));
+
+      chart_FGA.draw(data_FGA, options_FGA);
+
+      // 3PTSA
+      var data_3PTSA = new google.visualization.DataTable();
+      data_3PTSA.addColumn('date', 'Date');
+      data_3PTSA.addColumn('number', '{% trans "3PTS"%}{% trans "ATTEMPT" %}');
+
+      data_3PTSA.addRows([
+        {% for player_stats_per_game in player_stats_per_games %}
+        [new Date('{{ player_stats_per_game.game.time|date:"Y-m-d" }}'), {{ player_stats_per_game.three_points_attempt }}],
+        {% endfor %}
+      ]);
+
+      var options_3PTSA = {
+        hAxis: {
+          title: '{% trans "DATE" %}'
+        },
+        vAxis: {
+          title: '{% trans "3PTS"%}{% trans "ATTEMPT" %}',
+          minValue: 0,
+          viewWindow: {
+            min: 0
+          }
+        },
+        pointSize: SIZE,
+        width: WIDTH * 0.8
+      };
+
+      var chart_3PTSA = new google.visualization.LineChart(document.getElementById('div3PTSA'));
+
+      chart_3PTSA.draw(data_3PTSA, options_3PTSA);
+
+      // FTA
+      var data_FTA = new google.visualization.DataTable();
+      data_FTA.addColumn('date', 'Date');
+      data_FTA.addColumn('number', '{% trans "FT"%}{% trans "ATTEMPT" %}');
+
+      data_FTA.addRows([
+        {% for player_stats_per_game in player_stats_per_games %}
+        [new Date('{{ player_stats_per_game.game.time|date:"Y-m-d" }}'), {{ player_stats_per_game.FTA }}],
+        {% endfor %}
+      ]);
+
+      var options_FTA = {
+        hAxis: {
+          title: '{% trans "DATE" %}'
+        },
+        vAxis: {
+          title: '{% trans "FT"%}{% trans "ATTEMPT" %}',
+          minValue: 0,
+          viewWindow: {
+            min: 0
+          }
+        },
+        pointSize: SIZE,
+        width: WIDTH * 0.8
+      };
+
+      var chart_FTA = new google.visualization.LineChart(document.getElementById('divFTA'));
+
+      chart_FTA.draw(data_FTA, options_FTA);
+
+      // REB
+      var data_REB = new google.visualization.DataTable();
+      data_REB.addColumn('date', 'Date');
+      data_REB.addColumn('number', '{% trans "REB" %}');
+
+      data_REB.addRows([
+        {% for player_stats_per_game in player_stats_per_games %}
+        [new Date('{{ player_stats_per_game.game.time|date:"Y-m-d" }}'), {{ player_stats_per_game.REB }}],
+        {% endfor %}
+      ]);
+
+      var options_REB = {
+        hAxis: {
+          title: '{% trans "DATE" %}'
+        },
+        vAxis: {
+          title: '{% trans "REB" %}',
+          minValue: 0,
+          viewWindow: {
+            min: 0
+          }
+        },
+        pointSize: SIZE,
+        width: WIDTH * 0.8
+      };
+
+      var chart_REB = new google.visualization.LineChart(document.getElementById('divREB'));
+
+      chart_REB.draw(data_REB, options_REB);
+
+      // OREB
+      var data_OREB = new google.visualization.DataTable();
+      data_OREB.addColumn('date', 'Date');
+      data_OREB.addColumn('number', '{% trans "OREB" %}');
+
+      data_OREB.addRows([
+        {% for player_stats_per_game in player_stats_per_games %}
+        [new Date('{{ player_stats_per_game.game.time|date:"Y-m-d" }}'), {{ player_stats_per_game.OREB }}],
+        {% endfor %}
+      ]);
+
+      var options_OREB = {
+        hAxis: {
+          title: '{% trans "DATE" %}'
+        },
+        vAxis: {
+          title: '{% trans "OREB" %}',
+          minValue: 0,
+          viewWindow: {
+            min: 0
+          }
+        },
+        pointSize: SIZE,
+        width: WIDTH * 0.8
+      };
+
+      var chart_OREB = new google.visualization.LineChart(document.getElementById('divOREB'));
+
+      chart_OREB.draw(data_OREB, options_OREB);
+
+      // DREB
+      var data_DREB = new google.visualization.DataTable();
+      data_DREB.addColumn('date', 'Date');
+      data_DREB.addColumn('number', '{% trans "DREB" %}');
+
+      data_DREB.addRows([
+        {% for player_stats_per_game in player_stats_per_games %}
+        [new Date('{{ player_stats_per_game.game.time|date:"Y-m-d" }}'), {{ player_stats_per_game.DREB }}],
+        {% endfor %}
+      ]);
+
+      var options_DREB = {
+        hAxis: {
+          title: '{% trans "DATE" %}'
+        },
+        vAxis: {
+          title: '{% trans "DREB" %}',
+          minValue: 0,
+          viewWindow: {
+            min: 0
+          }
+        },
+        pointSize: SIZE,
+        width: WIDTH * 0.8
+      };
+
+      var chart_DREB = new google.visualization.LineChart(document.getElementById('divDREB'));
+
+      chart_DREB.draw(data_DREB, options_DREB);
+
+      // AST
+      var data_AST = new google.visualization.DataTable();
+      data_AST.addColumn('date', 'Date');
+      data_AST.addColumn('number', '{% trans "AST" %}');
+
+      data_AST.addRows([
+        {% for player_stats_per_game in player_stats_per_games %}
+        [new Date('{{ player_stats_per_game.game.time|date:"Y-m-d" }}'), {{ player_stats_per_game.AST }}],
+        {% endfor %}
+      ]);
+
+      var options_AST = {
+        hAxis: {
+          title: '{% trans "DATE" %}'
+        },
+        vAxis: {
+          title: '{% trans "AST" %}',
+          minValue: 0,
+          viewWindow: {
+            min: 0
+          }
+        },
+        pointSize: SIZE,
+        width: WIDTH * 0.8
+      };
+
+      var chart_AST = new google.visualization.LineChart(document.getElementById('divAST'));
+
+      chart_AST.draw(data_AST, options_AST);
+
+      // STL
+      var data_STL = new google.visualization.DataTable();
+      data_STL.addColumn('date', 'Date');
+      data_STL.addColumn('number', '{% trans "STL" %}');
+
+      data_STL.addRows([
+        {% for player_stats_per_game in player_stats_per_games %}
+        [new Date('{{ player_stats_per_game.game.time|date:"Y-m-d" }}'), {{ player_stats_per_game.STL }}],
+        {% endfor %}
+      ]);
+
+      var options_STL = {
+        hAxis: {
+          title: '{% trans "DATE" %}'
+        },
+        vAxis: {
+          title: '{% trans "STL" %}',
+          minValue: 0,
+          viewWindow: {
+            min: 0
+          }
+        },
+        pointSize: SIZE,
+        width: WIDTH * 0.8
+      };
+
+      var chart_STL = new google.visualization.LineChart(document.getElementById('divSTL'));
+
+      chart_STL.draw(data_STL, options_STL);
+
+      // BLK
+      var data_BLK = new google.visualization.DataTable();
+      data_BLK.addColumn('date', 'Date');
+      data_BLK.addColumn('number', '{% trans "BLK" %}');
+
+      data_BLK.addRows([
+        {% for player_stats_per_game in player_stats_per_games %}
+        [new Date('{{ player_stats_per_game.game.time|date:"Y-m-d" }}'), {{ player_stats_per_game.BLK }}],
+        {% endfor %}
+      ]);
+
+      var options_BLK = {
+        hAxis: {
+          title: '{% trans "DATE" %}'
+        },
+        vAxis: {
+          title: '{% trans "BLK" %}',
+          minValue: 0,
+          viewWindow: {
+            min: 0
+          }
+        },
+        pointSize: SIZE,
+        width: WIDTH * 0.8
+      };
+
+      var chart_BLK = new google.visualization.LineChart(document.getElementById('divBLK'));
+
+      chart_BLK.draw(data_BLK, options_BLK);
+
+      // TO
+      var data_TO = new google.visualization.DataTable();
+      data_TO.addColumn('date', 'Date');
+      data_TO.addColumn('number', '{% trans "TO" %}');
+
+      data_TO.addRows([
+        {% for player_stats_per_game in player_stats_per_games %}
+        [new Date('{{ player_stats_per_game.game.time|date:"Y-m-d" }}'), {{ player_stats_per_game.TO }}],
+        {% endfor %}
+      ]);
+
+      var options_TO = {
+        hAxis: {
+          title: '{% trans "DATE" %}'
+        },
+        vAxis: {
+          title: '{% trans "TO" %}',
+          minValue: 0,
+          viewWindow: {
+            min: 0
+          }
+        },
+        pointSize: SIZE,
+        width: WIDTH * 0.8
+      };
+
+      var chart_TO = new google.visualization.LineChart(document.getElementById('divTO'));
+
+      chart_TO.draw(data_TO, options_TO);
+
+      // PF
+      var data_PF = new google.visualization.DataTable();
+      data_PF.addColumn('date', 'Date');
+      data_PF.addColumn('number', '{% trans "PF" %}');
+
+      data_PF.addRows([
+        {% for player_stats_per_game in player_stats_per_games %}
+        [new Date('{{ player_stats_per_game.game.time|date:"Y-m-d" }}'), {{ player_stats_per_game.PF }}],
+        {% endfor %}
+      ]);
+
+      var options_PF = {
+        hAxis: {
+          title: '{% trans "DATE" %}'
+        },
+        vAxis: {
+          title: '{% trans "PF" %}',
+          minValue: 0,
+          viewWindow: {
+            min: 0
+          }
+        },
+        pointSize: SIZE,
+        width: WIDTH * 0.8
+      };
+
+      var chart_PF = new google.visualization.LineChart(document.getElementById('divPF'));
+
+      chart_PF.draw(data_PF, options_PF);
+
+      // Percentage of points (Pie chart)
+      var two_points = {{ player_stats.two_points_made }} * 2,
+          three_points = {{ player_stats.three_points_made }} * 3
+
+      var data_pointsPercent = google.visualization.arrayToDataTable([
+          ['Type', 'Points'],
+          ['{% trans "FT" %}',     {{ player_stats.FTM }}],
+          ['{% trans "2PTS" %}',      two_points],
+          ['{% trans "3PTS" %}',  three_points]
+        ]);
+
+      var options_pointsPercent = {
+          title: '{% trans "POINTS_PERCENTAGE" %}',
+          width: WIDTH * 0.4
+        };
+
+      var chart_pointsPercent = new google.visualization.PieChart(document.getElementById('piePointsPercent'));
+
+      chart_pointsPercent.draw(data_pointsPercent, options_pointsPercent);
+
+      var data_attemptssPercent = google.visualization.arrayToDataTable([
+          ['Type', 'Attempts'],
+          ['{% trans "FT" %}',     {{ player_stats.FTA }}],
+          ['{% trans "2PTS" %}',      {{ player_stats.two_points_attempt }}],
+          ['{% trans "3PTS" %}',  {{ player_stats.three_points_attempt }}]
+        ]);
+
+      var options_attemptssPercent = {
+          title: '{% trans "ATTEMPTS_PERCENTAGE" %}',
+          width: WIDTH * 0.4
+        };
+
+      var chart_attemptssPercent = new google.visualization.PieChart(document.getElementById('pieAttemptsPercent'));
+
+      chart_attemptssPercent.draw(data_attemptssPercent, options_attemptssPercent);
+    }
+
+// Click button events.
+function showhide(id){
+    if (document.getElementById) {
+        var divid = document.getElementById(id);
+        var divs = document.getElementsByClassName("hide");
+        for(var i=0;i<divs.length;i++) {
+           divs[i].style.display = "none";
+        }
+        divid.style.display = "block";
+    } 
+    return false;
+}
+
+{% endblock %}
+
+{% block navigation %}
+    {% include 'player_navigation.html' %}
+{% endblock %}
+
+{% block content %}
+    {% include 'players/player_info.html' %}
+    <div id="BodyHeadline" style="float: left">{% trans "NAV_ANALYSIS" %}</div>
+    <div style="clear: both">
+        <div id="piePointsPercent" style="float: left"></div>
+        <div id="pieAttemptsPercent" style="float: left"></div>
+    </div>
+    <div id="BodyHeadline" style="float: left">{% trans "TREND" %}</div>
+    <div style="clear: both">
+        <button type="button" id="btnPTS" onclick="showhide('divPTS')">{% trans "PTS" %}</button>
+        <button type="button" id="btnFGA" onclick="showhide('divFGA')">{% trans "FG" %}{% trans "ATTEMPT" %}</button>
+        <button type="button" id="btn3PTSA" onclick="showhide('div3PTSA')">{% trans "3PTS" %}{% trans "ATTEMPT" %}</button>
+        <button type="button" id="btnFTA" onclick="showhide('divFTA')">{% trans "FT" %}{% trans "ATTEMPT" %}</button>
+        <button type="button" id="btnREB" onclick="showhide('divREB')">{% trans "REB" %}</button>
+        <button type="button" id="btnOREB" onclick="showhide('divOREB')">{% trans "OREB" %}</button>
+        <button type="button" id="btnDREB" onclick="showhide('divDREB')">{% trans "DREB" %}</button>
+        <button type="button" id="btnAST" onclick="showhide('divAST')">{% trans "AST" %}</button>
+        <button type="button" id="btnSTL" style="margin-top: 5px" onclick="showhide('divSTL')">{% trans "STL" %}</button>
+        <button type="button" id="btnBLK" style="margin-top: 5px" onclick="showhide('divBLK')">{% trans "BLK" %}</button>
+        <button type="button" id="btnTO" style="margin-top: 5px" onclick="showhide('divTO')">{% trans "TO" %}</button>
+        <button type="button" id="btnPF" style="margin-top: 5px" onclick="showhide('divPF')">{% trans "PF" %}</button>
+    </div>
+    <div style="margin-top: 30px">
+        <div class="hide" id="divPTS"></div>
+        <div class="hide" id="divFGA" style="display: none"></div>
+        <div class="hide" id="div3PTSA" style="display: none"></div>
+        <div class="hide" id="divFTA" style="display: none"></div>
+        <div class="hide" id="divREB" style="display: none"></div>
+        <div class="hide" id="divOREB" style="display: none"></div>
+        <div class="hide" id="divDREB" style="display: none"></div>
+        <div class="hide" id="divAST" style="display: none"></div>
+        <div class="hide" id="divSTL" style="display: none"></div>
+        <div class="hide" id="divBLK" style="display: none"></div>
+        <div class="hide" id="divTO" style="display: none"></div>
+        <div class="hide" id="divPF" style="display: none"></div>
+    </div>
+{% endblock %}
