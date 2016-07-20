@@ -329,12 +329,12 @@ function drawBasic() {
       chart_PF.draw(data_PF, options_PF);
 
       // Percentage of points (Pie chart)
-      var two_points = {{ team_stats.two_points_made }} * 2,
-          three_points = {{ team_stats.three_points_made }} * 3
+      var two_points = {{ stats.two_points_made }} * 2,
+          three_points = {{ stats.three_points_made }} * 3
 
       var data_pointsPercent = google.visualization.arrayToDataTable([
           ['Type', 'Points'],
-          ['{% trans "FT" %}',     {{ team_stats.FTM }}],
+          ['{% trans "FT" %}',     {{ stats.FTM }}],
           ['{% trans "2PTS" %}',      two_points],
           ['{% trans "3PTS" %}',  three_points]
         ]);
@@ -350,9 +350,9 @@ function drawBasic() {
 
       var data_attemptssPercent = google.visualization.arrayToDataTable([
           ['Type', 'Attempts'],
-          ['{% trans "FT" %}',     {{ team_stats.FTA }}],
-          ['{% trans "2PTS" %}',      {{ team_stats.two_points_attempt }}],
-          ['{% trans "3PTS" %}',  {{ team_stats.three_points_attempt }}]
+          ['{% trans "FT" %}',     {{ stats.FTA }}],
+          ['{% trans "2PTS" %}',      {{ stats.two_points_attempt }}],
+          ['{% trans "3PTS" %}',  {{ stats.three_points_attempt }}]
         ]);
 
       var options_attemptssPercent = {
@@ -419,5 +419,36 @@ function showhide(id){
         <div class="hide" id="divBLK" style="display: none"></div>
         <div class="hide" id="divTO" style="display: none"></div>
         <div class="hide" id="divPF" style="display: none"></div>
+    </div>
+    <div id="BodyHeadline" style="float: left">{% trans "PERFORMANCE" %}</div>
+    <div style="clear: both">
+        <table width="100%">
+            <tr>
+                <th>{% trans "NUMBER" %}</th>
+                <th>{% trans "NAME" %}</th>
+                <th>{% trans "GAMES" %}</th>
+                <th>{% trans "STARTED" %}</th>
+                <th>{% trans "TIME" %}</th>
+                <th>USG%</th>
+                <th>eFG%</th>
+                <th>TS%</th>
+                <th>EFF</th>
+                <th>{% trans "EFF/USG" %}</th>
+            </tr>
+            {% for adv_player in advanced_players %}
+            <tr>
+                <td>{{ adv_player.object.player.number }}</td>
+                <td>{{ adv_player.object.player.name }}</td>
+                <td>{{ adv_player.object.game_played }}</td>
+                <td>{{ adv_player.object.game_started }}</td>
+                <td>{{ adv_player.MIN|floatformat:1 }}</td>
+                <td>{{ adv_player.USG|floatformat:1 }}%</td>
+                <td>{{ adv_player.eFG|floatformat:1 }}%</td>
+                <td>{{ adv_player.TS|floatformat:1 }}%</td>
+                <td>{{ adv_player.EFF|floatformat:1 }}</td>
+                <td>{{ adv_player.EFF_USG|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
 {% endblock %}
