@@ -1356,16 +1356,17 @@ def analytics(request, team_id):
                     advanced_player_stats['EFF'] = (player_stats.PTS + player_stats.REB
                                                  + player_stats.AST + player_stats.STL
                                                  + player_stats.BLK
-                                                 + (player_FGA - player_FG)
-                                                 + (player_stats.FTA - player_stats.FTM)
+                                                 - (player_FGA - player_FG)
+                                                 - (player_stats.FTA - player_stats.FTM)
                                                  - player_stats.TO) / player_stats.game_played
 
                     # USG% = 100 * ((FGA + 0.44 * FTA + TOV) * (Tm MP / 5))
                     #            / (MP * (Tm FGA + 0.44 * Tm FTA + Tm TOV))
                     advanced_player_stats['USG'] = 100 * ((player_FGA + 0.44 * player_stats.FTA + player_stats.TO) 
-                                                   * (avg_team_mins / 5)) / (player_mins * ( FGA+ 0.44 * stats.FTA + stats.TO))
+                                                   * (avg_team_mins / 5)) / (player_mins * ( FGA + 0.44 * stats.FTA + stats.TO))
 
-                    advanced_player_stats['EFF_USG'] = advanced_player_stats['EFF'] / advanced_player_stats['USG']
+                    if advanced_player_stats['USG']:
+                        advanced_player_stats['EFF_USG'] = advanced_player_stats['EFF'] / advanced_player_stats['USG']
 
                 advanced_player_stats['object'] = player_stats
 
