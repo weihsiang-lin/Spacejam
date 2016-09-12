@@ -1,51 +1,30 @@
 {% load i18n %}
 {% load staticfiles %}
-    <div id="TeamInfo">
-        <div id="TeamImage">
-            {% if team.figure %}
-                <img src="{{ team.figure.url }}"/>
-            {% else %}
-                <img src="{% static "images/images.jpeg" %}"/>
-            {% endif %}
+<!--public version-->
+<div class="row main-Info team-mainInfo">
+    <div class="col s12 m12 l6 main-title">
+        {% if team.figure %}
+        <img src="{{ team.figure.url }}" alt="teamLogo">
+        {% else %}
+        <img src="{% static 'images/pic_team.png' %}" alt="teamLogo">
+        {% endif %}
+        <h1>{{ team.name }}</h1>
+        <div class="iconBtn-group">
+            <a class="iconBtn icon-edit" href="t_edit.html"></a>
         </div>
-        <div id="TeamName">{{ team.name }}</div>
-        <div id="TeamStats">
-            <div id="TeamWinOrLose">
-                <div style="font-size: 2rem">{{ stats.Win }}</div>
-                <div style="margin-left: 5px">
-                    {% if stats.Win <= 1 %}
-                        {% trans "WIN" %}
-                    {% else %}
-                        {% trans "WINS" %}
-                    {% endif %}
-                </div>
-                <div style="margin-left: 10px; font-size: 1rem">-</div>
-                <div style="margin-left: 10px; font-size: 2rem">{{ stats.Lose }}</div>
-                <div style="float: left; margin-left: 5px">
-                    {% if stats.Lose <= 1 %}
-                        {% trans "LOSE" %}
-                    {% else %}
-                        {% trans "LOSES" %}
-                    {% endif %}
-                </div>
-            </div>
-            <div id="TeamAvgStats">
-                <div>
-                    {% trans "PPG" %}<br>
-                    <p>{{ PPG|floatformat:1 }}</p>
-                </div>
-                <div>
-                    {% trans "FG%PG" %}<br>
-                    <p>{{ FG|floatformat:1 }}%</p>
-                </div>
-                <div>
-                    {% trans "APG" %}<br>
-                    <p>{{ AST|floatformat:1 }}</p>
-                </div>
-                <div>
-                    {% trans "RPG" %}<br>
-                    <p>{{ REB|floatformat:1 }}</p>
-                </div>
-            </div>
+        <div class="score">
+            <ul>
+                <li><span>勝</span>{{ stats.Win }}</li>
+                <li><span>敗</span>{{ stats.Lose }}</li>
+            </ul>
         </div>
     </div>
+
+    <div class="col s12 m12 l6 main-analysis">
+        <div id="chart1" class="donut"></div>
+        <div id="chart2" class="donut"></div>
+        <div id="chart3" class="donut"></div>
+        <div id="chart4" class="donut"></div>
+    </div>
+</div>
+<!--end of public version-->

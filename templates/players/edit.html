@@ -1,90 +1,95 @@
 {% extends 'base.html' %}
-    {% load i18n %}
-    {% load staticfiles %}
-    {% block javascript %}
 
-    function form_check()
-    {
-        if (edit_player.name.value == "")
-        {
-            document.getElementById('name').focus();
-            document.getElementById('empty_name').style.display = "block";
-        }
-        else if (edit_player.number.value == "")
-        {
-            document.getElementById('number').focus();
-            document.getElementById('empty_number').style.display = "block";
-        }
-        else edit_player.submit();
-    }
+{% load i18n %}
+{% load staticfiles %}
 
-    {% endblock %}
-    {% block navigation %}
-        {% include 'navigation.html' %}
-    {% endblock %}
-    {% block content %}
-        {% include 'teams/team_info.html' %}
-        <div id="BodyHeadline">{% trans "ROSTER" %} > {% trans "EDIT" %}</div>
-        <form id="edit_player" name="edit_player" action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div>
-                <p>{% trans "NAME" %}</p>
-                <input type="text" id="name" name="name" value="{{ player.name }}">
-                <div class="ErrorMsg" id="empty_name">{% trans "PLEASE_INSERT_PLAYER_NAME" %}</div>
-                <p>{% trans "NUMBER" %}</p>
-                <input type="number" id="number" name="number" min="0" value="{{ player.number }}">
-                <div class="ErrorMsg" id="empty_number">{% trans "PLEASE_INSERT_PLAYER_NUMBER" %}</div>
-                <p>{% trans "POSITION" %}</p>
-                <select name="position">
-                    {% if player.position == 1 %}
-                        <option value="1" selected="selected">{% trans "GUARD" %}</option>
-                    {% else %}
-                        <option value="1">{% trans "GUARD" %}</option>
-                    {% endif %}
-                    {% if player.position == 2 %}
-                        <option value="2" selected="selected">{% trans "FORWARD" %}</option>
-                    {% else %}
-                        <option value="2">{% trans "FORWARD" %}</option>
-                    {% endif %}
-                    {% if player.position == 3 %}
-                        <option value="3" selected="selected">{% trans "CENTER" %}</option>
-                    {% else %}
-                        <option value="3">{% trans "CENTER" %}</option>
-                    {% endif %}
-                </select>
-            </div>
-            <div>
-                <p>{% trans "HEIGHT" %}</p>
-                <input type="number" name="height" min="0" value="{{ player.height }}">
-                <p>{% trans "WEIGHT" %}</p>
-                <input type="number" name="weight" min="0" value="{{ player.weight }}">
-                <p>{% trans "BIRTHDAY" %}</p>
-                <input type="date" name="birthday" value="{{ birthday }}">
-            </div>
-            <div>
-                <p>{% trans "EMAIL" %}</p>
-                <!-- 2016.06.04 If connect to an user then disabled to edit email. -->
-                <input type="email" name="email" value="{{ player.email }}" {% if player.user %}readonly="readonly"{% endif %}>
-                <p>{% trans "IMAGE" %}</p>
-                {% if player.figure %}
-                    <img src="{{ player.figure.url }}" height="85px" width="85px"/>
-                    <input type="hidden" name="filepath" value="{{ player.figure.url }}"><br>
-                {% else %}
-                    <img src="{% static "images/default-player" %}" height="85px" width="85px"/>
-                {% endif %}
-                <input type="file" name="image">
-                {% if is_admin and player.user %}
-                    <p>
-                    {% trans "IS_ADMIN" %}
-                        {% if player.isAdmin %}
-                            <input type="checkbox" name="isAdmin" value="true" checked><br>
-                        {% else %}
-                            <input type="checkbox" name="isAdmin" value="true"><br>
-                        {% endif %}
-                    </p>
-                {% endif %}
-            </div>
-        </form>
-        <button type="button" style="float: right; margin-right: 3.25vw" onclick="location.href='{% url 'player_index' team.id %}'">{% trans "CANCEL" %}</button>
-        <button type="submit" style="float: right; margin-right: 1vw" onclick="form_check()">{% trans "SAVE" %}</button>
-    {% endblock %}
+{% block javascript %}
+    <!--*必填-->
+    <script src="{% static 'js/jquery.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.validate.js' %}" type="text/javascript"></script>
+
+    <!--*必填-->
+    <script type="text/javascript">
+        $(function(){
+            $("#commentForm").validate();
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    {% include 'teams/team_info.html' %}
+    <div class="row page-content">
+        <div class="col s12 m12 l1"></div>
+        <div class="col s12 m12 l10 content-block">
+            <h3 class="subinfo">{% trans 'ROSTER' %}<span>{% trans 'EDIT' %}</span></h3>
+            <div class="form">
+                <form id="commentForm" class="commentForm" name="create_player" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="blockBg input-group" >
+                        <div>
+                            <label>{% trans 'NAME' %}<span class="redmark">*必填</span></label>
+                            <input class="required" type="text" id="name" name="name" value="{{ player.name }}">
+                            <label>{% trans 'NUMBER' %}<span class="redmark">*必填</span></label>
+                            <input class="required" type="number" id="number" name="number" min="0" value="{{ player.number }}">
+                            <label>{% trans 'POSITION' %}</label>
+                            <select name="position">
+                                {% if player.position == 1 %}
+                                <option selected="selected" value="1">{% trans 'GUARD' %}</option>
+                                {% else %}
+                                <option value="1">{% trans 'GUARD' %}</option>
+                                {% endif %}
+                                {% if player.position == 2 %}
+                                <option selected="selected" value="2">{% trans 'FORWARD' %}</option>
+                                {% else %}
+                                <option value="2">{% trans 'FORWARD' %}</option>
+                                {% endif %}
+                                {% if player.position == 3 %}
+                                <option selected="selected" value="3">{% trans 'CENTER' %}</option>
+                                {% else %}
+                                <option value="3">{% trans 'CENTER' %}</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                        <div>
+                            <label>{% trans 'HEIGHT' %}</label>
+                            <input type="number" name="height" min="0" value="{{ player.height }}">
+                            <label>{% trans 'WEIGHT' %}</label>
+                            <input type="number" name="weight" min="0" value="{{ player.weight }}">
+                            <label>{% trans 'BIRTHDAY' %}</label>
+                            <input type="date" name="birthday" value="{{ birthday }}">
+                        </div>
+                        <div>
+                            <label>{% trans 'EMAIL' %}</label>
+                            <input type="email" name="email" value="{{ player.email }}" {% if player.user %}readonly="readonly"{% endif %}>
+                            <label>{% trans 'IMAGE' %}</label>
+                            <input id="uploadFile" placeholder="未選擇任何檔案" disabled="disabled" />
+                            <div class="fileUpload btn-brown btn">
+                                <span>選擇檔案</span>
+                                <input name="image" id="uploadBtn" type="file" class="upload" />
+                            </div>
+                            <!-- isAdmin:
+                            <input type="checkbox" name="isAdmin" value="true"><br> -->
+                            <label></label>
+                        </div>
+                    </div><!--end of input-group -->
+
+                    <div class="btn-group">
+                        <button class="btn" type="button" onclick="location.href='{% url 'player_index' team_id %}'">{% trans 'CANCEL' %}</button>
+                        <button class="btn" type="submit" onclick="form_check()">{% trans 'CREATE' %}</button>
+                    </div>
+                </form>
+            </div><!-- end of form-->
+        </div><!-- end of content-block-->
+    </div><!--end of page-content-->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //input file
+            document.getElementById("uploadBtn").onchange = function () {
+                document.getElementById("uploadFile").value = this.value;
+            };
+
+        });
+    </script> 
+{% endblock %}
