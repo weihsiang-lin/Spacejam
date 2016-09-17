@@ -14,7 +14,7 @@
         <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 
         <!-- c3.js -->
-        <link href="css/c3.css" rel="stylesheet" type="text/css" />
+        <link href="{% static 'css/c3.css' %}" rel="stylesheet" type="text/css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
         <!-- c3.js end -->
@@ -50,48 +50,18 @@
 
     <body>
         <header>
-            <nav class="nav-bottom">
-                <div class="navTop">
-                    <a href="index.html"><div id="logo"></div></a>
-                    <div class="right content-nav">
-                        <ul>
-                            <li><a class="iconLeague navBtn" href="#">聯盟</a>
-                                <ul style="display:none;" class="sub-menu scroll flexcroll-gray">
-                                    <li><a href="#">名人榜</a></li>
-                                    <li><a href="#">最新消息</a></li>
-                                    <li><a href="#">盃賽資訊</a></li>
-                                    <li><a href="#">賽程一覽</a></li>
-                                    <li><a href="#">戰績排行</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="iconTeam navBtn" href="#">球隊</a>
-                                <ul class="sub-menu scroll flexcroll-gray">
-                                    <li><a class="selected" href="#">Summary</a></li>
-                                    <li><a href="#">賽程</a></li>
-                                    <li><a href="{% url 'player_index' team_id %}">陣容</a></li>
-                                    <li><a href="{% url 'stats' team_id %}">{% trans 'STATS' %}</a></li>
-                                    <li><a href="#">分析</a></li>
-                                </ul>
-                            </li>
-                            <li class="hover-btn"><a id="account_btn" class="iconAccount navBtn" href="#">帳號</a>
-                                <ul id="account_menu" class="hover-menu">
-                                    <li><a href="/accounts/my/">設定</a></li>
-                                    <li><a href="/accounts/logout/">登出</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            {% block header %}{% endblock %}
         </header>
-        <div class="content">
+
         {% block content %}{% endblock %}
-        </div><!--end of content-->
+
         <div id="gotop"></div>
+
         <footer>
             <div class="right"><a href="#">個資聲明</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="#">網站版權聲明</a></div>
             <div class="left">2016 © DataHoops All Rights Reserved.</div>
         </footer>
+
         <!-- c3.js -->
         <script src="{% static 'js/donut.js' %}"></script>
         <!--materialize.js-->

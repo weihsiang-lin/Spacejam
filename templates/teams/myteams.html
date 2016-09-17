@@ -1,80 +1,97 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+
 {% load i18n %}
 {% load staticfiles %}
-<html>
-    <head>
-        <meta charset='UTF-8'>
-        <title>Improvement Goes With Data - DataHoops</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
-        <link href='https://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
 
-        <!-- JavaScript -->
-        <script type="text/javascript">
-            function ConfirmDeletion(team_id)
+{% block javascript %}
+    <script type="text/javascript">
+        function ConfirmDeletion(team_id)
+        {
+            var result = confirm("Are you sure?");
+            if (result)
             {
-                var result = confirm("Are you sure?");
-                if (result)
-                {
-                    window.location = "/teams/myteams/"+team_id+"/delete/";
-                }
-                else { return false; }
+                window.location = "/teams/myteams/"+team_id+"/delete/";
             }
-        </script>
-    </head>
-    <body>
-        <div id="Header">
-            <div id="HeaderLeft">DataHoops</div>
-            <div id="HeaderRight">
-                <a href="{% url 'myteams' %}" style="text-decoration: underline">{% trans "MY_TEAM" %}</a> |
-                <a href="/accounts/my/" style="text-decoration: underline">{% trans "MY_ACCOUNT" %}</a> |
-                <a href="/accounts/logout/" style="text-decoration: underline">{% trans "SIGN_OUT" %}</a>
-            </div>
+            else { return false; }
+        }
+    </script>
+{% endblock %}
+
+{% block header %}
+    <nav class="nav-bottom">
+    <div class="navTop">
+        <a href="index.html"><div id="logo"></div></a>
+        <div class="right content-nav">
+            <ul>
+                <li><a class="iconLeague navBtn" href="#">聯盟</a>
+                    <ul style="display:none;" class="sub-menu scroll flexcroll-gray">
+                        <li><a href="#">名人榜</a></li>
+                        <li><a href="#">最新消息</a></li>
+                        <li><a href="#">盃賽資訊</a></li>
+                        <li><a href="#">賽程一覽</a></li>
+                        <li><a href="#">戰績排行</a></li>
+                    </ul>
+                </li>
+                <li><a class="iconTeam navBtn" href="#">球隊</a>
+                    <ul style="display:none;" class="sub-menu scroll flexcroll-gray">
+                        <li><a class="selected" href="#">Summary</a></li>
+                        <li><a href="#">賽程</a></li>
+                        <li><a href="#">陣容</a></li>
+                        <li><a href="#">{% trans 'STATS' %}</a></li>
+                        <li><a href="#">分析</a></li>
+                    </ul>
+                </li>
+                <li class="hover-btn"><a id="account_btn" class="iconAccount navBtn" href="#">帳號</a>
+                    <ul id="account_menu" class="hover-menu">
+                        <li><a href="/accounts/my/">設定</a></li>
+                        <li><a href="/accounts/logout/">登出</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-        <div style="height: auto; min-height: 90vh; font-family: 'Raleway', sans-serif">
-            <div style="height: 15vh; line-height: 15vh; text-align: center; font-size: 1.5rem">{% trans "MY_TEAM" %}</div>
-            <div style="text-align: center">
+    </div>
+</nav>
+{% endblock %}
 
-                <!-- 2016.05.25 Message framework. -->
-                {% if messages %}
-                    {% for message in messages %}
-                        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                        <p style="color: green">{{ message }}</p>
-                        {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                        <p style="color: red">{{ message }}</p>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-
+{% block content %}
+    <div class="content">
+        <div class="page-content  team-group">
+            <!-- 2016.05.25 Message framework. -->
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <p style="color: green">{{ message }}</p>
+                    {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <p style="color: red">{{ message }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            <h3 class="subinfo">{% trans 'MY_TEAM' %}</h3>
+            <div class="main-title">
                 {% if teams %}
-                    {% for team in teams %}
-                        <div class="MyTeam" style="float: left">
-                            <div class="MyTeamCircle" onclick="location.href='{% url 'team_summary' team.id %}'">
-                                {% if team.figure %}
-                                    <div style="background-image: url({{ team.figure.url }}); background-size:cover; background-position:center center; height: 100%; border-radius:50%;"></div>
-                                {% else %}
-                                    <div style="background-image: url({% static "images/images.jpeg" %}); background-size:cover; background-position:center center; height: 100%; border-radius:50%;"></div>
-                                {% endif %}
+                    {% for team in teams %}    
+                    <div class="teamName">
+                        <a class="teamHover" href="{% url 'team_summary' team.id %}">
+                            {% if team.figure %}
+                            <img src="{{ team.figure.url }}" alt="teamLogo">
+                            {% else %}
+                            <img src="{% static 'images/pic_team.png' %}" alt="teamLogo">
+                            {% endif %}
+                            <h1>{{ team.name }}</h1>
+                        </a>
+                        {% for admin in team.administrators.all %}
+                            {% if request.user == admin %}
+                            <div class="iconBtn-group-middle">
+                                <a class="iconBtn icon-edit" href="{% url 'edit_team' team.id %}"></a>
+                                <a class="iconBtn icon-delete" href="javascript: return false;" onclick="return ConfirmDeletion({{ team.id }})"></a>
                             </div>
-                            <div>
-                                <a href="{% url 'team_summary' team.id %}">{{ team }}</a>
-                                {% for admin in team.administrators.all %}
-                                    {% if request.user == admin %}
-                                        <a href="{% url 'edit_team' team.id %}">{% trans "EDIT" %}</a>
-                                        <a href="javascript: return false;" onclick="return ConfirmDeletion({{ team.id }})">{% trans "DELETE" %}</a>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                     {% endfor %}
                 {% endif %}
-                <div class="MyTeam" {% if teams %}style="float: left"{% endif %}>
-                    <div class="MyTeamCircle" onclick="location.href='{% url 'create_team' %}'">
-                        <div style="background-image: url({% static "images/add-icon" %}); background-size:cover; background-position:center center; height: 100%; border-radius:50%;"></div>
-                    </div>
-                    <div><a href="{% url 'create_team' %}">{% trans "CREATE_TEAM" %}</a></div>
-                </div>
+                <a href="{% url 'create_team' %}"><div class="new"></div></a>
             </div>
-        </div>
-    </body>
-</html>
+        </div><!--end of page-content-->
+    </div><!--end of content-->
+{% endblock %}
