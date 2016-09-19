@@ -155,6 +155,13 @@ def team_summary(request, team_id):
 
     team = Team.objects.get(id=team_id)
 
+    # 2016.09.19 Check request.user is team admin or not.
+    is_admin = False
+    for admin in team.administrators.all():
+        if request.user == admin:
+            is_admin = True
+            break
+
     # Past 5 games.
     games = Game.objects.filter(team=team_id, time__lt=timezone.now()).order_by('-time')[0:5]
 

@@ -9,13 +9,17 @@
         <img src="{% static 'images/pic_team.png' %}" alt="teamLogo">
         {% endif %}
         <h1>{{ team.name }}</h1>
-        <div class="iconBtn-group">
-            <a class="iconBtn icon-edit" href="t_edit.html"></a>
-        </div>
+        {% for admin in team.administrators.all %}
+            {% if request.user == admin %}
+            <div class="iconBtn-group">
+                <a class="iconBtn icon-edit" href="{% url 'edit_team' team.id %}"></a>
+            </div>
+            {% endif %}
+        {% endfor %}
         <div class="score">
             <ul>
-                <li><span>勝</span>{{ stats.Win }}</li>
-                <li><span>敗</span>{{ stats.Lose }}</li>
+                <li><span>{% if stats.Win < 2 %}{% trans 'WIN' %}{% else %}{% trans 'WINS' %}{% endif %}</span>{{ stats.Win }}</li>
+                <li><span>{% if stats.Lose < 2 %}{% trans 'LOSE' %}{% else %}{% trans 'LOSES' %}{% endif %}</span>{{ stats.Lose }}</li>
             </ul>
         </div>
     </div>

@@ -13,9 +13,11 @@
     <div class="row page-content">
         <div class="col s12 m12 l6 content-block">
             <a href="{% url 'mygames' team.id %}"><h3 class="subinfo">{% trans 'SCHEDULE' %}<span class="redarrow">VIEW ALL</span></h3></a>
+            {% if is_admin %}
             <div class="contentBtn">
                 <a class="iconBtn icon-add" href="{% url 'create_game' team.id %}"></a>
             </div>
+            {% endif %}
             {% if not upcoming_game and not games %}
             <div class="blockBg blank blockBottom" style="display:block;">
                 <img src="{% static 'images/Arrow-PNG.png' %}">
@@ -73,9 +75,11 @@
 
         <div class="col s12 m12 l6 content-block">
             <a href="{% url 'player_index' team.id %}"><h3 class="subinfo">{% trans 'ROSTER' %}<span class="redarrow">VIEW ALL</span></h3></a>
+            {% if is_admin %}
             <div class="contentBtn">
                 <a class="iconBtn icon-add" href="{% url 'create_player' team.id %}"></a>
             </div>
+            {% endif %}
             {% if not players %}
             <div class="blockBg blank blockBottom" style="display:block;">
                 <img src="{% static 'images/Arrow-PNG.png' %}">

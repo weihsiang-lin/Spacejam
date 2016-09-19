@@ -1,7 +1,7 @@
 {% load i18n %}
 <nav class="nav-bottom">
     <div class="navTop">
-        <a href="index.html"><div id="logo"></div></a>
+        <a href="/"><div id="logo"></div></a>
         <div class="right content-nav">
             <ul>
                 <li><a class="iconLeague navBtn" href="#">聯盟</a>
@@ -15,11 +15,16 @@
                 </li>
                 <li><a class="iconTeam navBtn" href="{% url 'myteams' %}">球隊</a>
                     <ul class="sub-menu scroll flexcroll-gray">
-                        <li><a class="selected" href="{% url 'team_summary' team_id %}">Summary</a></li>
-                        <li><a href="{% url 'mygames' team_id %}">{% trans 'NAV_SCHEDULE' %}</a></li>
-                        <li><a href="{% url 'player_index' team_id %}">{% trans 'NAV_ROSTER' %}</a></li>
-                        <li><a href="{% url 'stats' team_id %}">{% trans 'NAV_STATS' %}</a></li>
-                        <li><a href="{% url 'analytics' team_id %}">{% trans 'NAV_ANALYSIS' %}</a></li>
+                        {% url 'team_summary' team_id as summary %}
+                        <li><a {% ifequal request.path summary %}class="selected"{% endifequal %} href="{{ summary }}">Summary</a></li>
+                        {% url 'mygames' team_id as schedule %}
+                        <li><a {% ifequal request.path schedule %}class="selected"{% endifequal %} href="{{ schedule }}">{% trans 'NAV_SCHEDULE' %}</a></li>
+                        {% url 'player_index' team_id as roster %}
+                        <li><a {% ifequal request.path roster %}class="selected"{% endifequal %} href="{{ roster }}">{% trans 'NAV_ROSTER' %}</a></li>
+                        {% url 'stats' team_id as stats %}
+                        <li><a {% ifequal request.path stats %}class="selected"{% endifequal %} href="{{ stats }}">{% trans 'NAV_STATS' %}</a></li>
+                        {% url 'analytics' team_id as analytics %}
+                        <li><a {% ifequal request.path analytics %}class="selected"{% endifequal %} href="{{ analytics }}">{% trans 'NAV_ANALYSIS' %}</a></li>
                     </ul>
                 </li>
                 <li class="hover-btn"><a id="account_btn" class="iconAccount navBtn" href="#">帳號</a>
