@@ -16,7 +16,12 @@
     </script>
 {% endblock %}
 
+{% block header %}
+    {% include 'new_navigation.html' %}
+{% endblock %}
+
 {% block content %}
+<div class="content">
     {% include 'teams/team_info.html' %}
     <div class="row page-content">
         <div class="col s12 m12 l1"></div>
@@ -75,12 +80,13 @@
 
                     <div class="btn-group">
                         <button class="btn" type="button" onclick="location.href='{% url 'player_index' team_id %}'">{% trans 'CANCEL' %}</button>
-                        <button class="btn" type="submit" onclick="form_check()">{% trans 'CREATE' %}</button>
+                        <button class="btn" type="submit" onclick="form_check()">{% trans 'SAVE' %}</button>
                     </div>
                 </form>
             </div><!-- end of form-->
         </div><!-- end of content-block-->
     </div><!--end of page-content-->
+</div><!--end of content-->
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -92,4 +98,8 @@
 
         });
     </script> 
+{% endblock %}
+
+{% block donut %}
+    {% include 'donut.html' %}
 {% endblock %}

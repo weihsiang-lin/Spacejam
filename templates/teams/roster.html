@@ -5,6 +5,9 @@
 
 {% block javascript %}
 <!--table sorter-->
+<script type="text/javascript" src="{% static 'js/jquery.tablesorter.js' %}"></script>
+
+<!--table sorter-->
 <script type="text/javascript">
     $(function () {
         // table sorter
@@ -24,16 +27,21 @@
 </script>
 {% endblock %}
 
+{% block header %}
+    {% include 'new_navigation.html' %}
+{% endblock %}
+
 {% block content %}
+<div class="content">
     {% include 'teams/team_info.html' %}
 
     <!-- 2016.05.24 Message framework. -->
     {% if messages %}
         {% for message in messages %}
             {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-            <p style="color: green">{{ message }}</p>
+            <p class="MSG-info">{{ message }}</p>
             {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-            <p style="color: red">{{ message }}</p>
+            <p class="MSG-info">{{ message }}</p>
             {% endif %}
         {% endfor %}
     {% endif %}
@@ -109,4 +117,9 @@
         {% endif %}
         </div><!-- end of halfBlock-->
     </div><!--end of page-content-->
+</div><!--end of content-->
+{% endblock %}
+
+{% block donut %}
+    {% include 'donut.html' %}
 {% endblock %}

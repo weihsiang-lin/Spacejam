@@ -63,7 +63,8 @@
         </footer>
 
         <!-- c3.js -->
-        <script src="{% static 'js/donut.js' %}"></script>
+        {% block donut %}{% endblock %}
+        <!-- <script src="{% static 'js/donut.js' %}"></script> -->
         <!--materialize.js-->
         <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
 

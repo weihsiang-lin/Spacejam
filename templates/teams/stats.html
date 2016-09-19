@@ -16,7 +16,12 @@
 </script>
 {% endblock %}
 
+{% block header %}
+    {% include 'new_navigation.html' %}
+{% endblock %}
+
 {% block content %}
+<div class="content">
     {% include 'teams/team_info.html' %}
     {% if stats %}
     <div class="row page-content">
@@ -147,7 +152,12 @@
             </div><!--end of table-->
         </div><!-- end of content-block-->
     </div><!--end of page-content-->
+</div><!--end of content-->
     {% else %}
         <p>{% trans "NO_STATS" %}</p>
     {% endif %}
+{% endblock %}
+
+{% block donut %}
+    {% include 'donut.html' %}
 {% endblock %}
