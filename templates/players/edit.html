@@ -67,10 +67,19 @@
                             <label>{% trans 'EMAIL' %}</label>
                             <input type="email" name="email" value="{{ player.email }}" {% if player.user %}readonly="readonly"{% endif %}>
                             <label>{% trans 'IMAGE' %}</label>
-                            <input id="uploadFile" placeholder="未選擇任何檔案" disabled="disabled" />
-                            <div class="fileUpload btn-brown btn">
-                                <span>選擇檔案</span>
-                                <input name="image" id="uploadBtn" type="file" class="upload" />
+                            <div class="memberPic">
+                                {% if player.figure %}
+                                <img src="{{ player.figure.url }}" alt="member">
+                                {% else %}
+                                <img src="{% static 'images/pic_member.jpg' %}" alt="member">
+                                {% endif %}
+                            </div>
+                            <div class="teamEdit-inputFile">
+                                <input id="uploadFile" placeholder="未選擇任何檔案" disabled="disabled" />
+                                <div class="fileUpload btn-brown btn">
+                                    <span>選擇檔案</span>
+                                    <input name="image" id="uploadBtn" type="file" class="upload" />
+                                </div>
                             </div>
                             <!-- isAdmin:
                             <input type="checkbox" name="isAdmin" value="true"><br> -->
