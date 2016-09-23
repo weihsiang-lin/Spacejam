@@ -15,10 +15,12 @@ $(document).ready(function () {
 		return false;
 	});
 
-	//Click event to scroll to top
+	//登入btn
 	$('#account_btn').click(function(){
 		$('#account_menu').slideToggle(200);
 	});
 
+	
+	
 
 });

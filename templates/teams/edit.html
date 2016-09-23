@@ -72,10 +72,19 @@
                             <label>{% trans 'CODE' %}</label>
                             <input type="text" name="code" value="{{ team.code }}">
                             <label>{% trans 'IMAGE' %}</label>
-                            <input id="uploadFile" placeholder="未選擇任何檔案" disabled="disabled" />
-                            <div class="fileUpload btn-brown btn">
-                                <span>選擇檔案</span>
-                                <input name="figure" id="uploadBtn" type="file" class="upload" />
+                            <div class="imgEdit">
+                                {% if team.figure %}
+                                <img src="{{ team.figure.url }}" alt="member">
+                                {% else %}
+                                <img src="{% static 'images/pic_team.png' %}" alt="member">
+                                {% endif %}
+                                <div class="teamEdit-inputFile">
+                                    <input id="uploadFile" placeholder="未選擇任何檔案" disabled="disabled" />
+                                    <div class="fileUpload btn-brown btn">
+                                        <span>選擇檔案</span>
+                                        <input name="figure" id="uploadBtn" type="file" class="upload" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div><!--end of input-group -->
