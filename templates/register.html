@@ -39,9 +39,9 @@
             <a href="/"><div id="logo"></div></a>
             <div class="right index-right scroll flexcroll">
                 <ul>
-                    <li><a id="bt01" href="#">為什麼使用 DataHoops</a></li>
-                    <li><a id="bt02" href="#">關於我們</a></li>
-                    <li><a href="#">如何使用</a></li>
+                    <li><a id="bt01" href="#">{% trans 'WHY_DATAHOOPS' %}</a></li>
+                    <li><a id="bt02" href="#">{% trans 'ABOUT_US' %}</a></li>
+                    <li><a href="#">{% trans 'HOW_IT_WORKS' %}</a></li>
                     <li><a href="/accounts/login/">{% trans 'SIGN_IN' %}</a></li>
                 </ul>
             </div>
@@ -53,7 +53,7 @@
     <div class="row content">
         <div class="col s12 m3 l4"></div>
         <div class="col s12 m6 l4 logIn">
-            <h4>建立帳號</h4>
+            <h4>{% trans 'SIGN_UP' %}</h4>
             <div class="blockBg input-group-block">
                 <form id="sign_up" name="sign_up" action="" method="post">
                     {% csrf_token %}

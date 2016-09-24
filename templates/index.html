@@ -27,9 +27,9 @@
 					<a href="#"><div id="logo"></div></a>
 					<div class="right index-right scroll flexcroll">
 						<ul>
-							<li><a id="bt01" href="#">為什麼使用 DataHoops</a></li>
-							<li><a id="bt02" href="#">關於我們</a></li>
-							<li><a href="{% url 'how_it_works' %}">如何使用</a></li>
+							<li><a id="bt01" href="#">{% trans 'WHY_DATAHOOPS' %}</a></li>
+							<li><a id="bt02" href="#">{% trans 'ABOUT_US' %}</a></li>
+							<li><a href="{% url 'how_it_works' %}">{% trans 'HOW_IT_WORKS' %}</a></li>
 							<li><a href="/accounts/login/">{% trans "SIGN_IN" %}</a></li>
 						</ul>
 					</div>
@@ -44,7 +44,7 @@
 						<div class="mainPic-bg mainPic-left css-moz">
 							<div class="mainPic-title">
 								<p>Be the rockstar</p>
-								<h4>聯盟</h4>
+								<h4>{% trans 'LEAGUES' %}</h4>
 								<span>League</span>
 							</div>
 						</div>
@@ -53,7 +53,7 @@
 						<div class="mainPic-bg mainPic-right css-moz">
 							<div class="mainPic-title">
 								<p>Track your stats, <br>improve your game</p>
-								<h4>球隊</h4>
+								<h4>{% trans 'TEAMS' %}</h4>
 								<span>Team</span>
 							</div>
 						</div>
@@ -64,7 +64,7 @@
 			<div class="clear"></div>
 
 			<div id="page1" class="three-items">
-				<h1>為什麼使用 DataHoops</h1>
+				<h1>{% trans 'WHY_DATAHOOPS' %}</h1>
 				<div class="whyItems">
 					<img src="{% static 'images/about_paper.png' %}" alt="紙本終結者">
 					<h3>紙本終結者</h3>
@@ -83,7 +83,7 @@
 			</div>
 
 			<div id="page2" class="three-items aboutUs">
-				<h1>關於我們</h1>
+				<h1>{% trans 'ABOUT_US' %}</h1>
 				<p>DataHoops 是一個以籃球運動結合雲端科技的年輕創業團隊，奠基於大數據為核心起點，記錄每一支球隊的發展軌跡和榮耀時刻，並專注於建構賽事本體及周邊活動的線上管理平台，全面助推各級賽事的品質提升。</p>
 				<div>
 					<div class="index-memberPic">

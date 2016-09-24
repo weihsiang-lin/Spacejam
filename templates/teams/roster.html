@@ -58,7 +58,7 @@
             {% if not players %}
             <div class="blockBg blank blockBottom" style="display:block;">
                 <img src="{% static 'images/Arrow-PNG.png' %}">
-                <h1>新增成員</h1>
+                <h1>{% trans 'CREATE' %}{% trans 'PLAYER' %}</h1>
             </div>
             {% else %}
             <div class="blockBg table">

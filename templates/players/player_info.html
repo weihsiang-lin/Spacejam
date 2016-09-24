@@ -33,9 +33,13 @@
             {% trans 'CENTER' %}
             {% endif %}  /  <a href="{% url 'team_summary' team.id %}">{{ team.name }}</a>
         </p>
-        <div class="iconBtn-group">
-            <a class="iconBtn icon-edit" href="t_edit.html"></a>
-        </div>
+        {% for admin in team.administrators.all %}
+            {% if request.user == admin or request.user == player.user %}
+            <div class="iconBtn-group">
+                <a class="iconBtn icon-edit" href="{% url 'edit_player' team.id player.id %}"></a>
+            </div>
+            {% endif %}
+        {% endfor %}
     </div>
 
     <div class="col s12 m12 l6 main-analysis">

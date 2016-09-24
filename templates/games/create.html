@@ -32,7 +32,7 @@
                         {% csrf_token %}
                         <div class="blockBg input-group">
                             <div>
-                                <label>{% trans 'OPPONENT' %}<span class="redmark">*必填</span></label>
+                                <label>{% trans 'OPPONENT' %}<span class="redmark">*{% trans 'REQUIRED' %}</span></label>
                                 <input class="required" type="text" id="opponent" name="opponent">
                                 <label>{% trans 'LOCATION' %}</label>
                                 <input type="text" name="location">
@@ -64,8 +64,8 @@
                             </div>
                         </div><!--end of input-group -->
                         <div class="btn-group">
-                            <button class="btn" type="button" onclick="location.href='{% url 'mygames' team_id %}'">{% trans 'CANCEL' %}</button>
-                            <button class="btn" type="submit" onclick="form_check()">{% trans 'CREATE' %}</button>
+                            <button class="btn" type="button" onclick="window.location.href='{% url 'mygames' team.id %}'">{% trans 'CANCEL' %}</button>
+                            <button class="btn" type="submit">{% trans 'CREATE' %}</button>
                         </div>
                     </form>
                 </div><!-- end of form-->

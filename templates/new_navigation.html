@@ -4,7 +4,7 @@
         <a href="/"><div id="logo"></div></a>
         <div class="right content-nav">
             <ul>
-                <li><a class="iconLeague navBtn" href="#">聯盟</a>
+                <li><a class="iconLeague navBtn" href="#">{% trans 'LEAGUES' %}</a>
                     <ul style="display:none;" class="sub-menu scroll flexcroll-gray">
                         <li><a href="#">名人榜</a></li>
                         <li><a href="#">最新消息</a></li>
@@ -13,7 +13,7 @@
                         <li><a href="#">戰績排行</a></li>
                     </ul>
                 </li>
-                <li><a class="iconTeam navBtn" href="{% url 'myteams' %}">球隊</a>
+                <li><a class="iconTeam navBtn" href="{% url 'myteams' %}">{% trans 'TEAMS' %}</a>
                     <ul class="sub-menu scroll flexcroll-gray">
                         {% url 'team_summary' team_id as summary %}
                         <li><a {% ifequal request.path summary %}class="selected"{% endifequal %} href="{{ summary }}">Summary</a></li>
@@ -27,10 +27,10 @@
                         <li><a {% ifequal request.path analytics %}class="selected"{% endifequal %} href="{{ analytics }}">{% trans 'NAV_ANALYSIS' %}</a></li>
                     </ul>
                 </li>
-                <li class="hover-btn"><a id="account_btn" class="iconAccount navBtn" href="#">帳號</a>
+                <li class="hover-btn"><a id="account_btn" class="iconAccount navBtn" href="#">{% trans 'MY_ACCOUNT' %}</a>
                     <ul id="account_menu" class="hover-menu">
-                        <li><a href="/accounts/my/">設定</a></li>
-                        <li><a href="/accounts/logout/">登出</a></li>
+                        <li><a href="/accounts/my/">{% trans 'SETTINGS' %}</a></li>
+                        <li><a href="/accounts/logout/">{% trans 'SIGN_OUT' %}</a></li>
                     </ul>
                 </li>
             </ul>

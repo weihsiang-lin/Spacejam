@@ -32,9 +32,9 @@
                     {% csrf_token %}
                     <div class="blockBg input-group" >
                         <div>
-                            <label>{% trans 'NAME' %}<span class="redmark">*必填</span></label>
+                            <label>{% trans 'NAME' %}<span class="redmark">*{% trans 'REQUIRED' %}</span></label>
                             <input class="required" type="text" id="name" name="name">
-                            <label>{% trans 'NUMBER' %}<span class="redmark">*必填</span></label>
+                            <label>{% trans 'NUMBER' %}<span class="redmark">*{% trans 'REQUIRED' %}</span></label>
                             <input class="required" type="number" id="number" name="number" min="0">
                             <label>{% trans 'POSITION' %}</label>
                             <select name="position">
@@ -55,9 +55,9 @@
                             <label>{% trans 'EMAIL' %}</label>
                             <input type="email" name="email">
                             <label>{% trans 'IMAGE' %}</label>
-                            <input id="uploadFile" placeholder="未選擇任何檔案" disabled="disabled" />
+                            <input id="uploadFile" placeholder="{% trans 'NO_FILE_CHOSEN' %}" disabled="disabled" />
                             <div class="fileUpload btn-brown btn">
-                                <span>選擇檔案</span>
+                                <span>{% trans 'CHOOSE_FILE' %}</span>
                                 <input name="image" id="uploadBtn" type="file" class="upload" />
                             </div>
                             <!-- isAdmin:
