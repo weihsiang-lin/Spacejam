@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-05 11:49+0800\n"
+"POT-Creation-Date: 2016-09-24 15:54+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: games/views.py:70 games/views.py:83
+#: games/views.py:71 games/views.py:84
 msgid "UNABLE_TO_PLAYBALL"
 msgstr "無法開始比賽"
 
@@ -46,23 +46,23 @@ msgstr "無法刪除球員"
 msgid "PLAYER_DELETED"
 msgstr "已刪除球員"
 
-#: spacejam/views.py:55 spacejam/views.py:61
+#: spacejam/views.py:68 spacejam/views.py:74 spacejam/views.py:80
 msgid "INCORRECT_EMAIL_OR_PASSWORD"
 msgstr "不正確的Email或密碼"
 
-#: spacejam/views.py:129
+#: spacejam/views.py:168
 msgid "MY_ACCOUNT_UPDATED"
 msgstr "已更新我的帳號"
 
-#: spacejam/views.py:133
+#: spacejam/views.py:172
 msgid "UNABLED_TO_UPDATE_MY_ACCOUNT"
 msgstr "無法更新我的帳號"
 
-#: spacejam/views.py:151
+#: spacejam/views.py:190
 msgid "PASSWORD_UPDATED"
 msgstr "已更新密碼"
 
-#: spacejam/views.py:155
+#: spacejam/views.py:194
 msgid "UNABLED_TO_CHANGE_PASSWORD"
 msgstr "無法變更密碼"
 
@@ -90,483 +90,663 @@ msgstr "無法刪除球隊"
 msgid "TEAM_DELETED"
 msgstr "已刪除球隊"
 
-#: teams/views.py:286
+#: teams/views.py:293
 msgid "NEW_GAME_CREATED"
 msgstr "已建立新賽程"
 
-#: teams/views.py:290
+#: teams/views.py:297
 msgid "UNABLED_TO_CREATE_A_GAME"
 msgstr "無法建立新賽程"
 
-#: teams/views.py:344 teams/views.py:671 teams/views.py:1048
+#: teams/views.py:351 teams/views.py:678 teams/views.py:1055
 msgid "GAME_UPDATED"
 msgstr "已更新賽程"
 
-#: teams/views.py:348 teams/views.py:422 teams/views.py:431 teams/views.py:447
-#: teams/views.py:467 teams/views.py:619 teams/views.py:662 teams/views.py:774
-#: teams/views.py:783 teams/views.py:800 teams/views.py:955 teams/views.py:964
-#: teams/views.py:987 teams/views.py:1044
+#: teams/views.py:355 teams/views.py:429 teams/views.py:438 teams/views.py:454
+#: teams/views.py:474 teams/views.py:626 teams/views.py:669 teams/views.py:781
+#: teams/views.py:790 teams/views.py:807 teams/views.py:962 teams/views.py:971
+#: teams/views.py:994 teams/views.py:1051
 msgid "UNABLED_TO_UPDATE_GAME"
 msgstr "無法更新賽程"
 
-#: teams/views.py:1079 teams/views.py:1094 teams/views.py:1136
-#: teams/views.py:1145 teams/views.py:1155 teams/views.py:1163
-#: teams/views.py:1197 teams/views.py:1206 teams/views.py:1217
+#: teams/views.py:1086 teams/views.py:1101 teams/views.py:1143
+#: teams/views.py:1152 teams/views.py:1162 teams/views.py:1170
+#: teams/views.py:1204 teams/views.py:1213 teams/views.py:1224
 msgid "UNABLED_TO_DELETE_GAME"
 msgstr "無法刪除賽程"
 
-#: teams/views.py:1213
+#: teams/views.py:1220
 msgid "GAME_DELETED"
 msgstr "已刪除賽程"
 
-#: templates/base.html:42 templates/change_password.html:46
-#: templates/games/playball.html:301 templates/my_account.html:33
-#: templates/teams/create.html:30 templates/teams/create.html.py:36
-#: templates/teams/edit.html:30 templates/teams/edit.html.py:36
-#: templates/teams/myteams.html:29 templates/teams/myteams.html.py:35
-#: templates/teams/registration.html:29
-msgid "MY_TEAM"
-msgstr "我的球隊"
+#: templates/base.html:61 templates/index.html:115
+#: templates/privacy_policy.html:62
+msgid "PRIVACY_POLICY"
+msgstr "隱私權政策"
 
-#: templates/base.html:43 templates/change_password.html:47
-#: templates/change_password.html.py:52 templates/games/playball.html:302
-#: templates/my_account.html:34 templates/my_account.html.py:39
-#: templates/teams/create.html:31 templates/teams/edit.html:31
-#: templates/teams/myteams.html:30 templates/teams/registration.html:30
+#: templates/change_password.html:25 templates/index.html:47
+#: templates/my_account.html:12 templates/new_navigation.html:7
+#: templates/teams/create.html:23 templates/teams/edit.html:23
+#: templates/teams/myteams.html:26
+msgid "LEAGUES"
+msgstr "聯盟"
+
+#: templates/change_password.html:34 templates/index.html:56
+#: templates/my_account.html:21 templates/new_navigation.html:16
+#: templates/teams/create.html:32 templates/teams/edit.html:32
+#: templates/teams/myteams.html:35
+msgid "TEAMS"
+msgstr "球隊"
+
+#: templates/change_password.html:37 templates/my_account.html:24
+#: templates/navigation.html:6 templates/new_navigation.html:21
+#: templates/privacy_policy.html:25 templates/teams/create.html:35
+msgid "NAV_SCHEDULE"
+msgstr "賽程"
+
+#: templates/change_password.html:38 templates/my_account.html:25
+#: templates/navigation.html:9 templates/new_navigation.html:23
+#: templates/privacy_policy.html:26 templates/teams/create.html:36
+#: templates/teams/edit.html:36
+msgid "NAV_ROSTER"
+msgstr "陣容"
+
+#: templates/change_password.html:39 templates/my_account.html:26
+#: templates/navigation.html:12 templates/new_navigation.html:25
+#: templates/privacy_policy.html:27 templates/teams/create.html:37
+#: templates/teams/edit.html:37
+msgid "NAV_STATS"
+msgstr "數據"
+
+#: templates/change_password.html:40 templates/my_account.html:27
+#: templates/navigation.html:14 templates/new_navigation.html:27
+#: templates/player_navigation.html:3 templates/players/analytics.html:459
+#: templates/players/analytics.html:467 templates/players/summary.html:96
+#: templates/teams/analytics.html:411 templates/teams/create.html:38
+#: templates/teams/edit.html:38
+msgid "NAV_ANALYSIS"
+msgstr "分析"
+
+#: templates/change_password.html:43 templates/games/playball.html:881
+#: templates/leagues/create.html:31 templates/leagues/create_news.html:31
+#: templates/leagues/create_season.html:31 templates/leagues/edit.html:31
+#: templates/leagues/edit_news.html:31 templates/leagues/edit_season.html:20
+#: templates/leagues/season_registration.html:31 templates/my_account.html:30
+#: templates/my_account.html.py:46 templates/new_navigation.html:30
+#: templates/teams/create.html:41 templates/teams/edit.html:41
+#: templates/teams/myteams.html:44 templates/teams/registration.html:30
 msgid "MY_ACCOUNT"
 msgstr "我的帳號"
 
-#: templates/base.html:44 templates/change_password.html:48
-#: templates/games/playball.html:303 templates/my_account.html:35
-#: templates/teams/create.html:32 templates/teams/edit.html:32
-#: templates/teams/myteams.html:31 templates/teams/registration.html:31
+#: templates/change_password.html:45
+#: templates/leagues/season_game_setting.html:10 templates/my_account.html:32
+#: templates/new_navigation.html:32 templates/teams/create.html:43
+#: templates/teams/edit.html:43 templates/teams/myteams.html:46
+msgid "SETTINGS"
+msgstr "設定"
+
+#: templates/change_password.html:46 templates/games/playball.html:882
+#: templates/leagues/create.html:32 templates/leagues/create_news.html:32
+#: templates/leagues/create_season.html:32 templates/leagues/edit.html:32
+#: templates/leagues/edit_news.html:32 templates/leagues/edit_season.html:21
+#: templates/leagues/season_registration.html:32 templates/my_account.html:33
+#: templates/new_navigation.html:33 templates/privacy_policy.html:33
+#: templates/teams/create.html:44 templates/teams/edit.html:44
+#: templates/teams/myteams.html:47 templates/teams/registration.html:31
 msgid "SIGN_OUT"
 msgstr "登出"
 
-#: templates/change_password.html:52 templates/my_account.html:61
+#: templates/change_password.html:59 templates/my_account.html:71
 msgid "CHANGE_PASSWORD"
 msgstr "變更密碼"
 
-#: templates/change_password.html:67
+#: templates/change_password.html:63
 msgid "NEW_PASSWORD"
 msgstr "新密碼"
 
-#: templates/change_password.html:69 templates/login.html:84
-#: templates/register.html:79
-msgid "PLEASE_INSERT_PASSWORD"
-msgstr "請輸入密碼"
-
-#: templates/change_password.html:70
+#: templates/change_password.html:65
 msgid "CONFIRM_PASSWORD"
 msgstr "確認密碼"
 
-#: templates/change_password.html:72
-msgid "PLEASE_CONFIRM_YOUR_PASSWORD_AGAIN"
-msgstr "請再次確認密碼"
-
-#: templates/change_password.html:75 templates/games/create.html:65
-#: templates/games/edit.html:69 templates/games/edit_complete.html:14
-#: templates/games/edit_states.html:12
+#: templates/change_password.html:69 templates/games/create.html:67
+#: templates/games/edit.html:88 templates/games/edit_complete.html:188
+#: templates/games/edit_states.html:175
 #: templates/games/select_starting_lineup.html:14
-#: templates/players/create.html:65 templates/players/edit.html:88
-#: templates/teams/create.html:54 templates/teams/edit.html:60
+#: templates/leagues/create.html:48 templates/leagues/create_news.html:48
+#: templates/leagues/create_season.html:60 templates/leagues/edit.html:54
+#: templates/leagues/edit_news.html:48 templates/leagues/edit_season.html:50
+#: templates/leagues/season_complete_game_stats_edit.html:14
+#: templates/leagues/season_game_create.html:45
+#: templates/leagues/season_game_edit.html:37
+#: templates/leagues/season_game_setting.html:61
+#: templates/leagues/season_game_stats_edit.html:14
+#: templates/leagues/season_registration.html:58
+#: templates/players/create.html:70 templates/players/edit.html:91
+#: templates/players/edit_bak.html:88 templates/teams/create.html:83
+#: templates/teams/edit.html:92
 msgid "CANCEL"
 msgstr "取消"
 
-#: templates/change_password.html:76 templates/games/edit.html:70
-#: templates/games/edit_complete.html:13 templates/games/edit_states.html:11
-#: templates/my_account.html:62 templates/players/edit.html:89
-#: templates/teams/edit.html:61
+#: templates/change_password.html:70 templates/games/edit.html:89
+#: templates/games/edit_complete.html:189 templates/games/edit_states.html:176
+#: templates/leagues/edit.html:55 templates/leagues/edit_news.html:49
+#: templates/leagues/edit_season.html:51
+#: templates/leagues/season_complete_game_stats_edit.html:15
+#: templates/leagues/season_game_setting.html:62
+#: templates/leagues/season_game_stats_edit.html:15
+#: templates/my_account.html:72 templates/players/edit.html:92
+#: templates/players/edit_bak.html:89 templates/teams/edit.html:93
 msgid "SAVE"
 msgstr "儲存"
 
-#: templates/games/complete.html:16 templates/games/mygames.html:48
-#: templates/games/mygames.html.py:82 templates/players/analytics.html:32
-#: templates/players/analytics.html:62 templates/players/analytics.html:92
-#: templates/players/analytics.html:122 templates/players/analytics.html:152
-#: templates/players/analytics.html:182 templates/players/analytics.html:212
-#: templates/players/analytics.html:242 templates/players/analytics.html:272
-#: templates/players/analytics.html:302 templates/players/analytics.html:332
-#: templates/players/analytics.html:362 templates/players/summary.html:162
-#: templates/teams/analytics.html:32 templates/teams/analytics.html.py:58
-#: templates/teams/analytics.html:84 templates/teams/analytics.html.py:110
-#: templates/teams/analytics.html:136 templates/teams/analytics.html.py:162
-#: templates/teams/analytics.html:188 templates/teams/analytics.html.py:214
-#: templates/teams/analytics.html:240 templates/teams/analytics.html.py:266
-#: templates/teams/analytics.html:292 templates/teams/analytics.html.py:318
-#: templates/teams/summary.html:19 templates/teams/summary.html.py:38
+#: templates/donut.html:46 templates/players/donut.html:47
+msgid "PPG"
+msgstr "平均得分"
+
+#: templates/donut.html:95 templates/players/donut.html:96
+msgid "FG%PG"
+msgstr "命中率％"
+
+#: templates/donut.html:144 templates/players/donut.html:145
+msgid "APG"
+msgstr "平均助攻"
+
+#: templates/donut.html:192 templates/players/donut.html:193
+msgid "RPG"
+msgstr "平均籃板"
+
+#: templates/games/complete.html:34 templates/games/edit_complete.html:30
+#: templates/games/edit_states.html:30 templates/games/mygames.html:55
+#: templates/leagues/season_game.html:14 templates/leagues/season_game.html:24
+#: templates/players/analytics.html:45 templates/players/analytics.html:75
+#: templates/players/analytics.html:105 templates/players/analytics.html:135
+#: templates/players/analytics.html:165 templates/players/analytics.html:195
+#: templates/players/analytics.html:225 templates/players/analytics.html:255
+#: templates/players/analytics.html:285 templates/players/analytics.html:315
+#: templates/players/analytics.html:345 templates/players/analytics.html:375
+#: templates/players/summary.html:217 templates/teams/analytics.html:34
+#: templates/teams/analytics.html.py:60 templates/teams/analytics.html:86
+#: templates/teams/analytics.html.py:112 templates/teams/analytics.html:138
+#: templates/teams/analytics.html.py:164 templates/teams/analytics.html:190
+#: templates/teams/analytics.html.py:216 templates/teams/analytics.html:242
+#: templates/teams/analytics.html.py:268 templates/teams/analytics.html:294
+#: templates/teams/analytics.html.py:320 templates/teams/summary.html:31
 msgid "DATE"
 msgstr "日期"
 
-#: templates/games/complete.html:16 templates/games/create.html:37
-#: templates/games/edit.html:20 templates/games/mygames.html:49
-#: templates/games/mygames.html.py:83 templates/players/summary.html:86
-#: templates/players/summary.html.py:124 templates/players/summary.html:164
-#: templates/teams/summary.html:20 templates/teams/summary.html.py:39
+#: templates/games/complete.html:38 templates/games/create.html:39
+#: templates/games/edit.html:40 templates/games/edit_complete.html:34
+#: templates/games/edit_states.html:34 templates/games/mygames.html:56
+#: templates/leagues/season_game.html:15 templates/leagues/season_game.html:25
+#: templates/leagues/season_game_create.html:36
+#: templates/leagues/season_game_edit.html:20
+#: templates/players/summary.html:128 templates/players/summary.html.py:170
+#: templates/players/summary.html:219 templates/teams/analytics.html:469
+#: templates/teams/summary.html:32
 msgid "TIME"
 msgstr "時間"
 
-#: templates/games/complete.html:18
-msgid "SHARE_TO_FB"
-msgstr "分享至Facebook"
-
-#: templates/games/complete.html:20 templates/games/edit.html:11
-#: templates/games/edit_complete.html:11 templates/games/edit_states.html:10
-#: templates/games/mygames.html:66 templates/games/mygames.html.py:108
-#: templates/games/mygames.html:122 templates/players/edit.html:27
-#: templates/teams/edit.html:36 templates/teams/myteams.html:63
-#: templates/teams/roster.html:86
-msgid "EDIT"
-msgstr "編輯"
-
-#: templates/games/complete.html:57
+#: templates/games/complete.html:85 templates/games/edit_complete.html:60
+#: templates/games/edit_states.html:60
 msgid "BOX_SCORE"
 msgstr "分數盒子"
 
-#: templates/games/complete.html:63 templates/games/edit_complete.html:21
-#: templates/games/edit_states.html:19
+#: templates/games/complete.html:92 templates/games/edit_complete.html:66
+#: templates/games/edit_states.html:66
+#: templates/leagues/season_complete_game_stats_edit.html:24
+#: templates/leagues/season_game_stats_edit.html:24
 msgid "Q1"
 msgstr "第一節"
 
-#: templates/games/complete.html:64 templates/games/edit_complete.html:22
-#: templates/games/edit_states.html:20
+#: templates/games/complete.html:93 templates/games/edit_complete.html:67
+#: templates/games/edit_states.html:67
+#: templates/leagues/season_complete_game_stats_edit.html:25
+#: templates/leagues/season_game_stats_edit.html:25
 msgid "Q2"
 msgstr "第二節"
 
-#: templates/games/complete.html:65 templates/games/edit_complete.html:23
-#: templates/games/edit_states.html:21
+#: templates/games/complete.html:94 templates/games/edit_complete.html:68
+#: templates/games/edit_states.html:68
+#: templates/leagues/season_complete_game_stats_edit.html:26
+#: templates/leagues/season_game_stats_edit.html:26
 msgid "Q3"
 msgstr "第三節"
 
-#: templates/games/complete.html:66 templates/games/edit_complete.html:24
-#: templates/games/edit_states.html:22
+#: templates/games/complete.html:95 templates/games/edit_complete.html:69
+#: templates/games/edit_states.html:69
+#: templates/leagues/season_complete_game_stats_edit.html:27
+#: templates/leagues/season_game_stats_edit.html:27
 msgid "Q4"
 msgstr "第四節"
 
-#: templates/games/complete.html:67 templates/games/edit_complete.html:25
-#: templates/games/edit_states.html:23
+#: templates/games/complete.html:96 templates/games/edit_complete.html:70
+#: templates/games/edit_states.html:70
+#: templates/leagues/season_complete_game_stats_edit.html:28
+#: templates/leagues/season_game_stats_edit.html:28
 msgid "OT"
 msgstr "延長賽"
 
-#: templates/games/complete.html:68 templates/games/complete.html.py:148
-#: templates/players/summary.html:79 templates/players/summary.html.py:229
-#: templates/teams/stats.html:26
+#: templates/games/complete.html:97 templates/games/complete.html.py:178
+#: templates/players/summary.html:119 templates/players/summary.html.py:292
+#: templates/teams/stats.html:33
 msgid "TOTAL"
 msgstr "總計"
 
-#: templates/games/complete.html:90
+#: templates/games/complete.html:122 templates/games/edit_complete.html:121
+#: templates/games/edit_states.html:117
 msgid "PLAYER_STATS"
 msgstr "球員數據"
 
-#: templates/games/complete.html:95 templates/games/edit_complete.html:75
-#: templates/games/edit_states.html:69 templates/games/playball.html:353
+#: templates/games/complete.html:127 templates/games/edit_complete.html:126
+#: templates/games/edit_states.html:122 templates/games/playball.html:972
 #: templates/games/select_starting_lineup.html:20
-#: templates/players/create.html:34 templates/players/edit.html:31
-#: templates/teams/registration.html:39 templates/teams/roster.html:51
+#: templates/leagues/season_complete_game_stats_edit.html:78
+#: templates/leagues/season_complete_game_stats_edit.html:138
+#: templates/leagues/season_game_stats_edit.html:78
+#: templates/leagues/season_game_stats_edit.html:124
+#: templates/leagues/season_registration_new.html:29
+#: templates/players/create.html:35 templates/players/edit.html:35
+#: templates/players/edit_bak.html:31 templates/teams/analytics.html:466
+#: templates/teams/registration.html:39 templates/teams/roster.html:69
 msgid "NAME"
 msgstr "姓名"
 
-#: templates/games/complete.html:96 templates/games/edit_complete.html:76
-#: templates/games/edit_states.html:70
+#: templates/games/complete.html:128 templates/games/edit_complete.html:127
+#: templates/games/edit_states.html:123
 #: templates/games/select_starting_lineup.html:22
+#: templates/leagues/season_complete_game_stats_edit.html:79
+#: templates/leagues/season_complete_game_stats_edit.html:139
+#: templates/leagues/season_game_stats_edit.html:79
+#: templates/leagues/season_game_stats_edit.html:125
 msgid "GS"
 msgstr "先發"
 
-#: templates/games/complete.html:97 templates/games/edit_complete.html:77
-#: templates/games/edit_states.html:71 templates/games/playball.html:354
+#: templates/games/complete.html:129 templates/games/edit_complete.html:128
+#: templates/games/edit_states.html:124 templates/games/playball.html:973
+#: templates/leagues/season_complete_game_stats_edit.html:80
+#: templates/leagues/season_complete_game_stats_edit.html:140
+#: templates/leagues/season_game_stats_edit.html:80
+#: templates/leagues/season_game_stats_edit.html:126
 msgid "MINS"
 msgstr "上場時間"
 
-#: templates/games/complete.html:98 templates/games/playball.html:355
-#: templates/players/analytics.html:52 templates/players/analytics.html:65
-#: templates/players/analytics.html:445 templates/players/summary.html:166
-#: templates/teams/analytics.html:48 templates/teams/analytics.html.py:61
-#: templates/teams/analytics.html:397 templates/teams/stats.html:33
-#: templates/teams/stats.html.py:83
+#: templates/games/complete.html:130 templates/games/playball.html:974
+#: templates/players/analytics.html:65 templates/players/analytics.html:78
+#: templates/players/analytics.html:482 templates/players/summary.html:221
+#: templates/teams/analytics.html:50 templates/teams/analytics.html.py:63
+#: templates/teams/analytics.html:426 templates/teams/stats.html:41
+#: templates/teams/stats.html.py:100
 msgid "FG"
 msgstr "投籃"
 
-#: templates/games/complete.html:99 templates/games/playball.html:356
-#: templates/players/summary.html:87 templates/players/summary.html.py:125
-#: templates/players/summary.html:165 templates/teams/stats.html:52
+#: templates/games/complete.html:131 templates/games/playball.html:975
+#: templates/players/summary.html:129 templates/players/summary.html.py:171
+#: templates/players/summary.html:220 templates/teams/stats.html:62
 msgid "FG%"
 msgstr "投籃％"
 
-#: templates/games/complete.html:100 templates/games/playball.html:357
-#: templates/players/analytics.html:82 templates/players/analytics.html:95
-#: templates/players/analytics.html:387 templates/players/analytics.html:403
-#: templates/players/analytics.html:446 templates/players/summary.html:168
-#: templates/teams/analytics.html:74 templates/teams/analytics.html.py:87
-#: templates/teams/analytics.html:339 templates/teams/analytics.html.py:355
-#: templates/teams/analytics.html:398 templates/teams/stats.html:34
-#: templates/teams/stats.html.py:84
+#: templates/games/complete.html:132 templates/games/playball.html:976
+#: templates/players/analytics.html:95 templates/players/analytics.html:108
+#: templates/players/analytics.html:400 templates/players/analytics.html:416
+#: templates/players/analytics.html:483 templates/players/summary.html:223
+#: templates/teams/analytics.html:76 templates/teams/analytics.html.py:89
+#: templates/teams/analytics.html:341 templates/teams/analytics.html.py:357
+#: templates/teams/analytics.html:427 templates/teams/stats.html:42
+#: templates/teams/stats.html.py:101
 msgid "3PTS"
 msgstr "三分球"
 
-#: templates/games/complete.html:101 templates/games/playball.html:358
-#: templates/players/summary.html:88 templates/players/summary.html.py:126
-#: templates/players/summary.html:167 templates/teams/stats.html:53
+#: templates/games/complete.html:133 templates/games/playball.html:977
+#: templates/players/summary.html:130 templates/players/summary.html.py:172
+#: templates/players/summary.html:222 templates/teams/stats.html:63
 msgid "3PTS%"
 msgstr "三分球％"
 
-#: templates/games/complete.html:102 templates/games/playball.html:359
-#: templates/players/analytics.html:112 templates/players/analytics.html:125
-#: templates/players/analytics.html:385 templates/players/analytics.html:401
-#: templates/players/analytics.html:447 templates/players/summary.html:170
-#: templates/teams/analytics.html:100 templates/teams/analytics.html.py:113
-#: templates/teams/analytics.html:337 templates/teams/analytics.html.py:353
-#: templates/teams/analytics.html:399 templates/teams/stats.html:35
-#: templates/teams/stats.html.py:85
+#: templates/games/complete.html:134 templates/games/playball.html:978
+#: templates/players/analytics.html:125 templates/players/analytics.html:138
+#: templates/players/analytics.html:398 templates/players/analytics.html:414
+#: templates/players/analytics.html:484 templates/players/summary.html:225
+#: templates/teams/analytics.html:102 templates/teams/analytics.html.py:115
+#: templates/teams/analytics.html:339 templates/teams/analytics.html.py:355
+#: templates/teams/analytics.html:428 templates/teams/stats.html:43
+#: templates/teams/stats.html.py:102
 msgid "FT"
 msgstr "罰球"
 
-#: templates/games/complete.html:103 templates/games/playball.html:360
-#: templates/players/summary.html:89 templates/players/summary.html.py:127
-#: templates/players/summary.html:169 templates/teams/stats.html:54
+#: templates/games/complete.html:135 templates/games/playball.html:979
+#: templates/players/summary.html:131 templates/players/summary.html.py:173
+#: templates/players/summary.html:224 templates/teams/stats.html:64
 msgid "FT%"
 msgstr "罰球％"
 
-#: templates/games/complete.html:104 templates/games/edit_complete.html:84
-#: templates/games/edit_states.html:78 templates/games/playball.html:346
-#: templates/games/playball.html.py:361 templates/players/analytics.html:172
-#: templates/players/analytics.html:185 templates/players/analytics.html:449
-#: templates/players/summary.html:90 templates/players/summary.html.py:128
-#: templates/players/summary.html:171 templates/teams/analytics.html:152
-#: templates/teams/analytics.html.py:165 templates/teams/analytics.html:401
-#: templates/teams/stats.html:43 templates/teams/stats.html.py:92
+#: templates/games/complete.html:136 templates/games/edit_complete.html:135
+#: templates/games/edit_states.html:131 templates/games/playball.html:964
+#: templates/games/playball.html.py:980
+#: templates/leagues/season_complete_game_stats_edit.html:87
+#: templates/leagues/season_complete_game_stats_edit.html:147
+#: templates/leagues/season_game_stats_edit.html:87
+#: templates/leagues/season_game_stats_edit.html:133
+#: templates/players/analytics.html:185 templates/players/analytics.html:198
+#: templates/players/analytics.html:486 templates/players/summary.html:132
+#: templates/players/summary.html.py:174 templates/players/summary.html:226
+#: templates/teams/analytics.html:154 templates/teams/analytics.html.py:167
+#: templates/teams/analytics.html:430 templates/teams/stats.html:53
+#: templates/teams/stats.html.py:112
 msgid "OREB"
 msgstr "進攻籃板"
 
-#: templates/games/complete.html:105 templates/games/edit_complete.html:85
-#: templates/games/edit_states.html:79 templates/games/playball.html:362
-#: templates/players/analytics.html:202 templates/players/analytics.html:215
-#: templates/players/analytics.html:450 templates/players/summary.html:91
-#: templates/players/summary.html.py:129 templates/players/summary.html:172
-#: templates/teams/analytics.html:178 templates/teams/analytics.html.py:191
-#: templates/teams/analytics.html:402 templates/teams/stats.html:55
-#: templates/teams/stats.html.py:103
+#: templates/games/complete.html:137 templates/games/edit_complete.html:136
+#: templates/games/edit_states.html:132 templates/games/playball.html:981
+#: templates/leagues/season_complete_game_stats_edit.html:88
+#: templates/leagues/season_complete_game_stats_edit.html:148
+#: templates/leagues/season_game_stats_edit.html:88
+#: templates/leagues/season_game_stats_edit.html:134
+#: templates/players/analytics.html:215 templates/players/analytics.html:228
+#: templates/players/analytics.html:487 templates/players/summary.html:133
+#: templates/players/summary.html.py:175 templates/players/summary.html:227
+#: templates/teams/analytics.html:180 templates/teams/analytics.html.py:193
+#: templates/teams/analytics.html:431 templates/teams/stats.html:65
+#: templates/teams/stats.html.py:124
 msgid "DREB"
 msgstr "防守籃板"
 
-#: templates/games/complete.html:106 templates/games/playball.html:363
-#: templates/players/analytics.html:142 templates/players/analytics.html:155
-#: templates/players/analytics.html:448 templates/players/summary.html:92
-#: templates/players/summary.html.py:130 templates/players/summary.html:173
-#: templates/teams/analytics.html:126 templates/teams/analytics.html.py:139
-#: templates/teams/analytics.html:400 templates/teams/stats.html:36
-#: templates/teams/stats.html.py:86
+#: templates/games/complete.html:138 templates/games/playball.html:982
+#: templates/players/analytics.html:155 templates/players/analytics.html:168
+#: templates/players/analytics.html:485 templates/players/summary.html:134
+#: templates/players/summary.html.py:176 templates/players/summary.html:228
+#: templates/teams/analytics.html:128 templates/teams/analytics.html.py:141
+#: templates/teams/analytics.html:429 templates/teams/stats.html:44
+#: templates/teams/stats.html.py:103
 msgid "REB"
 msgstr "籃板"
 
-#: templates/games/complete.html:107 templates/games/edit_complete.html:86
-#: templates/games/edit_states.html:80 templates/games/playball.html:341
-#: templates/games/playball.html.py:364 templates/players/analytics.html:232
-#: templates/players/analytics.html:245 templates/players/analytics.html:451
-#: templates/players/summary.html:93 templates/players/summary.html.py:131
-#: templates/players/summary.html:174 templates/teams/analytics.html:204
-#: templates/teams/analytics.html.py:217 templates/teams/analytics.html:403
-#: templates/teams/stats.html:64 templates/teams/stats.html.py:112
+#: templates/games/complete.html:139 templates/games/edit_complete.html:137
+#: templates/games/edit_states.html:133 templates/games/playball.html:959
+#: templates/games/playball.html.py:983
+#: templates/leagues/season_complete_game_stats_edit.html:89
+#: templates/leagues/season_complete_game_stats_edit.html:149
+#: templates/leagues/season_game_stats_edit.html:89
+#: templates/leagues/season_game_stats_edit.html:135
+#: templates/players/analytics.html:245 templates/players/analytics.html:258
+#: templates/players/analytics.html:488 templates/players/summary.html:135
+#: templates/players/summary.html.py:177 templates/players/summary.html:229
+#: templates/teams/analytics.html:206 templates/teams/analytics.html.py:219
+#: templates/teams/analytics.html:432 templates/teams/stats.html:76
+#: templates/teams/stats.html.py:135
 msgid "AST"
 msgstr "助攻"
 
-#: templates/games/complete.html:108 templates/games/edit_complete.html:87
-#: templates/games/edit_states.html:81 templates/games/playball.html:365
-#: templates/players/analytics.html:262 templates/players/analytics.html:275
-#: templates/players/analytics.html:452 templates/players/summary.html:94
-#: templates/players/summary.html.py:132 templates/players/summary.html:175
-#: templates/teams/analytics.html:230 templates/teams/analytics.html.py:243
-#: templates/teams/analytics.html:404 templates/teams/stats.html:65
-#: templates/teams/stats.html.py:113
+#: templates/games/complete.html:140 templates/games/edit_complete.html:138
+#: templates/games/edit_states.html:134 templates/games/playball.html:984
+#: templates/leagues/season_complete_game_stats_edit.html:90
+#: templates/leagues/season_complete_game_stats_edit.html:150
+#: templates/leagues/season_game_stats_edit.html:90
+#: templates/leagues/season_game_stats_edit.html:136
+#: templates/players/analytics.html:275 templates/players/analytics.html:288
+#: templates/players/analytics.html:489 templates/players/summary.html:136
+#: templates/players/summary.html.py:178 templates/players/summary.html:230
+#: templates/teams/analytics.html:232 templates/teams/analytics.html.py:245
+#: templates/teams/analytics.html:433 templates/teams/stats.html:77
+#: templates/teams/stats.html.py:136
 msgid "STL"
 msgstr "抄截"
 
-#: templates/games/complete.html:109 templates/games/edit_complete.html:88
-#: templates/games/edit_states.html:82 templates/games/playball.html:366
-#: templates/players/analytics.html:292 templates/players/analytics.html:305
-#: templates/players/analytics.html:453 templates/players/summary.html:95
-#: templates/players/summary.html.py:133 templates/players/summary.html:176
-#: templates/teams/analytics.html:256 templates/teams/analytics.html.py:269
-#: templates/teams/analytics.html:405 templates/teams/stats.html:66
-#: templates/teams/stats.html.py:114
+#: templates/games/complete.html:141 templates/games/edit_complete.html:139
+#: templates/games/edit_states.html:135 templates/games/playball.html:985
+#: templates/leagues/season_complete_game_stats_edit.html:91
+#: templates/leagues/season_complete_game_stats_edit.html:151
+#: templates/leagues/season_game_stats_edit.html:91
+#: templates/leagues/season_game_stats_edit.html:137
+#: templates/players/analytics.html:305 templates/players/analytics.html:318
+#: templates/players/analytics.html:490 templates/players/summary.html:137
+#: templates/players/summary.html.py:179 templates/players/summary.html:231
+#: templates/teams/analytics.html:258 templates/teams/analytics.html.py:271
+#: templates/teams/analytics.html:434 templates/teams/stats.html:78
+#: templates/teams/stats.html.py:137
 msgid "BLK"
 msgstr "阻攻"
 
-#: templates/games/complete.html:110 templates/games/edit_complete.html:89
-#: templates/games/edit_states.html:83 templates/games/playball.html:367
-#: templates/players/analytics.html:322 templates/players/analytics.html:335
-#: templates/players/analytics.html:454 templates/players/summary.html:96
-#: templates/players/summary.html.py:134 templates/players/summary.html:177
-#: templates/teams/analytics.html:282 templates/teams/analytics.html.py:295
-#: templates/teams/analytics.html:406 templates/teams/stats.html:67
-#: templates/teams/stats.html.py:115
+#: templates/games/complete.html:142 templates/games/edit_complete.html:140
+#: templates/games/edit_states.html:136 templates/games/playball.html:986
+#: templates/leagues/season_complete_game_stats_edit.html:92
+#: templates/leagues/season_complete_game_stats_edit.html:152
+#: templates/leagues/season_game_stats_edit.html:92
+#: templates/leagues/season_game_stats_edit.html:138
+#: templates/players/analytics.html:335 templates/players/analytics.html:348
+#: templates/players/analytics.html:491 templates/players/summary.html:138
+#: templates/players/summary.html.py:180 templates/players/summary.html:232
+#: templates/teams/analytics.html:284 templates/teams/analytics.html.py:297
+#: templates/teams/analytics.html:435 templates/teams/stats.html:79
+#: templates/teams/stats.html.py:138
 msgid "TO"
 msgstr "失誤"
 
-#: templates/games/complete.html:111 templates/games/edit_complete.html:90
-#: templates/games/edit_states.html:84 templates/games/playball.html:368
-#: templates/players/analytics.html:352 templates/players/analytics.html:365
-#: templates/players/analytics.html:455 templates/players/summary.html:97
-#: templates/players/summary.html.py:135 templates/players/summary.html:178
-#: templates/teams/analytics.html:308 templates/teams/analytics.html.py:321
-#: templates/teams/analytics.html:407 templates/teams/stats.html:68
-#: templates/teams/stats.html.py:116
+#: templates/games/complete.html:143 templates/games/edit_complete.html:141
+#: templates/games/edit_states.html:137 templates/games/playball.html:987
+#: templates/leagues/season_complete_game_stats_edit.html:93
+#: templates/leagues/season_complete_game_stats_edit.html:153
+#: templates/leagues/season_game_stats_edit.html:93
+#: templates/leagues/season_game_stats_edit.html:139
+#: templates/players/analytics.html:365 templates/players/analytics.html:378
+#: templates/players/analytics.html:492 templates/players/summary.html:139
+#: templates/players/summary.html.py:181 templates/players/summary.html:233
+#: templates/teams/analytics.html:310 templates/teams/analytics.html.py:323
+#: templates/teams/analytics.html:436 templates/teams/stats.html:80
+#: templates/teams/stats.html.py:139
 msgid "PF"
 msgstr "犯規"
 
-#: templates/games/complete.html:112 templates/players/analytics.html:22
-#: templates/players/analytics.html:35 templates/players/analytics.html:444
-#: templates/players/summary.html:98 templates/players/summary.html.py:136
-#: templates/players/summary.html:179 templates/teams/analytics.html:22
-#: templates/teams/analytics.html.py:35 templates/teams/analytics.html:396
-#: templates/teams/stats.html:32 templates/teams/stats.html.py:82
+#: templates/games/complete.html:144 templates/players/analytics.html:35
+#: templates/players/analytics.html:48 templates/players/analytics.html:481
+#: templates/players/summary.html:140 templates/players/summary.html.py:182
+#: templates/players/summary.html:234 templates/teams/analytics.html:24
+#: templates/teams/analytics.html.py:37 templates/teams/analytics.html:425
+#: templates/teams/stats.html:40 templates/teams/stats.html.py:99
 msgid "PTS"
 msgstr "得分"
 
-#: templates/games/create.html:25 templates/games/edit.html:11
+#: templates/games/create.html:29 templates/games/edit.html:29
+#: templates/games/mygames.html:39 templates/games/mygames.html.py:48
+#: templates/teams/myteams.html:38 templates/teams/summary.html:15
+#: templates/teams/summary.html.py:24
 msgid "SCHEDULE"
 msgstr "賽程"
 
-#: templates/games/create.html:25 templates/games/create.html.py:66
-#: templates/players/create.html:30 templates/players/create.html.py:66
-#: templates/teams/create.html:36 templates/teams/create.html.py:55
+#: templates/games/create.html:29 templates/games/create.html.py:68
+#: templates/games/mygames.html:48 templates/leagues/create.html:36
+#: templates/leagues/create.html.py:49 templates/leagues/create_news.html:36
+#: templates/leagues/create_news.html:49
+#: templates/leagues/create_season.html:36
+#: templates/leagues/create_season.html:61
+#: templates/leagues/season_game.html:37
+#: templates/leagues/season_game_create.html:11
+#: templates/leagues/season_game_create.html:46
+#: templates/players/create.html:29 templates/players/create.html.py:71
+#: templates/teams/create.html:58 templates/teams/create.html.py:84
+#: templates/teams/roster.html:61 templates/teams/summary.html:24
+#: templates/teams/summary.html.py:86
 msgid "CREATE"
 msgstr "新增"
 
-#: templates/games/create.html:29 templates/games/edit.html:16
-#: templates/games/mygames.html:50 templates/games/mygames.html.py:84
-#: templates/players/summary.html:163 templates/teams/summary.html:21
-#: templates/teams/summary.html.py:40
+#: templates/games/create.html:35 templates/games/edit.html:35
+#: templates/games/mygames.html:57 templates/players/summary.html:218
+#: templates/teams/summary.html:33
 msgid "OPPONENT"
 msgstr "對手"
 
-#: templates/games/create.html:33
-msgid "PLEASE_INSERT_OPPONENT_NAME"
-msgstr "請輸入對手名稱"
+#: templates/games/create.html:35 templates/games/edit.html:35
+#: templates/players/create.html:35 templates/players/create.html.py:37
+#: templates/players/edit.html:35 templates/players/edit.html.py:37
+#: templates/teams/create.html:64 templates/teams/edit.html:64
+msgid "REQUIRED"
+msgstr "必填"
 
-#: templates/games/create.html:35 templates/games/edit.html:18
+#: templates/games/create.html:37 templates/games/edit.html:38
+#: templates/leagues/season_game_create.html:34
+#: templates/leagues/season_game_edit.html:18
 msgid "LOCATION"
 msgstr "地點"
 
-#: templates/games/create.html:41 templates/games/edit.html:25
+#: templates/games/create.html:43 templates/games/edit.html:44
+#: templates/leagues/season_game.html:16 templates/leagues/season_game.html:26
+#: templates/leagues/season_game_create.html:38
+#: templates/leagues/season_game_edit.html:22
 msgid "TYPE"
 msgstr "型態"
 
-#: templates/games/create.html:43 templates/games/edit.html:28
-#: templates/games/edit.html.py:30
+#: templates/games/create.html:45 templates/games/edit.html:47
+#: templates/games/edit.html.py:49 templates/leagues/create_season.html:36
+#: templates/leagues/edit_season.html:25
+#: templates/leagues/season_game_create.html:40
+#: templates/leagues/season_game_edit.html:25
+#: templates/leagues/season_game_edit.html:27
 msgid "SEASON"
 msgstr "季賽"
 
-#: templates/games/create.html:44 templates/games/edit.html:33
-#: templates/games/edit.html.py:35
+#: templates/games/create.html:46 templates/games/edit.html:52
+#: templates/games/edit.html.py:54
 msgid "PRACTICE"
 msgstr "練習賽"
 
-#: templates/games/create.html:45 templates/games/edit.html:38
-#: templates/games/edit.html.py:40
+#: templates/games/create.html:47 templates/games/edit.html:57
+#: templates/games/edit.html.py:59
 msgid "CASUAL"
 msgstr "一般"
 
-#: templates/games/create.html:47
+#: templates/games/create.html:49 templates/games/edit.html:62
+#: templates/leagues/season_game_setting.html:14
 msgid "PERIODS"
 msgstr "期間"
 
-#: templates/games/create.html:49 templates/games/edit.html:46
-#: templates/games/edit.html.py:48
+#: templates/games/create.html:51 templates/games/edit.html:65
+#: templates/games/edit.html.py:67
+#: templates/leagues/season_game_setting.html:18
+#: templates/leagues/season_game_setting.html:20
+#: templates/leagues/season_game_setting.html:30
 msgid "QUARTERS"
 msgstr "四節"
 
-#: templates/games/create.html:50 templates/games/edit.html:51
-#: templates/games/edit.html.py:53
+#: templates/games/create.html:52 templates/games/edit.html:70
+#: templates/games/edit.html.py:72
+#: templates/leagues/season_game_setting.html:23
+#: templates/leagues/season_game_setting.html:25
+#: templates/leagues/season_game_setting.html:31
 msgid "HALVES"
 msgstr "上下半場"
 
-#: templates/games/create.html:52 templates/games/edit.html:56
+#: templates/games/create.html:54 templates/games/edit.html:75
+#: templates/leagues/season_game_setting.html:34
 msgid "MINS_PER_PERIOD"
 msgstr "單位分鐘數"
 
-#: templates/games/create.html:56 templates/games/edit.html:60
+#: templates/games/create.html:58 templates/games/edit.html:79
+#: templates/leagues/season_game_setting.html:40
 msgid "FAULS_PER_PLAYER"
 msgstr "個人犯規數"
 
-#: templates/games/create.html:58 templates/games/edit.html:62
+#: templates/games/create.html:60 templates/games/edit.html:81
+#: templates/leagues/season_game_setting.html:46
 msgid "TIMEOUT_1ST_HALF"
 msgstr "上半場暫停數"
 
-#: templates/games/create.html:60 templates/games/edit.html:64
+#: templates/games/create.html:62 templates/games/edit.html:83
+#: templates/leagues/season_game_setting.html:52
 msgid "TIMEOUT_2ND_HALF"
 msgstr "下半場暫停數"
 
-#: templates/games/edit_complete.html:78 templates/games/edit_states.html:72
+#: templates/games/edit.html:29 templates/games/edit_complete.html:60
+#: templates/games/edit_complete.html:121 templates/games/edit_states.html:60
+#: templates/games/edit_states.html:117 templates/leagues/edit.html:36
+#: templates/leagues/edit_news.html:36 templates/leagues/edit_season.html:25
+#: templates/leagues/my_leagues.html:14 templates/leagues/news.html:15
+#: templates/leagues/season_complete_game_stats_edit.html:11
+#: templates/leagues/season_game.html:18 templates/leagues/season_game.html:29
+#: templates/leagues/season_game.html:31
+#: templates/leagues/season_game_edit.html:11
+#: templates/leagues/season_game_edit.html:38
+#: templates/leagues/season_game_stats_edit.html:11
+#: templates/leagues/seasons.html:15 templates/players/edit.html:29
+#: templates/players/edit_bak.html:27 templates/teams/edit.html:58
+msgid "EDIT"
+msgstr "編輯"
+
+#: templates/games/edit_complete.html:129 templates/games/edit_states.html:125
+#: templates/leagues/season_complete_game_stats_edit.html:81
+#: templates/leagues/season_complete_game_stats_edit.html:141
+#: templates/leagues/season_game_stats_edit.html:81
+#: templates/leagues/season_game_stats_edit.html:127
 msgid "2PTA"
 msgstr "兩分球出手"
 
-#: templates/games/edit_complete.html:79 templates/games/edit_states.html:73
+#: templates/games/edit_complete.html:130 templates/games/edit_states.html:126
+#: templates/leagues/season_complete_game_stats_edit.html:82
+#: templates/leagues/season_complete_game_stats_edit.html:142
+#: templates/leagues/season_game_stats_edit.html:82
+#: templates/leagues/season_game_stats_edit.html:128
 msgid "2PTM"
 msgstr "兩分球命中"
 
-#: templates/games/edit_complete.html:80 templates/games/edit_states.html:74
+#: templates/games/edit_complete.html:131 templates/games/edit_states.html:127
+#: templates/leagues/season_complete_game_stats_edit.html:83
+#: templates/leagues/season_complete_game_stats_edit.html:143
+#: templates/leagues/season_game_stats_edit.html:83
+#: templates/leagues/season_game_stats_edit.html:129
 msgid "3PTA"
 msgstr "三分球出手"
 
-#: templates/games/edit_complete.html:81 templates/games/edit_states.html:75
+#: templates/games/edit_complete.html:132 templates/games/edit_states.html:128
+#: templates/leagues/season_complete_game_stats_edit.html:84
+#: templates/leagues/season_complete_game_stats_edit.html:144
+#: templates/leagues/season_game_stats_edit.html:84
+#: templates/leagues/season_game_stats_edit.html:130
 msgid "3PTM"
 msgstr "三分球命中"
 
-#: templates/games/edit_complete.html:82 templates/games/edit_states.html:76
+#: templates/games/edit_complete.html:133 templates/games/edit_states.html:129
+#: templates/leagues/season_complete_game_stats_edit.html:85
+#: templates/leagues/season_complete_game_stats_edit.html:145
+#: templates/leagues/season_game_stats_edit.html:85
+#: templates/leagues/season_game_stats_edit.html:131
 msgid "FTA"
 msgstr "罰球出手"
 
-#: templates/games/edit_complete.html:83 templates/games/edit_states.html:77
+#: templates/games/edit_complete.html:134 templates/games/edit_states.html:130
+#: templates/leagues/season_complete_game_stats_edit.html:86
+#: templates/leagues/season_complete_game_stats_edit.html:146
+#: templates/leagues/season_game_stats_edit.html:86
+#: templates/leagues/season_game_stats_edit.html:132
 msgid "FTM"
 msgstr "罰球命中"
 
-#: templates/games/mygames.html:36 templates/teams/summary.html:14
-msgid "UPCOMING_GAME"
-msgstr "即將到來的賽程"
-
-#: templates/games/mygames.html:51 templates/games/mygames.html.py:85
-#: templates/teams/summary.html:41
+#: templates/games/mygames.html:58 templates/teams/summary.html:34
 msgid "RESULT"
 msgstr "結果"
 
-#: templates/games/mygames.html:52 templates/games/mygames.html.py:86
-#: templates/teams/summary.html:42
+#: templates/games/mygames.html:59 templates/teams/summary.html:35
 msgid "SCORE"
 msgstr "分數"
 
-#: templates/games/mygames.html:54 templates/games/mygames.html.py:87
-#: templates/teams/roster.html:57
+#: templates/games/mygames.html:61 templates/teams/roster.html:75
 msgid "ACTIONS"
 msgstr "動作"
 
-#: templates/games/mygames.html:67 templates/games/mygames.html.py:112
-#: templates/teams/myteams.html:64 templates/teams/roster.html:89
-msgid "DELETE"
-msgstr "刪除"
-
-#: templates/games/mygames.html:74 templates/teams/summary.html:30
-msgid "NO_UPCOMING_GAME"
-msgstr "沒有即將到來的賽程"
-
-#: templates/games/mygames.html:77 templates/teams/summary.html:33
-msgid "COMPLETED_GAMES"
-msgstr "已完成的賽程"
-
-#: templates/games/mygames.html:96 templates/teams/summary.html:51
+#: templates/games/mygames.html:91 templates/teams/summary.html:56
 msgid "SHORT_WIN"
 msgstr "勝"
 
-#: templates/games/mygames.html:98 templates/teams/summary.html:52
+#: templates/games/mygames.html:93 templates/teams/summary.html:58
 msgid "SHORT_LOSE"
 msgstr "敗"
 
-#: templates/games/mygames.html:103
-msgid "VIEW"
-msgstr "檢視"
-
-#: templates/games/mygames.html:118 templates/teams/summary.html:65
-msgid "NO_COMPLETED_GAME"
-msgstr "沒有已完成的賽程"
+#: templates/games/playball.html:880 templates/leagues/create.html:30
+#: templates/leagues/create_news.html:30
+#: templates/leagues/create_season.html:30 templates/leagues/edit.html:30
+#: templates/leagues/edit_news.html:30 templates/leagues/edit_season.html:19
+#: templates/leagues/season_registration.html:30 templates/teams/create.html:58
+#: templates/teams/edit.html:58 templates/teams/myteams.html:69
+#: templates/teams/registration.html:29
+msgid "MY_TEAM"
+msgstr "我的球隊"
 
 #: templates/games/select_starting_lineup.html:11
 msgid "SELECT_STARTING_LINEUP"
@@ -577,80 +757,344 @@ msgid "PLAY_BALL"
 msgstr "開始比賽"
 
 #: templates/games/select_starting_lineup.html:20
-#: templates/players/create.html:37 templates/players/edit.html:34
-#: templates/teams/roster.html:55
+#: templates/leagues/season_registration_new.html:31
+#: templates/players/create.html:37 templates/players/edit.html:37
+#: templates/players/edit_bak.html:34 templates/teams/analytics.html:465
+#: templates/teams/roster.html:73
 msgid "NUMBER"
 msgstr "背號"
 
 #: templates/games/select_starting_lineup.html:21
-#: templates/players/create.html:40 templates/players/edit.html:37
-#: templates/teams/roster.html:52
+#: templates/leagues/season_registration_new.html:33
+#: templates/players/create.html:39 templates/players/edit.html:39
+#: templates/players/edit_bak.html:37 templates/teams/roster.html:70
 msgid "POSITION"
 msgstr "位置"
 
 #: templates/games/select_starting_lineup.html:36
-#: templates/players/create.html:42 templates/players/edit.html:40
-#: templates/players/edit.html.py:42 templates/players/player_info.html:15
-#: templates/teams/roster.html:74
+#: templates/leagues/season_registration_new.html:36
+#: templates/players/create.html:41 templates/players/edit.html:42
+#: templates/players/edit.html.py:44 templates/players/edit_bak.html:40
+#: templates/players/edit_bak.html.py:42 templates/players/player_info.html:29
+#: templates/teams/roster.html:93
 msgid "GUARD"
 msgstr "後衛"
 
 #: templates/games/select_starting_lineup.html:38
-#: templates/players/create.html:43 templates/players/edit.html:45
-#: templates/players/edit.html.py:47 templates/players/player_info.html:17
-#: templates/teams/roster.html:76
+#: templates/leagues/season_registration_new.html:37
+#: templates/players/create.html:42 templates/players/edit.html:47
+#: templates/players/edit.html.py:49 templates/players/edit_bak.html:45
+#: templates/players/edit_bak.html.py:47 templates/players/player_info.html:31
+#: templates/teams/roster.html:95
 msgid "FORWARD"
 msgstr "前鋒"
 
 #: templates/games/select_starting_lineup.html:40
-#: templates/players/create.html:44 templates/players/edit.html:50
-#: templates/players/edit.html.py:52 templates/players/player_info.html:19
-#: templates/teams/roster.html:78
+#: templates/leagues/season_registration_new.html:38
+#: templates/players/create.html:43 templates/players/edit.html:52
+#: templates/players/edit.html.py:54 templates/players/edit_bak.html:50
+#: templates/players/edit_bak.html.py:52 templates/players/player_info.html:33
+#: templates/teams/roster.html:97
 msgid "CENTER"
 msgstr "中鋒"
 
-#: templates/index.html:35 templates/login.html:59 templates/register.html:60
+#: templates/index.html:30 templates/index.html.py:67 templates/login.html:39
+#: templates/register.html:42
+msgid "WHY_DATAHOOPS"
+msgstr ""
+
+#: templates/index.html:31 templates/index.html.py:86
+#: templates/index_bak.html:35 templates/login.html:40
+#: templates/register.html:43
 msgid "ABOUT_US"
 msgstr "關於我們"
 
-#: templates/index.html:36 templates/login.html:60 templates/login.html.py:64
-#: templates/login.html:92 templates/register.html:61
-#: templates/register.html.py:83 templates/register.html:85
+#: templates/index.html:32 templates/login.html:41 templates/register.html:44
+msgid "HOW_IT_WORKS"
+msgstr ""
+
+#: templates/index.html:33 templates/index_bak.html:36 templates/login.html:42
+#: templates/login.html.py:63 templates/privacy_policy.html:49
+#: templates/register.html:45 templates/register.html.py:76
+#: templates/register.html:78 templates/register.html.py:80
 msgid "SIGN_IN"
 msgstr "登入"
 
-#: templates/index.html:42 templates/login.html:88 templates/login.html.py:90
-#: templates/register.html:87
+#: templates/index_bak.html:42 templates/login.html:80
+#: templates/login.html.py:82 templates/login.html:84
+#: templates/register.html:56 templates/register.html.py:72
 msgid "SIGN_UP"
 msgstr "建立帳號"
 
-#: templates/login.html:78 templates/my_account.html:53
-#: templates/players/create.html:56 templates/players/edit.html:65
-#: templates/register.html:73
+#: templates/leagues/create.html:36 templates/leagues/edit.html:36
+msgid "MY_LEAGUE"
+msgstr ""
+
+#: templates/leagues/create.html:40 templates/leagues/create_season.html:40
+#: templates/leagues/edit.html:40 templates/leagues/edit_season.html:29
+msgid "LEAGUE_NAME"
+msgstr "聯盟名稱"
+
+#: templates/leagues/create.html:42 templates/leagues/edit.html:42
+msgid "PLEASE_INSERT_LEAGUE_NAME"
+msgstr "請輸入聯盟名稱"
+
+#: templates/leagues/create.html:43 templates/leagues/edit.html:43
+#: templates/players/create.html:57 templates/players/edit.html:69
+#: templates/players/edit_bak.html:68 templates/teams/create.html:74
+#: templates/teams/edit.html:74
+msgid "IMAGE"
+msgstr "圖片"
+
+#: templates/leagues/create_news.html:36 templates/leagues/edit_news.html:36
+#: templates/leagues/seasons.html:24
+msgid "NEWS"
+msgstr ""
+
+#: templates/leagues/create_news.html:40 templates/leagues/edit_news.html:40
+msgid "HEADLINE"
+msgstr ""
+
+#: templates/leagues/create_news.html:42 templates/leagues/edit_news.html:42
+msgid "PLEASE_INSERT_HEADLINE"
+msgstr "請輸入標題"
+
+#: templates/leagues/create_news.html:43 templates/leagues/edit_news.html:43
+msgid "CONTENT"
+msgstr ""
+
+#: templates/leagues/create_season.html:42
+#: templates/leagues/edit_season.html:31
+msgid "SEASON_NAME"
+msgstr "球季名稱"
+
+#: templates/leagues/create_season.html:44
+#: templates/leagues/edit_season.html:34
+msgid "PLEASE_INSERT_SEASON_NAME"
+msgstr "請輸入球季名稱"
+
+#: templates/leagues/create_season.html:45
+#: templates/leagues/edit_season.html:35
+msgid "REGISTRATION_FEE"
+msgstr ""
+
+#: templates/leagues/create_season.html:47
+#: templates/leagues/edit_season.html:37
+msgid "SECURITY_DEPOSIT"
+msgstr ""
+
+#: templates/leagues/create_season.html:49
+#: templates/leagues/edit_season.html:39
+msgid "REGISTRATION_STARTS"
+msgstr ""
+
+#: templates/leagues/create_season.html:51
+#: templates/leagues/edit_season.html:41
+msgid "REGISTRATION_ENDS"
+msgstr ""
+
+#: templates/leagues/create_season.html:53
+#: templates/leagues/edit_season.html:43
+msgid "LIMITED_TEAMS"
+msgstr "球隊數量限制"
+
+#: templates/leagues/create_season.html:55
+#: templates/leagues/edit_season.html:45
+msgid "BROCHURE"
+msgstr ""
+
+#: templates/leagues/index.html:11
+msgid "LEAGUE_MANAGEMENT"
+msgstr ""
+
+#: templates/leagues/my_leagues.html:17
+msgid "NO_LEAGUES_AVAILABLE"
+msgstr ""
+
+#: templates/leagues/my_leagues.html:20
+msgid "CREATE_LEAGUE"
+msgstr "新增聯盟"
+
+#: templates/leagues/news.html:19
+msgid "NO_NEWS_AVAILABLE"
+msgstr ""
+
+#: templates/leagues/news.html:22
+msgid "CREATE_NEWS"
+msgstr "新增最新消息"
+
+#: templates/leagues/news.html:23
+msgid "SEASONS"
+msgstr "季賽"
+
+#: templates/leagues/season_complete_game_stats_edit.html:75
+#: templates/leagues/season_complete_game_stats_edit.html:135
+#: templates/teams/myteams.html:40 templates/teams/stats.html:30
+msgid "STATS"
+msgstr "數據"
+
+#: templates/leagues/season_game.html:19 templates/leagues/season_game.html:33
+#: templates/leagues/season_index.html:29
+msgid "DELETE"
+msgstr "刪除"
+
+#: templates/leagues/season_game_create.html:11
+#: templates/leagues/season_game_edit.html:11
+#: templates/players/summary.html:126 templates/players/summary.html.py:168
+#: templates/teams/analytics.html:467
+msgid "GAMES"
+msgstr "已賽"
+
+#: templates/leagues/season_game_create.html:16
+#: templates/leagues/season_game_edit.html:16
+msgid "HOME_TEAM"
+msgstr "主場球隊"
+
+#: templates/leagues/season_game_create.html:18
+#: templates/leagues/season_game_create.html:27
+#: templates/leagues/season_registration.html:42
+#: templates/leagues/season_registration.html:47
+msgid "PLEASE_SELECT_A_TEAM"
+msgstr "請選擇球隊"
+
+#: templates/leagues/season_game_create.html:25
+#: templates/leagues/season_game_edit.html:17
+msgid "GUEST_TEAM"
+msgstr "客場球隊"
+
+#: templates/leagues/season_game_create.html:41
+#: templates/leagues/season_game_edit.html:30
+#: templates/leagues/season_game_edit.html:32
+msgid "POST_SEASON"
+msgstr "季後賽"
+
+#: templates/leagues/season_index.html:11
+msgid "UNCONFIRMED_TEAMS"
+msgstr "未認證球隊"
+
+#: templates/leagues/season_index.html:18
+msgid "FORBIDDEN"
+msgstr ""
+
+#: templates/leagues/season_index.html:19
+msgid "CONFIRMED"
+msgstr "已認證"
+
+#: templates/leagues/season_index.html:23
+msgid "CONFIRMED_TEAMS"
+msgstr "已認證球隊"
+
+#: templates/leagues/season_index.html:34
+msgid "NO_REGISTERED_TEAM_AVAILABLE"
+msgstr ""
+
+#: templates/leagues/season_index.html:37
+msgid "SEASON_GAMES"
+msgstr "球季賽程"
+
+#: templates/leagues/season_registration.html:36
+#: templates/leagues/season_registration.html:59
+#: templates/leagues/season_registration_new.html:10
+#: templates/leagues/season_registration_new.html:46
+#: templates/leagues/seasons.html:17
+msgid "REGISTRATION"
+msgstr ""
+
+#: templates/leagues/season_registration.html:40
+#: templates/leagues/season_registration_new.html:14
+#: templates/teams/create.html:64 templates/teams/edit.html:64
+msgid "TEAM_NAME"
+msgstr "隊名"
+
+#: templates/leagues/season_registration.html:48
+#: templates/leagues/season_registration_new.html:22
+msgid "BANK_ACCOUNT"
+msgstr "銀行帳號（後五碼）"
+
+#: templates/leagues/season_registration.html:50
+#: templates/leagues/season_registration_new.html:24
+msgid "CONTACT_PHONE_NUMBER"
+msgstr ""
+
+#: templates/leagues/season_registration.html:52 templates/login.html:67
+#: templates/my_account.html:62 templates/players/create.html:55
+#: templates/players/edit.html:67 templates/players/edit_bak.html:65
+#: templates/register.html:64
 msgid "EMAIL"
 msgstr "Email"
 
-#: templates/login.html:80 templates/register.html:75
+#: templates/leagues/season_registration_new.html:16
+#: templates/teams/create.html:66 templates/teams/edit.html:66
+msgid "COACH"
+msgstr "教練"
+
+#: templates/leagues/season_registration_new.html:18
+#: templates/teams/create.html:68 templates/teams/edit.html:68
+msgid "CAPTAIN"
+msgstr "隊長"
+
+#: templates/leagues/season_registration_new.html:27
+#: templates/players/create.html:29 templates/players/edit.html:29
+#: templates/players/edit_bak.html:27 templates/teams/myteams.html:39
+#: templates/teams/roster.html:52 templates/teams/summary.html:77
+msgid "ROSTER"
+msgstr "陣容"
+
+#: templates/leagues/season_registration_new.html:35
+msgid "PLEASE_SELECT"
+msgstr "請選擇"
+
+#: templates/leagues/season_registration_new.html:40
+#: templates/players/create.html:47 templates/players/edit.html:59
+#: templates/players/edit_bak.html:57 templates/players/player_info.html:6
+#: templates/teams/roster.html:71
+msgid "HEIGHT"
+msgstr "身高"
+
+#: templates/leagues/season_registration_new.html:42
+#: templates/players/create.html:49 templates/players/edit.html:61
+#: templates/players/edit_bak.html:59 templates/players/player_info.html:10
+#: templates/teams/roster.html:72
+msgid "WEIGHT"
+msgstr "體重"
+
+#: templates/leagues/seasons.html:20
+msgid "NO_SEASON_AVAILABLE"
+msgstr ""
+
+#: templates/leagues/seasons.html:23
+msgid "CREATE_SEASON"
+msgstr "新增賽季"
+
+#: templates/login.html:69 templates/register.html:66
 msgid "PLEASE_INSERT_EMAIL"
 msgstr "請輸入Email"
 
-#: templates/login.html:81 templates/register.html:76
+#: templates/login.html:70 templates/register.html:67
 msgid "INVALID_EMAIL"
 msgstr "請檢查Email格式"
 
-#: templates/login.html:82 templates/register.html:77
+#: templates/login.html:71 templates/register.html:68
 msgid "PASSWORD"
 msgstr "密碼"
 
-#: templates/login.html:88 templates/login.html.py:90
+#: templates/login.html:73 templates/register.html:70
+msgid "PLEASE_INSERT_PASSWORD"
+msgstr "請輸入密碼"
+
+#: templates/login.html:76
+msgid "FORGOT_PASSWORD"
+msgstr "忘記密碼？"
+
+#: templates/login.html:78
 msgid "NOT_A_MEMBER"
 msgstr "沒有帳號嗎？"
 
-#: templates/my_account.html:55 templates/register.html:69
+#: templates/my_account.html:64 templates/register.html:60
 msgid "FIRST_NAME"
 msgstr "名"
 
-#: templates/my_account.html:57 templates/register.html:71
+#: templates/my_account.html:66 templates/register.html:62
 msgid "LAST_NAME"
 msgstr "姓"
 
@@ -658,176 +1102,108 @@ msgstr "姓"
 msgid "NAV_SUMMARY"
 msgstr "SUMMARY"
 
-#: templates/navigation.html:6
-msgid "NAV_SCHEDULE"
-msgstr "賽程"
-
-#: templates/navigation.html:9
-msgid "NAV_ROSTER"
-msgstr "陣容"
-
-#: templates/navigation.html:12
-msgid "NAV_STATS"
-msgstr "數據"
-
-#: templates/navigation.html:14 templates/player_navigation.html:3
-#: templates/players/analytics.html:437 templates/teams/analytics.html:389
-msgid "NAV_ANALYSIS"
-msgstr "分析"
-
-#: templates/players/analytics.html:52 templates/players/analytics.html:65
-#: templates/players/analytics.html:82 templates/players/analytics.html:95
-#: templates/players/analytics.html:112 templates/players/analytics.html:125
-#: templates/players/analytics.html:445 templates/players/analytics.html:446
-#: templates/players/analytics.html:447 templates/teams/analytics.html:48
-#: templates/teams/analytics.html.py:61 templates/teams/analytics.html:74
-#: templates/teams/analytics.html.py:87 templates/teams/analytics.html:100
-#: templates/teams/analytics.html.py:113 templates/teams/analytics.html:397
-#: templates/teams/analytics.html.py:398 templates/teams/analytics.html:399
-#: templates/teams/stats.html:40 templates/teams/stats.html.py:41
-#: templates/teams/stats.html:42 templates/teams/stats.html.py:89
-#: templates/teams/stats.html:90 templates/teams/stats.html.py:91
+#: templates/players/analytics.html:65 templates/players/analytics.html:78
+#: templates/players/analytics.html:95 templates/players/analytics.html:108
+#: templates/players/analytics.html:125 templates/players/analytics.html:138
+#: templates/players/analytics.html:482 templates/players/analytics.html:483
+#: templates/players/analytics.html:484 templates/teams/analytics.html:50
+#: templates/teams/analytics.html.py:63 templates/teams/analytics.html:76
+#: templates/teams/analytics.html.py:89 templates/teams/analytics.html:102
+#: templates/teams/analytics.html.py:115 templates/teams/analytics.html:426
+#: templates/teams/analytics.html.py:427 templates/teams/analytics.html:428
+#: templates/teams/stats.html:50 templates/teams/stats.html.py:51
+#: templates/teams/stats.html:52 templates/teams/stats.html.py:109
+#: templates/teams/stats.html:110 templates/teams/stats.html.py:111
 msgid "ATTEMPT"
 msgstr "出手"
 
-#: templates/players/analytics.html:386 templates/players/analytics.html:402
+#: templates/players/analytics.html:399 templates/players/analytics.html:415
+#: templates/teams/analytics.html:340 templates/teams/analytics.html.py:356
 msgid "2PTS"
 msgstr "二分球"
 
-#: templates/players/analytics.html:391 templates/teams/analytics.html:343
+#: templates/players/analytics.html:404 templates/teams/analytics.html:345
 msgid "POINTS_PERCENTAGE"
 msgstr "得分比例"
 
-#: templates/players/analytics.html:407 templates/teams/analytics.html:359
+#: templates/players/analytics.html:420 templates/teams/analytics.html:361
 msgid "ATTEMPTS_PERCENTAGE"
 msgstr "出手比例"
 
-#: templates/players/analytics.html:442 templates/teams/analytics.html:394
+#: templates/players/analytics.html:478 templates/teams/analytics.html:422
 msgid "TREND"
 msgstr "趨勢"
 
-#: templates/players/create.html:30 templates/players/edit.html:27
-#: templates/teams/roster.html:38 templates/teams/summary.html:70
-msgid "ROSTER"
-msgstr "陣容"
-
-#: templates/players/create.html:36 templates/players/edit.html:33
-msgid "PLEASE_INSERT_PLAYER_NAME"
-msgstr "請輸入球員姓名"
-
-#: templates/players/create.html:39 templates/players/edit.html:36
-msgid "PLEASE_INSERT_PLAYER_NUMBER"
-msgstr "請輸入球員背號"
-
-#: templates/players/create.html:48 templates/players/edit.html:57
-#: templates/players/player_info.html:26 templates/teams/roster.html:53
-msgid "HEIGHT"
-msgstr "身高"
-
-#: templates/players/create.html:50 templates/players/edit.html:59
-#: templates/players/player_info.html:27 templates/teams/roster.html:54
-msgid "WEIGHT"
-msgstr "體重"
-
-#: templates/players/create.html:52 templates/players/edit.html:61
-#: templates/players/player_info.html:28 templates/teams/roster.html:56
+#: templates/players/create.html:51 templates/players/edit.html:63
+#: templates/players/edit_bak.html:61 templates/players/player_info.html:14
+#: templates/teams/roster.html:74
 msgid "BIRTHDAY"
 msgstr "生日"
 
-#: templates/players/create.html:58 templates/players/edit.html:68
-#: templates/teams/create.html:49 templates/teams/edit.html:49
-msgid "IMAGE"
-msgstr "圖片"
+#: templates/players/create.html:58 templates/players/edit.html:78
+#: templates/teams/create.html:75 templates/teams/edit.html:82
+msgid "NO_FILE_CHOSEN"
+msgstr "未選擇檔案"
 
-#: templates/players/edit.html:78
+#: templates/players/create.html:60 templates/players/edit.html:80
+#: templates/teams/create.html:77 templates/teams/edit.html:84
+msgid "CHOOSE_FILE"
+msgstr "選擇檔案"
+
+#: templates/players/edit_bak.html:33
+msgid "PLEASE_INSERT_PLAYER_NAME"
+msgstr "請輸入球員姓名"
+
+#: templates/players/edit_bak.html:36
+msgid "PLEASE_INSERT_PLAYER_NUMBER"
+msgstr "請輸入球員背號"
+
+#: templates/players/edit_bak.html:78
 msgid "IS_ADMIN"
 msgstr "是否為管理者？"
 
-#: templates/players/player_info.html:26
+#: templates/players/player_info.html:7
 msgid "CM"
 msgstr "公分"
 
-#: templates/players/player_info.html:27
+#: templates/players/player_info.html:11
 msgid "KG"
 msgstr "公斤"
 
-#: templates/players/player_info.html:32 templates/teams/team_info.html:34
-msgid "PPG"
-msgstr "平均得分："
-
-#: templates/players/player_info.html:36 templates/teams/team_info.html:38
-msgid "FG%PG"
-msgstr "命中率％"
-
-#: templates/players/player_info.html:40 templates/teams/team_info.html:42
-msgid "APG"
-msgstr "平均助攻："
-
-#: templates/players/player_info.html:44 templates/teams/team_info.html:46
-msgid "RPG"
-msgstr "平均籃板："
-
-#: templates/players/summary.html:72
+#: templates/players/summary.html:104 templates/teams/analytics.html:459
 msgid "PERFORMANCE"
 msgstr "效率"
 
-#: templates/players/summary.html:78
+#: templates/players/summary.html:116
 msgid "CAREER_STATS"
 msgstr "生涯數據"
 
-#: templates/players/summary.html:80 templates/players/summary.html.py:206
-#: templates/teams/stats.html:27
+#: templates/players/summary.html:118 templates/players/summary.html.py:265
+#: templates/teams/stats.html:32
 msgid "AVERAGE"
 msgstr "平均"
 
-#: templates/players/summary.html:84 templates/players/summary.html.py:122
-msgid "GAMES"
-msgstr "已賽"
-
-#: templates/players/summary.html:85 templates/players/summary.html.py:123
+#: templates/players/summary.html:127 templates/players/summary.html.py:169
+#: templates/teams/analytics.html:468
 msgid "STARTED"
 msgstr "先發"
 
-#: templates/players/summary.html:158
+#: templates/players/summary.html:212
 msgid "PAST_5_GAMES"
 msgstr "過去五場"
 
-#: templates/players/summary.html:254 templates/teams/stats.html:128
-msgid "NO_STATS"
-msgstr "沒有數據"
-
-#: templates/register.html:65
-msgid "SIGN_UP_TODAY"
-msgstr "建立帳號"
-
-#: templates/register.html:83 templates/register.html.py:85
+#: templates/register.html:74
 msgid "ALREADY_ON"
 msgstr "已經有帳號嗎？"
 
-#: templates/teams/create.html:40 templates/teams/edit.html:40
-msgid "TEAM_NAME"
-msgstr "隊名"
+#: templates/teams/analytics.html:474
+msgid "EFF/USG"
+msgstr ""
 
-#: templates/teams/create.html:42 templates/teams/edit.html:42
-msgid "PLEASE_INSERT_TEAM_NAME"
-msgstr "請輸入球隊名稱"
-
-#: templates/teams/create.html:43 templates/teams/edit.html:43
-msgid "COACH"
-msgstr "教練"
-
-#: templates/teams/create.html:45 templates/teams/edit.html:45
-msgid "CAPTAIN"
-msgstr "隊長"
-
-#: templates/teams/create.html:47 templates/teams/edit.html:47
+#: templates/teams/create.html:72 templates/teams/edit.html:72
 #: templates/teams/registration.html:42
 msgid "CODE"
 msgstr "認證碼"
-
-#: templates/teams/myteams.html:75
-msgid "CREATE_TEAM"
-msgstr "新增球隊"
 
 #: templates/teams/registration.html:35
 msgid "JOIN_THE_TEAM"
@@ -841,39 +1217,31 @@ msgstr "請輸入認證碼"
 msgid "JOIN"
 msgstr "加入"
 
-#: templates/teams/roster.html:96 templates/teams/summary.html:85
-msgid "NO_PLAYER"
-msgstr "沒有球員"
+#: templates/teams/roster.html:61 templates/teams/summary.html:86
+msgid "PLAYER"
+msgstr "球員"
 
-#: templates/teams/stats.html:25
-msgid "STATS"
-msgstr "數據"
-
-#: templates/teams/stats.html:100 templates/teams/stats.html.py:101
-#: templates/teams/stats.html:102
+#: templates/teams/stats.html:121 templates/teams/stats.html.py:122
+#: templates/teams/stats.html:123
 msgid "MADE"
 msgstr "命中"
 
-#: templates/teams/summary.html:92
-msgid "VIEW_FULL_SCHEDULE"
-msgstr "完整賽程"
+#: templates/teams/stats.html:157
+msgid "NO_STATS"
+msgstr "沒有數據"
 
-#: templates/teams/summary.html:97
-msgid "VIEW_FULL_ROSTER"
-msgstr "完整陣容"
-
-#: templates/teams/team_info.html:17
+#: templates/teams/team_info.html:21
 msgid "WIN"
 msgstr "勝"
 
-#: templates/teams/team_info.html:19
+#: templates/teams/team_info.html:21
 msgid "WINS"
 msgstr "勝"
 
-#: templates/teams/team_info.html:26
+#: templates/teams/team_info.html:22
 msgid "LOSE"
 msgstr "敗"
 
-#: templates/teams/team_info.html:28
+#: templates/teams/team_info.html:22
 msgid "LOSES"
 msgstr "敗"

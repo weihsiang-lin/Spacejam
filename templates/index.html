@@ -1,46 +1,135 @@
-<!DOCTYPE html>
+<!Doctype html>
 {% load i18n %}
 {% load staticfiles %}
 <html>
-    <head>
-        <meta charset='UTF-8'>
-        <title>Improvement Goes With Data - DataHoops</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
-        <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
+	<head>		
+		<link rel="shortcut icon" href="img/icon.ico">
+		<title>DataHoops</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/hack.css' %}">
+		<script type="text/javascript" src="{% static 'js/jquery-1.9.1.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 
-    <!-- JavaScript -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        {% block javascript %}{% endblock %}
-    </script>
-    <!-- Google Analytics -->
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		<!--[if lt IE 9]>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=Lato|Ubuntu" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Candal|Lato" rel="stylesheet">
+		</head>
+	<body>	
+		<header>
+			<nav>
+				<div class="navTop index-nav">
+					<a href="#"><div id="logo"></div></a>
+					<div class="right index-right scroll flexcroll">
+						<ul>
+							<li><a id="bt01" href="#">{% trans 'WHY_DATAHOOPS' %}</a></li>
+							<li><a id="bt02" href="#">{% trans 'ABOUT_US' %}</a></li>
+							<li><a href="{% url 'how_it_works' %}">{% trans 'HOW_IT_WORKS' %}</a></li>
+							<li><a href="/accounts/login/">{% trans "SIGN_IN" %}</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
 
-        ga('create', 'UA-79536402-1', 'auto');
-        ga('send', 'pageview');
+		<div class="content">
+			<div class="index-mainPic">
+				<div class="mainPic css-moz">
+					<a href="#">
+						<div class="mainPic-bg mainPic-left css-moz">
+							<div class="mainPic-title">
+								<p>Be the rockstar</p>
+								<h4>{% trans 'LEAGUES' %}</h4>
+								<span>League</span>
+							</div>
+						</div>
+					</a>
+					<a href="/accounts/login/">
+						<div class="mainPic-bg mainPic-right css-moz">
+							<div class="mainPic-title">
+								<p>Track your stats, <br>improve your game</p>
+								<h4>{% trans 'TEAMS' %}</h4>
+								<span>Team</span>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
 
-    </script>
-    </head>
-    <body>
-        <div id="Header">
-            <div id="HeaderLeft">DataHoops</div>
-            <div id="HeaderRight">
-                <a target="_blank" href="{% url 'how_it_works' %}" style="text-decoration: underline">How It Works</a> |
-                <a href="#" style="text-decoration: underline">{% trans "ABOUT_US" %}</a> |
-                <a href="/accounts/login/" style="text-decoration: underline">{% trans "SIGN_IN" %}</a>
-            </div>
-        </div>
-        <div class="HeroImage">
-            <div class="HeroTitle">IMPROVEMENT GOES WITH DATA</div>
-            <div class="HeroSubtitle">Track your stats & improve your game.</div>
-            <div class="HeroHyperLink"><a style="color: #BFFF00" href="/accounts/register/">{% trans "SIGN_UP" %} >></a></div>
-            <div class="Footer">&copy Copyright DataHoops 2016.</div>
-        </div>
-    </body>
+			<div class="clear"></div>
+
+			<div id="page1" class="three-items">
+				<h1>{% trans 'WHY_DATAHOOPS' %}</h1>
+				<div class="whyItems">
+					<img src="{% static 'images/about_paper.png' %}" alt="紙本終結者">
+					<h3>紙本終結者</h3>
+					<p>利用目前最普及之3C載具，包含手機及電腦，透過APP或網頁皆可進行比賽數據之紀錄及發布，徹底翻轉過去紀錄員No pen, no game.的舊時代。</p>
+				</div>
+				<div class="whyItems">
+					<img src="{% static 'images/about_analysis.png' %}" alt="虛擬分析師">
+					<h3>虛擬分析師</h3>
+					<p>經由雲端系統即時運算，短時間內將大量數據轉化為易讀取、有價值的資訊，協助教練於臨場決策時做出最符合需要的調度，堪稱最理性的顧問。</p>
+				</div>
+				<div class="whyItems">
+					<img src="{% static 'images/about_cloud.png' %}" alt="賽事管理員">
+					<h3>賽事管理員</h3>
+					<p>舉凡隊伍報名、賽程公告到球隊戰績及隊員績效等各種資訊全部一條龍包辦，清楚分門別類、歷史追溯查詢，是功能強大、CP最高的球賽小秘書。</p>
+				</div>
+			</div>
+
+			<div id="page2" class="three-items aboutUs">
+				<h1>{% trans 'ABOUT_US' %}</h1>
+				<p>DataHoops 是一個以籃球運動結合雲端科技的年輕創業團隊，奠基於大數據為核心起點，記錄每一支球隊的發展軌跡和榮耀時刻，並專注於建構賽事本體及周邊活動的線上管理平台，全面助推各級賽事的品質提升。</p>
+				<div>
+					<div class="index-memberPic">
+						<img src="{% static 'images/pic_member.jpg' %}" alt="member">
+					</div>
+					<p>Michael</p>
+				</div>
+				<div>
+					<div class="index-memberPic">
+						<img src="{% static 'images/about_us/jimmy.jpg' %}" alt="member">
+					</div>
+					<p>Jimmy</p>
+				</div>
+				<div>
+					<div class="index-memberPic">
+						<img src="{% static 'images/about_us/fitch.jpg' %}" alt="member">
+					</div>
+					<p>Fitch</p>
+				</div>
+			</div>
+
+			<div class="startNow">
+				<div>現在就<a href="/accounts/register/">開始使用</a>吧！</div>
+			</div>
+		</div>
+
+		<div id="gotop"></div>
+		<footer>
+			<div class="right"><a href="{% url 'privacy_policy' %}">{% trans 'PRIVACY_POLICY' %}</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="#">網站版權聲明</a></div>
+			<div class="left">2016 © DataHoops All Rights Reserved.</div>
+		</footer>
+
+		<script type="text/javascript">
+		$(function(){
+			//slideDown
+			$('#bt01').click(function(){
+				$('html,body').animate({scrollTop:$('#page1').offset().top}, 800);
+			});
+			
+			$('#bt02').click(function(){
+				$('html,body').animate({scrollTop:$('#page2').offset().top}, 800);
+			});
+
+			
+
+		});
+		</script>
+	</body>
 </html>

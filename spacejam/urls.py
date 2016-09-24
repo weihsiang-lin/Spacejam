@@ -14,4 +14,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^teams/', include('teams.urls')),
     url(r'^how_it_works$', views.how_it_works, name='how_it_works'),
+    url(r'^privacy_policy$', views.privacy_policy, name='privacy_policy'),
+    url(r'^leagues/', include('leagues.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

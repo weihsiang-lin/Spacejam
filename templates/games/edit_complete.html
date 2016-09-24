@@ -1,129 +1,193 @@
 {% extends 'base.html' %}
 
 {% load i18n %}
+{% load staticfiles %}
 
-{% block navigation %}
-    {% include 'navigation.html' %}
+{% block header %}
+    {% include 'new_navigation.html' %}
+{% endblock %}
+
+{% block javascript %}
+<!--table sorter-->
+<script type="text/javascript" src="{% static 'js/jquery.tablesorter.js' %}"></script>
+
+<!--table sorter-->
+<script type="text/javascript">
+    $(function () {
+        // table sorter
+        $("#myTable").tablesorter({widgets: ['zebra']});
+
+    });
+</script>
 {% endblock %}
 
 {% block content %}
-    <div id="BodyHeadline" style="padding-top: 10px">
-        {{ game.time | date:"Y-m-d" }} {{ game.time | time:"H:i" }} > vs. {{ game.opponent.name }} > {% trans "EDIT" %}
+<div class="content">
+    <!--public version-->
+    <div class="main-Info schedule-mainInfo">
+        <div class="schedule-time">
+            <h3>
+                <span>{% trans 'DATE' %}</span>
+                {{ game.time | date:"Y/m/d" }}
+            </h3>
+            <h3>
+                <span>{% trans 'TIME' %}</span>
+                {{ game.time | time:"H:i" }}
+            </h3>
+        </div>
+        <div class="main-title">
+            <div class="teamName">
+                <img src="{% static 'images/pic_team.png' %}" alt="teamLogo">
+                <h1>{{ team.name }}</h1>
+            </div>
+            <div class="VSscore">
+                <h2>{{ team_state.PTS }}</h2>
+                <p>VS.</p>
+                <h2>{{ opponent_state.score }}</h2>
+            </div>
+            <div class="teamName">
+                <img src="{% static 'images/pic_team.png' %}" alt="teamLogo">
+                <h1>{{ game.opponent.name }}</h1>
+            </div>
+        </div>
     </div>
-    <button type="submit" style="float: right; margin-bottom: 10px" form="edit_complete_stats">{% trans "SAVE" %}</button>
-    <button type="button" style="float: right; margin-bottom: 10px; margin-right: 0.5vw" onclick="location.href='{% url 'complete_game' team.id game.id %}'">{% trans "CANCEL" %}</button>
-    <form id="edit_complete_stats" action="" method="post">
-        {% csrf_token %}
-    <!-- Score -->
-    <table width="100%" style="margin-top:5px">
-        <tr>
-            <th width="25%"></th>
-            <th width="15%">{% trans "Q1" %}</th>
-            <th width="15%">{% trans "Q2" %}</th>
-            <th width="15%">{% trans "Q3" %}</th>
-            <th width="15%">{% trans "Q4" %}</th>
-            <th width="15%">{% trans "OT" %}</th>
-        </tr>
-        <tr>
-            <td>
-                {{ team.name }}
-                <input type="hidden" name="team_state_id" value="{{team_state.id }}">
-            </td>
-            <td>
-                <input type="number" name="my_q1" min="0" value="{{ team_state.first_quarter_score }}">
-            </td>
-            <td>
-                <input type="number" name="my_q2" min="0" value="{{ team_state.second_quarter_score }}">
-            </td>
-            <td>
-                <input type="number" name="my_q3" min="0" value="{{ team_state.third_quarter_score }}">
-            </td>
-            <td>
-                <input type="number" name="my_q4" min="0" value="{{ team_state.fourth_quarter_score }}">
-            </td>
-            <td>
-                <input type="number" name="my_ot" min="0" value="{{ team_state.overtime_score }}">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="hidden" name="oppo_id" value="{{ game.opponent.id }}">
-                {{ game.opponent.name }}
-                <input type="hidden" name="oppo_state_id" value="{{ opponent_state.id }}">
-            </td>
-            <td>
-                <input type="number" name="oppo_q1" min="0" value="{{ opponent_state.first_quarter_score }}">
-            </td>
-            <td>
-                <input type="number" name="oppo_q2" min="0" value="{{ opponent_state.second_quarter_score }}">
-            </td>
-            <td>
-                <input type="number" name="oppo_q3" min="0" value="{{ opponent_state.third_quarter_score }}">
-            </td>
-            <td>
-                <input type="number" name="oppo_q4" min="0" value="{{ opponent_state.fourth_quarter_score }}">
-            </td>
-            <td>
-                <input type="number" name="oppo_ot" min="0" value="{{ opponent_state.overtime_score }}">
-            </td>
-        </tr>
-    </table>
+    <!--end of public version-->
 
-    <!-- Player states -->
-    <table width="100%" style="margin-top: 10px">
-        <tr>
-            <th>{% trans "NAME" %}</th>
-            <th>{% trans "GS" %}</th>
-            <th>{% trans "MINS" %}</th>
-            <th>{% trans "2PTA" %}</th>
-            <th>{% trans "2PTM" %}</th>
-            <th>{% trans "3PTA" %}</th>
-            <th>{% trans "3PTM" %}</th>
-            <th>{% trans "FTA" %}</th>
-            <th>{% trans "FTM" %}</th>
-            <th>{% trans "OREB" %}</th>
-            <th>{% trans "DREB" %}</th>
-            <th>{% trans "AST" %}</th>
-            <th>{% trans "STL" %}</th>
-            <th>{% trans "BLK" %}</th>
-            <th>{% trans "TO" %}</th>
-            <th>{% trans "PF" %}</th>
-        </tr>
-        {% if players %}
-        {% for player_state in players_state %}
-        <tr>
-            <td>
-                {{ player_state.player.name }}
-                <input type="hidden" name="{{ player_state.player.id }}_player_state_id" value="{{ player_state.id }}">
-            </td>
-            {% if player_state.game_started %}
-                <td><input type="checkbox" name="{{ player_state.player.id }}_started" value="1" checked></td>
-            {% else %}
-                <td><input type="checkbox" name="{{ player_state.player.id }}_started" value="1"></td>
-            {% endif %}
-            {% if player_state.game_played %}
-                <!-- 2016.06.04 Revise as type="text" because of Chrome. -->
-                <td><input type="text" name="{{ player_state.player.id }}_time" value="{{ player_state.time | time:"i:s" }}"></td>
-            {% else %}
-                <!-- 2016.06.04 Revise as type="text" because of Chrome. -->
-                <td><input type="text" name="{{ player_state.player.id }}_time" value="00:00"></td>
-            {% endif %}
-            <td><input type="number" name="{{ player_state.player.id }}_attempt_2pt" min="0" value="{{ player_state.two_points_attempt }}"></td>
-            <td><input type="number" name="{{ player_state.player.id }}_made_2pt" min="0" value="{{ player_state.two_points_made }}"></td>
-            <td><input type="number" name="{{ player_state.player.id }}_attempt_3pt" min="0" value="{{ player_state.three_points_attempt }}"></td>
-            <td><input type="number" name="{{ player_state.player.id }}_made_3pt" min="0" value="{{ player_state.three_points_made }}"></td>
-            <td><input type="number" name="{{ player_state.player.id }}_attempt_ft" min="0" value="{{ player_state.FTA }}"></td>
-            <td><input type="number" name="{{ player_state.player.id }}_made_ft" min="0" value="{{ player_state.FTM }}"></td>
-            <td><input type="number" name="{{ player_state.player.id }}_oreb" min="0" value="{{ player_state.OREB }}"></td>
-            <td><input type="number" name="{{ player_state.player.id }}_dreb" min="0" value="{{ player_state.DREB }}"></td>
-            <td><input type="number" name="{{ player_state.player.id }}_ast" min="0" value="{{ player_state.AST }}"></td>
-            <td><input type="number" name="{{ player_state.player.id }}_stl" min="0" value="{{ player_state.STL }}"></td>
-            <td><input type="number" name="{{ player_state.player.id }}_blk" min="0" value="{{ player_state.BLK }}"></td>
-            <td><input type="number" name="{{ player_state.player.id }}_to" min="0" value="{{ player_state.TO }}"></td>
-            <td><input type="number" name="{{ player_state.player.id }}_pf" min="0" value="{{ player_state.PF }}"></td>
-        </tr>
-        {% endfor %}
-        {% endif %}
-    </table>
-    </form>
+    <div class="row page-content">
+        <div class="col s12 content-block">
+        <form id="edit_complete_stats" action="" method="post">
+            {% csrf_token %}
+            <h3>{% trans 'BOX_SCORE' %}<span>{% trans 'EDIT' %}</span></h3>
+            <div class="blockBg table">
+                <table class="scroll-left">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>{% trans 'Q1' %}</th>
+                            <th>{% trans 'Q2' %}</th>
+                            <th>{% trans 'Q3' %}</th>
+                            <th>{% trans 'Q4' %}</th>
+                            <th>{% trans 'OT' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody class="flexcroll-gray">
+                        <tr>
+                            <td>
+                                {{ team.name }}
+                                <input type="hidden" name="team_state_id" value="{{ team_state.id }}">
+                            </td>
+                            <td>
+                                <input type="number" name="my_q1" min="0" value="{{ team_state.first_quarter_score }}">
+                            </td>
+                            <td>
+                                <input type="number" name="my_q2" min="0" value="{{ team_state.second_quarter_score }}">
+                            </td>
+                            <td>
+                                <input type="number" name="my_q3" min="0" value="{{ team_state.third_quarter_score }}">
+                            </td>
+                            <td>
+                                <input type="number" name="my_q4" min="0" value="{{ team_state.fourth_quarter_score }}">
+                            </td>
+                            <td>
+                                <input type="number" name="my_ot" min="0" value="{{ team_state.overtime_score }}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{ game.opponent.name }}
+                                <input type="hidden" name="oppo_id" value="{{ game.opponent.id }}">
+                                <input type="hidden" name="oppo_state_id" value="{{ opponent_state.id }}">
+                            </td>
+                            <td>
+                                <input type="number" name="oppo_q1" min="0" value="{{ opponent_state.first_quarter_score }}">
+                            </td>
+                            <td>
+                                <input type="number" name="oppo_q2" min="0" value="{{ opponent_state.second_quarter_score }}">
+                            </td>
+                            <td>
+                                <input type="number" name="oppo_q3" min="0" value="{{ opponent_state.third_quarter_score }}">
+                            </td>
+                            <td>
+                                <input type="number" name="oppo_q4" min="0" value="{{ opponent_state.fourth_quarter_score }}">
+                            </td>
+                            <td>
+                                <input type="number" name="oppo_ot" min="0" value="{{ opponent_state.overtime_score }}">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>{% trans 'PLAYER_STATS' %}<span>{% trans 'EDIT' %}</span></h3>
+            <div class="blockBg scroll-left-horizontal flexcroll-gray">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>{% trans "NAME" %}</th>
+                            <th>{% trans "GS" %}</th>
+                            <th>{% trans "MINS" %}</th>
+                            <th>{% trans "2PTA" %}</th>
+                            <th>{% trans "2PTM" %}</th>
+                            <th>{% trans "3PTA" %}</th>
+                            <th>{% trans "3PTM" %}</th>
+                            <th>{% trans "FTA" %}</th>
+                            <th>{% trans "FTM" %}</th>
+                            <th>{% trans "OREB" %}</th>
+                            <th>{% trans "DREB" %}</th>
+                            <th>{% trans "AST" %}</th>
+                            <th>{% trans "STL" %}</th>
+                            <th>{% trans "BLK" %}</th>
+                            <th>{% trans "TO" %}</th>
+                            <th>{% trans "PF" %}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% if players %}
+                            {% for player_state in players_state %}
+                            <tr>
+                                <td>
+                                    {{ player_state.player.name }}
+                                    <input type="hidden" name="{{ player_state.player.id }}_player_state_id" value="{{ player_state.id }}">
+                                </td>
+                                {% if player_state.game_started %}
+                                <td><input type="checkbox" name="{{ player_state.player.id }}_started" value="1" checked></td>
+                                {% else %}
+                                <td><input type="checkbox" name="{{ player_state.player.id }}_started" value="1"></td>
+                                {% endif %}
+                                {% if player_state.game_played %}
+                                <!-- 2016.06.04 Revise as type="text" because of Chrome. -->
+                                <td><input type="text" name="{{ player_state.player.id }}_time" value="{{ player_state.time | time:"i:s" }}"></td>
+                                {% else %}
+                                <!-- 2016.06.04 Revise as type="text" because of Chrome. -->
+                                <td><input type="text" name="{{ player_state.player.id }}_time" value="00:00"></td>
+                                {% endif %}
+                                <td><input type="number" name="{{ player_state.player.id }}_attempt_2pt" min="0" value="{{ player_state.two_points_attempt }}"></td>
+                                <td><input type="number" name="{{ player_state.player.id }}_made_2pt" min="0" value="{{ player_state.two_points_made }}"></td>
+                                <td><input type="number" name="{{ player_state.player.id }}_attempt_3pt" min="0" value="{{ player_state.three_points_attempt }}"></td>
+                                <td><input type="number" name="{{ player_state.player.id }}_made_3pt" min="0" value="{{ player_state.three_points_made }}"></td>
+                                <td><input type="number" name="{{ player_state.player.id }}_attempt_ft" min="0" value="{{ player_state.FTA }}"></td>
+                                <td><input type="number" name="{{ player_state.player.id }}_made_ft" min="0" value="{{ player_state.FTM }}"></td>
+                                <td><input type="number" name="{{ player_state.player.id }}_oreb" min="0" value="{{ player_state.OREB }}"></td>
+                                <td><input type="number" name="{{ player_state.player.id }}_dreb" min="0" value="{{ player_state.DREB }}"></td>
+                                <td><input type="number" name="{{ player_state.player.id }}_ast" min="0" value="{{ player_state.AST }}"></td>
+                                <td><input type="number" name="{{ player_state.player.id }}_stl" min="0" value="{{ player_state.STL }}"></td>
+                                <td><input type="number" name="{{ player_state.player.id }}_blk" min="0" value="{{ player_state.BLK }}"></td>
+                                <td><input type="number" name="{{ player_state.player.id }}_to" min="0" value="{{ player_state.TO }}"></td>
+                                <td><input type="number" name="{{ player_state.player.id }}_pf" min="0" value="{{ player_state.PF }}"></td>
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div><!--end of table-->
+        </form>
+        </div><!-- end of halfBlock-->
+
+        <div class="col s12 btn-group">
+            <button class="btn" type="button" onclick="location.href='{% url 'mygames' game.team.id %}'">{% trans 'CANCEL' %}</button>
+            <button class="btn" type="submit" form="edit_complete_stats">{% trans 'SAVE' %}</button>
+        </div>
+    </div><!--end of page-content-->
+</div><!--end of content-->
 {% endblock %}

@@ -13,13 +13,23 @@ def index(request):
 def how_it_works(request):
     return render(request, 'how_it_works.html')
 
+# 2016.09.23 Privacy policy.
+def privacy_policy(request):
+    return render(request, 'privacy_policy.html')
+
 def login(request):
 
     # Get URL parameter.
     isInvited = request.GET.get('Invitation', False)
+    # 2016.08.12 League module.
+    isSeasonRegistration = request.GET.get('SeasonRegistration', False)
+
     if isInvited:
         t_id = request.GET.get('Team')
         p_id = request.GET.get('Player')
+    elif isSeasonRegistration:
+        l_id = request.GET.get('League')
+        s_id = request.GET.get('Season')
 
     if request.user.is_authenticated():
         if isInvited:
@@ -39,6 +49,9 @@ def login(request):
             if isInvited:
                 return redirect('invite_registration', 
                                 team_id=t_id, player_id=p_id)
+            elif isSeasonRegistration:
+                return redirect('season_registration', 
+                                league_id=l_id, season_id=s_id)
             else:
                 try:
                     team_id = Team.objects.filter(owners=request.user.id)[0].id
@@ -56,6 +69,12 @@ def login(request):
                 return render(request, 'login.html',
                               {'isInvited': isInvited, 'team_id': t_id,
                                'player_id': p_id})
+            elif isSeasonRegistration:
+                # 2016.08.12 League module.
+                messages.error(request, _('INCORRECT_EMAIL_OR_PASSWORD'))
+                return render(request, 'login.html',
+                              {'isSeasonRegistration': isSeasonRegistration, 
+                               'league_id': l_id, 'season_id': s_id})
             else:
                 # 2016.05.25 Message framework.
                 messages.error(request, _('INCORRECT_EMAIL_OR_PASSWORD'))
@@ -65,6 +84,10 @@ def login(request):
             return render(request, 'login.html',
                           {'isInvited': isInvited, 'team_id': t_id,
                            'player_id': p_id})
+        elif isSeasonRegistration:
+            return render(request, 'login.html',
+                          {'isSeasonRegistration': isSeasonRegistration, 
+                           'league_id': l_id, 'season_id': s_id})
         else:
             return render(request, 'login.html')
 
@@ -80,9 +103,15 @@ def register(request):
 
     # Get URL parameter.
     isInvited = request.GET.get('Invitation', False)
+    # 2016.08.12 League module.
+    isSeasonRegistration = request.GET.get('SeasonRegistration', False)
+
     if isInvited:
         t_id = request.GET.get('Team')
         p_id = request.GET.get('Player')
+    elif isSeasonRegistration:
+        l_id = request.GET.get('League')
+        s_id = request.GET.get('Season')
 
     if request.method == 'POST':
         firstname = request.POST.get('firstname', '')
@@ -106,6 +135,9 @@ def register(request):
             if isInvited:
                 return redirect('invite_registration',
                                 team_id=t_id, player_id=p_id)
+            elif isSeasonRegistration:
+                return redirect('season_registration_new',
+                                league_id=l_id, season_id=s_id)
             else:
                 return HttpResponseRedirect('/teams/myteams/')
         else:
@@ -114,6 +146,10 @@ def register(request):
         return render(request, 'register.html',
                       {'isInvited': isInvited, 'team_id': t_id,
                        'player_id': p_id})
+    elif isSeasonRegistration:
+        return render(request, 'register.html',
+                      {'isSeasonRegistration': isSeasonRegistration,
+                       'league_id': l_id, 'season_id': s_id})
     return render(request, 'register.html')
 
 def my_account(request):
@@ -121,6 +157,9 @@ def my_account(request):
         user = User.objects.get(pk=request.user.id)
         firstname = request.POST.get('firstname', '')
         lastname = request.POST.get('lastname', '')
+
+        print user.email
+
         try:
             user.first_name = firstname
             user.last_name = lastname

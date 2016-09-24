@@ -4,96 +4,122 @@
 {% load staticfiles %}
 
 {% block javascript %}
+<!--table sorter-->
+<script type="text/javascript" src="{% static 'js/jquery.tablesorter.js' %}"></script>
 
-function ConfirmDeletion(team_id, player_id)
-{
-    var result = confirm("Are you sure?");
-    if (result)
+<!--table sorter-->
+<script type="text/javascript">
+    $(function () {
+        // table sorter
+        $("#myTable").tablesorter({widgets: ['zebra']});
+    });
+</script>
+<script type="text/javascript">
+    function ConfirmDeletion(team_id, player_id)
     {
-        window.location = "/teams/myteams/"+team_id+"/players/"+player_id+"/delete/";
+        var result = confirm("Are you sure?");
+        if (result)
+        {
+            window.location = "/teams/myteams/"+team_id+"/players/"+player_id+"/delete/";
+        }
+        else { return false; }
     }
-    else { return false; }
-}
-
+</script>
 {% endblock %}
 
-{% block navigation %}
-    {% include 'navigation.html' %}
+{% block header %}
+    {% include 'new_navigation.html' %}
 {% endblock %}
 
 {% block content %}
+<div class="content">
     {% include 'teams/team_info.html' %}
 
     <!-- 2016.05.24 Message framework. -->
     {% if messages %}
         {% for message in messages %}
             {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-            <p style="color: green">{{ message }}</p>
+            <p class="MSG-info">{{ message }}</p>
             {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-            <p style="color: red">{{ message }}</p>
+            <p class="MSG-info">{{ message }}</p>
             {% endif %}
         {% endfor %}
     {% endif %}
 
-    <div id="BodyHeadline" style="float: left; width: 80.5vw">{% trans "ROSTER" %}</div>
-    <div style="float: left; width: 3vw">
-        {% if is_admin %}
-            <a href="{% url 'create_player' team.id %}">
-                <img src="{% static "images/add-icon" %}" width="25px"/>
-            </a>
+    <div class="row page-content">
+        <div class="col s12 m12 l1"></div>
+        <div class="col s12 m12 l10 content-block">
+            <h3>{% trans 'ROSTER' %}</h3>
+            <div class="contentBtn">
+                {% if is_admin %}
+                <a class="iconBtn icon-add" href="{% url 'create_player' team.id %}"></a>
+                {% endif %}
+            </div>
+            {% if not players %}
+            <div class="blockBg blank blockBottom" style="display:block;">
+                <img src="{% static 'images/Arrow-PNG.png' %}">
+                <h1>{% trans 'CREATE' %}{% trans 'PLAYER' %}</h1>
+            </div>
+            {% else %}
+            <div class="blockBg table">
+                <table id="myTable" class="scroll-left tablesorter">
+                    <thead>
+                        <tr>
+                            <th class="th-memberPic">&nbsp;</th>
+                            <th>{% trans 'NAME' %}</th>
+                            <th>{% trans 'POSITION' %}</th>
+                            <th class="header2">{% trans 'HEIGHT' %}</th>
+                            <th class="header2">{% trans 'WEIGHT' %}</th>
+                            <th class="header2">{% trans 'NUMBER' %}</th>
+                            <th class="header2">{% trans 'BIRTHDAY' %}</th>
+                            <th>{% trans 'ACTIONS' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody class="flexcroll-gray">
+                        {% for player in players %}
+                        <tr>
+                            <td data-title="日期">
+                                <a href="{% url 'player_summary' team.id player.id %}"><div class="memberPic">
+                                    {% if player.figure %}
+                                    <img src="{{ player.figure.url }}" alt="member">
+                                    {% else %}
+                                    <img src="{% static 'images/pic_member.jpg' %}" alt="member">
+                                    {% endif %}
+                                </div></a>
+                            </td>
+                            <td data-title="姓名"><a href="{% url 'player_summary' team.id player.id %}">{{ player.name }}</a></td>
+                            <td data-title="位置">
+                                {% if player.position == 1 %}
+                                {% trans 'GUARD' %}
+                                {% elif player.position == 2 %}
+                                {% trans 'FORWARD' %}
+                                {% else %}
+                                {% trans 'CENTER' %}
+                                {% endif %}
+                            </td>
+                            <td data-title="身高">{{ player.height }}</td>
+                            <td data-title="體重">{{ player.weight }}</td>
+                            <td data-title="背號">{{ player.number }}</td>
+                            <td data-title="生日">{{ player.birthday|date:'Y/m/d' }}</td>
+                            <td class="edit" data-title="動作">
+                                {% if is_admin or player.user == request.user %}
+                                <a href="{% url 'edit_player' team.id player.id %}"><img src="{% static 'images/icon_edit.png' %}"></a>
+                                {% endif %}
+                                {% if is_admin %}
+                                <a href="javascript: return false;" onclick="return ConfirmDeletion({{ team.id }}, {{ player.id }})"><img src="{% static 'images/icon_delete.png' %}"></a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div><!--end of table-->
         {% endif %}
-    </div>
-    <div style="clear: both">
-        {% if players %}
-        <table width="100%">
-            <tr>
-                <th></th>
-                <th>{% trans "NAME" %}</th>
-                <th>{% trans "POSITION" %}</th>
-                <th>{% trans "HEIGHT" %}</th>
-                <th>{% trans "WEIGHT" %}</th>
-                <th>{% trans "NUMBER" %}</th>
-                <th>{% trans "BIRTHDAY" %}</th>
-                <th>{% trans "ACTIONS" %}</th>
-            </tr>
-            {% for player in players %}
-                <tr>
-                    {% if player.figure %}
-                        <td>
-                            <img src="{{ player.figure.url }}" height="30px" width="30px"/>
-                        </td>
-                    {% else %}
-                        <td>
-                            <img src="{% static "images/default-player" %}" height="30px" width="30px"/>
-                        </td>
-                    {% endif %}
-                    <td>
-                        <a href="{% url 'player_summary' team.id player.id %}">{{ player.name }}</a>
-                    </td>
-                    {% if player.position == 1 %}
-                        <td>{% trans "GUARD" %}</td>
-                    {% elif player.position == 2 %}
-                        <td>{% trans "FORWARD" %}</td>
-                    {% else %}
-                        <td>{% trans "CENTER" %}</td>
-                    {% endif %}
-                    <td>{{ player.height }}</td>
-                    <td>{{ player.weight }}</td>
-                    <td>{{ player.number }}</td>
-                    <td>{{ player.birthday|date:"Y-m-d" }}</td>
-                    <td>
-                        {% if is_admin or player.user == request.user %}
-                            <a href="{% url 'edit_player' team.id player.id %}">{% trans "EDIT" %}</a>
-                        {% endif %}
-                        {% if is_admin %}
-                            <a href="javascript: return false;" onclick="return ConfirmDeletion({{ team.id }}, {{ player.id }})">{% trans "DELETE" %}</a>
-                        {% endif %}
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
-        {% else %}
-            <p>{% trans "NO_PLAYER" %}</p>
-        {% endif %}
-    </div>
+        </div><!-- end of halfBlock-->
+    </div><!--end of page-content-->
+</div><!--end of content-->
+{% endblock %}
+
+{% block donut %}
+    {% include 'donut.html' %}
 {% endblock %}

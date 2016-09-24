@@ -1,0 +1,23 @@
+@-moz-document url-prefix() {
+	/* firefox-specific styles go here */ 
+    .css-moz.mainPic-bg {
+  		margin-left: 0;
+  		width: 50%;
+    }
+    .css-moz.mainPic {
+  		width: 102%;
+    }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+   /* IE10-specific styles go here */
+   .css-moz.mainPic-bg {
+  		margin-left: 0;
+  		width: 50%;
+    }
+    .css-moz.mainPic {
+  		width: 102%;
+    }
+}
+
+

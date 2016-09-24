@@ -3,128 +3,161 @@
 {% load i18n %}
 
 {% block javascript %}
+<script type="text/javascript">
+    function HideTotShowAvg() {
+        document.getElementById('avg').style.display = "block";
+        document.getElementById('tot').style.display = "none";
+    }
 
-function HideTotShowAvg() {
-    document.getElementById('avg').style.display = "block";
-    document.getElementById('tot').style.display = "none";
-}
-
-function HideAvgShowTot() {
-    document.getElementById('avg').style.display = "none";
-    document.getElementById('tot').style.display = "block";
-}
-
+    function HideAvgShowTot() {
+        document.getElementById('avg').style.display = "none";
+        document.getElementById('tot').style.display = "block";
+    }
+</script>
 {% endblock %}
 
-{% block navigation %}
-    {% include 'navigation.html' %}
+{% block header %}
+    {% include 'new_navigation.html' %}
 {% endblock %}
 
 {% block content %}
+<div class="content">
     {% include 'teams/team_info.html' %}
-    <div id="BodyHeadline" style="float: left">{% trans "STATS" %}</div>
-    <button type="button" id="btnTot" onclick="HideAvgShowTot()" style="float: right">{% trans "TOTAL" %}</button>
-    <button type="button" id="btnAvg" onclick="HideTotShowAvg()" style="float: right; margin-right: 0.5vw;">{% trans "AVERAGE" %}</button>
     {% if stats %}
-    <div id="avg" style="display: block">
-        <table width="100%">
-            <tr>
-                <th>{% trans "PTS" %}</th>
-                <th>{% trans "FG" %}</th>
-                <th>{% trans "3PTS" %}</th>
-                <th>{% trans "FT" %}</th>
-                <th>{% trans "REB" %}</th>
-            </tr>
-            <tr>
-                <td rowspan="4" style="font-size: 24px">{{ PPG | floatformat:1 }}</td> <!-- # 2016.04.13 Normalize variable. -->
-                <td>{% trans "ATTEMPT" %}</td>
-                <td>{% trans "ATTEMPT" %}</td>
-                <td>{% trans "ATTEMPT" %}</td>
-                <td>{% trans "OREB" %}</td>
-            </tr>
-            <tr>
-                <td style="font-size: 24px">{{ FGA_avg|floatformat:1 }}</td>
-                <td style="font-size: 24px">{{ threePTSA_avg|floatformat:1  }}</td>
-                <td style="font-size: 24px">{{ FTA_avg|floatformat:1  }}</td>
-                <td style="font-size: 24px">{{ oreb_avg | floatformat:1 }}</td>
-            </tr>
-            <tr>
-                <td>{% trans "FG%" %}</td>
-                <td>{% trans "3PTS%" %}</td>
-                <td>{% trans "FT%" %}</td>
-                <td>{% trans "DREB" %}</td>
-            </tr>
-            <tr>
-                <td style="font-size: 24px">{{ FG | floatformat:1 }}%</td> <!-- # 2016.04.13 Normalize variable. -->
-                <td style="font-size: 24px">{{ three_points_percentage | floatformat:1 }}%</td>
-                <td style="font-size: 24px">{{ free_throw_percentage | floatformat:1 }}%</td>
-                <td style="font-size: 24px">{{ dreb_avg | floatformat:1 }}</td>
-            </tr>
-            <tr>
-                <th>{% trans "AST" %}</th>
-                <th>{% trans "STL" %}</th>
-                <th>{% trans "BLK" %}</th>
-                <th>{% trans "TO" %}</th>
-                <th>{% trans "PF" %}</th>
-            </tr>
-            <tr>
-                <td style="font-size: 24px">{{ AST | floatformat:1 }}</td> <!-- # 2016.04.13 Normalize variable. -->
-                <td style="font-size: 24px">{{ stl_avg | floatformat:1 }}</td>
-                <td style="font-size: 24px">{{ blk_avg | floatformat:1 }}</td>
-                <td style="font-size: 24px">{{ to_avg | floatformat:1 }}</td>
-                <td style="font-size: 24px">{{ pf_avg | floatformat:1 }}</td>
-            </tr>
-        </table>
-    </div>
-    <div id="tot" style="display: none">
-        <table width="100%">
-            <tr>
-                <th>{% trans "PTS" %}</th>
-                <th>{% trans "FG" %}</th>
-                <th>{% trans "3PTS" %}</th>
-                <th>{% trans "FT" %}</th>
-                <th>{% trans "REB" %}</th>
-            <tr>
-                <td rowspan="4" style="font-size: 24px">{{ stats.PTS }}</td> <!-- # 2016.04.13 Normalize variable. -->
-                <td>{% trans "ATTEMPT" %}</td>
-                <td>{% trans "ATTEMPT" %}</td>
-                <td>{% trans "ATTEMPT" %}</td>
-                <td>{% trans "OREB" %}</td>
-            <tr>
-                <td style="font-size: 24px">{{ stats.two_points_attempt|add:stats.three_points_attempt }}</td>
-                <td style="font-size: 24px">{{ stats.three_points_attempt }}</td>
-                <td style="font-size: 24px">{{ stats.FTA }}</td>
-                <td style="font-size: 24px">{{ stats.OREB }}</td>
-            </tr>
-            <tr>
-                <td>{% trans "MADE" %}</td>
-                <td>{% trans "MADE" %}</td>
-                <td>{% trans "MADE" %}</td>
-                <td>{% trans "DREB" %}</td>
-            </tr>
-            <tr>
-                <td style="font-size: 24px">{{ stats.two_points_made|add:stats.three_points_made }}</td> <!-- # 2016.04.13 Normalize variable. -->
-                <td style="font-size: 24px">{{ stats.three_points_made }}</td>
-                <td style="font-size: 24px">{{ stats.FTM }}</td>
-                <td style="font-size: 24px">{{ stats.DREB }}</td>
-            </tr>
-            <tr>
-                <th>{% trans "AST" %}</th>
-                <th>{% trans "STL" %}</th>
-                <th>{% trans "BLK" %}</th>
-                <th>{% trans "TO" %}</th>
-                <th>{% trans "PF" %}</th>
-            </tr>
-            <tr>
-                <td style="font-size: 24px">{{ stats.AST }}</td> <!-- # 2016.04.13 Normalize variable. -->
-                <td style="font-size: 24px">{{ stats.STL }}</td>
-                <td style="font-size: 24px">{{ stats.BLK }}</td>
-                <td style="font-size: 24px">{{ stats.TO }}</td>
-                <td style="font-size: 24px">{{ stats.PF }}</td>
-            </tr>
-        </table>
-    </div>
+    <div class="row page-content">
+        <div class="col s12 m12 l1"></div>
+        <div class="col s12 m12 l10 content-block">
+            <h3>{% trans 'STATS' %}</h3>
+            <div class="subNav-Btn contentBtn">
+                <button class="btn btn-brown" type="button" id="btnAvg" onclick="HideTotShowAvg()" >{% trans 'AVERAGE' %}</button>
+                <button class="btn btn-brown" type="button" id="btnTot" onclick="HideAvgShowTot()" >{% trans 'TOTAL' %}</button>
+            </div>
+
+            <div id="avg" class="blockBg table scroll-left-horizontal-400 flexcroll-gray" style="display:block;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>{% trans 'PTS' %}</th>
+                            <th>{% trans 'FG' %}</th>
+                            <th>{% trans '3PTS' %}</th>
+                            <th>{% trans 'FT' %}</th>
+                            <th>{% trans 'REB' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="4">{{ PPG|floatformat:1 }}</td>
+                            <td class="td-subtitle">{% trans 'ATTEMPT' %}</td>
+                            <td class="td-subtitle">{% trans 'ATTEMPT' %}</td>
+                            <td class="td-subtitle">{% trans 'ATTEMPT' %}</td>
+                            <td class="td-subtitle">{% trans 'OREB' %}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ FGA_avg|floatformat:1 }}</td>
+                            <td>{{ threePTSA_avg|floatformat:1 }}</td>
+                            <td>{{ FTA_avg|floatformat:1 }}</td>
+                            <td>{{ oreb_avg|floatformat:1 }}</td>
+                        </tr>
+                        <tr>
+                            <td class="td-subtitle">{% trans 'FG%' %}</td>
+                            <td class="td-subtitle">{% trans '3PTS%' %}</td>
+                            <td class="td-subtitle">{% trans 'FT%' %}</td>
+                            <td class="td-subtitle">{% trans 'DREB' %}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ FG|floatformat:1 }}%</td>
+                            <td>{{ three_points_percentage|floatformat:1 }}%</td>
+                            <td>{{ free_throw_percentage|floatformat:1 }}%</td>
+                            <td>{{ dreb_avg|floatformat:1 }}</td>
+                        </tr>
+                    </tbody>
+                    <thead class="bordertop">
+                        <tr>
+                            <th>{% trans 'AST' %}</th>
+                            <th>{% trans 'STL' %}</th>
+                            <th>{% trans 'BLK' %}</th>
+                            <th>{% trans 'TO' %}</th>
+                            <th>{% trans 'PF' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ AST|floatformat:1 }}</td>
+                            <td>{{ stl_avg|floatformat:1 }}</td>
+                            <td>{{ blk_avg|floatformat:1 }}</td>
+                            <td>{{ to_avg|floatformat:1 }}</td>
+                            <td>{{ pf_avg|floatformat:1 }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!--end of table-->
+
+            <div id="tot" class="blockBg table scroll-left-horizontal-400 flexcroll-gray" style="display:none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>{% trans 'PTS' %}</th>
+                            <th>{% trans 'FG' %}</th>
+                            <th>{% trans '3PTS' %}</th>
+                            <th>{% trans 'FT' %}</th>
+                            <th>{% trans 'REB' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="4">{{ stats.PTS }}</td>
+                            <td class="td-subtitle">{% trans 'ATTEMPT' %}</td>
+                            <td class="td-subtitle">{% trans 'ATTEMPT' %}</td>
+                            <td class="td-subtitle">{% trans 'ATTEMPT' %}</td>
+                            <td class="td-subtitle">{% trans 'OREB' %}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ stats.two_points_attempt|add:stats.three_points_attempt }}</td>
+                            <td>{{ stats.three_points_attempt }}</td>
+                            <td>{{ stats.FTA }}</td>
+                            <td>{{ stats.OREB }}</td>
+                        </tr>
+                        <tr>
+                            <td class="td-subtitle">{% trans 'MADE' %}</td>
+                            <td class="td-subtitle">{% trans 'MADE' %}</td>
+                            <td class="td-subtitle">{% trans 'MADE' %}</td>
+                            <td class="td-subtitle">{% trans 'DREB' %}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ stats.two_points_made|add:stats.three_points_made }}</td>
+                            <td>{{ stats.three_points_made }}</td>
+                            <td>{{ stats.FTM }}</td>
+                            <td>{{ stats.DREB }}</td>
+                        </tr>
+                    </tbody>
+                    <thead class="bordertop">
+                        <tr>
+                            <th>{% trans 'AST' %}</th>
+                            <th>{% trans 'STL' %}</th>
+                            <th>{% trans 'BLK' %}</th>
+                            <th>{% trans 'TO' %}</th>
+                            <th>{% trans 'PF' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ stats.AST }}</td>
+                            <td>{{ stats.STL }}</td>
+                            <td>{{ stats.BLK }}</td>
+                            <td>{{ stats.TO }}</td>
+                            <td>{{ stats.PF }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!--end of table-->
+        </div><!-- end of content-block-->
+    </div><!--end of page-content-->
+</div><!--end of content-->
     {% else %}
         <p>{% trans "NO_STATS" %}</p>
     {% endif %}
+{% endblock %}
+
+{% block donut %}
+    {% include 'donut.html' %}
 {% endblock %}

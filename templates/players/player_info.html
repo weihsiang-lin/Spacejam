@@ -1,49 +1,51 @@
 {% load i18n %}
 {% load staticfiles %}
-    <div id="TeamInfo">
-        <div id="TeamImage">
+<div class="row main-Info member-mainInfo">
+    <div class="col s12 schedule-time">
+        <h3>
+            <span>{% trans 'HEIGHT' %}</span>
+            {{ player.height }}{% trans 'CM' %}
+        </h3>
+        <h3>
+            <span>{% trans 'WEIGHT' %}</span>
+            {{ player.weight }}{% trans 'KG' %}
+        </h3>
+        <h3>
+            <span>{% trans 'BIRTHDAY' %}</span>
+            {{ player.birthday|date:"Y/m/d" }}
+        </h3>
+    </div>
+    <div class="col s12 m12 l6 main-title">
+        <div class="memberPic">
             {% if player.figure %}
-                <img src="{{ player.figure.url }}">
+            <img src="{{ player.figure.url }}" alt="member">
             {% else %}
-                <img src="{% static "images/default-player"%}">
+            <img src="{% static 'images/pic_member.jpg' %}" alt="member">
             {% endif %}
         </div>
-        <div id="TeamName" style="line-height: 20vh">
-            {{ player.number }} | {{ player.name }}
-            <div style="line-height: 0vh; font-size: 1rem">
-                {% if player.position == 1 %}
-                    {% trans "GUARD" %} 
-                {% elif player.position == 2 %}
-                    {% trans "FORWARD" %}
-                {% else %}
-                    {% trans "CENTER" %} 
-                {% endif %}
-                / <a href="{% url 'team_summary' team.id %}">{{ team.name }}</a>
+        <h1>{{ player.name }}</h1>
+        <p>
+            {% if player.position == 1 %}
+            {% trans 'GUARD' %}
+            {% elif player.position == 2 %}
+            {% trans 'FORWARD' %}
+            {% else %}
+            {% trans 'CENTER' %}
+            {% endif %}  /  <a href="{% url 'team_summary' team.id %}">{{ team.name }}</a>
+        </p>
+        {% for admin in team.administrators.all %}
+            {% if request.user == admin or request.user == player.user %}
+            <div class="iconBtn-group">
+                <a class="iconBtn icon-edit" href="{% url 'edit_player' team.id player.id %}"></a>
             </div>
-        </div>
-        <div id="TeamStats">
-            <div style="height: 12.5vh">
-                <div style="padding-top: 10px">{% trans "HEIGHT" %}: {{ player.height }} {% trans "CM" %}</div>
-                <div>{% trans "WEIGHT" %}: {{ player.weight }} {% trans "KG" %}</div>
-                <div>{% trans "BIRTHDAY" %}: {{ player.birthday|date:"Y-m-d" }}</div>
-            </div>
-            <div id="TeamAvgStats">
-                <div>
-                    {% trans "PPG" %}<br>
-                    <p>{{ career_PTS_avg|floatformat:1 }}</p>
-                </div>
-                <div>
-                    {% trans "FG%PG" %}<br>
-                    <p>{{ career_FG_avg|floatformat:1 }}%</p>
-                </div>
-                <div>
-                    {% trans "APG" %}<br>
-                    <p>{{ career_AST_avg|floatformat:1 }}</p>
-                </div>
-                <div>
-                    {% trans "RPG" %}<br>
-                    <p>{{ career_REB_avg|floatformat:1 }}</p>
-                </div>
-            </div>
-        </div>
+            {% endif %}
+        {% endfor %}
     </div>
+
+    <div class="col s12 m12 l6 main-analysis">
+        <div id="chart1" class="donut"></div>
+        <div id="chart2" class="donut"></div>
+        <div id="chart3" class="donut"></div>
+        <div id="chart4" class="donut"></div>
+    </div>
+</div>

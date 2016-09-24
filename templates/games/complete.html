@@ -7,39 +7,65 @@
     <meta property="og:url" content="http://{{ request.META.HTTP_HOST }}{% url 'complete_game' team.id game.id %}" />
 {% endblock %}
 
-{% block navigation %}
-    {% include 'navigation.html' %}
+{% block javascript %}
+
+<!--table sorter-->
+<script type="text/javascript" src="{% static 'js/jquery.tablesorter.js' %}"></script>
+
+<!--table sorter-->
+<script type="text/javascript">
+    $(function () {
+        // table sorter
+        $("#myTable").tablesorter({widgets: ['zebra']});
+    });
+</script>
+
+{% endblock %}
+
+{% block header %}
+    {% include 'new_navigation.html' %}
 {% endblock %}
 
 {% block content %}
-    <div id="TeamInfo">
-        <div style="float: left; padding-top: 10px">{% trans "DATE" %}: {{ game.time | date:"Y-m-d" }} {% trans "TIME" %}: {{ game.time | time:"H:i" }}</div>
-        <div style="float: left; padding-left: 10px; padding-top: 10px;">
-            <a href="javascript: void(window.open('http://www.facebook.com/share.php?u='.concat(encodeURIComponent('http://{{ request.META.HTTP_HOST }}{% url 'complete_game' team.id game.id %}'))));">{% trans "SHARE_TO_FB" %}</a>
-            {% if is_admin %}
-                <a href="{% url 'edit_complete_game' team.id game.id %}">{% trans "EDIT" %}</a>
-            {% endif %}
+<div class="content">
+    <div class="main-Info schedule-mainInfo">
+        <div class="schedule-time">
+            <h3>
+                <span>{% trans 'DATE' %}</span>
+                {{ game.time|date:'Y/m/d' }}
+            </h3>
+            <h3>
+                <span>{% trans 'TIME' %}</span>
+                {{ game.time|time:'H:i' }}
+            </h3>
         </div>
-        <div id="GameStats">
-            <div id="GameStatsTeamName" style="text-align: right">{{ game.team.name }}</div>
-            <div id="GameStatsTeamScore" style="margin-left: 1vw">{{ team_state.PTS }}</div>
-            <div id="GameStatsTeamImage" style="margin-left: 0.5vw">
+        <div class="main-title">
+            <div class="teamName">
                 {% if game.team.figure %}
-                <img src="{{ game.team.figure.url }}" />
+                <img src="{{ game.team.figure.url }}" alt="teamLogo">
                 {% else %}
-                <img src="{% static "images/images.jpeg" %}" />
+                <img src="{% static 'images/pic_team.png' %}" alt="teamLogo">
                 {% endif %}
+                <h1>{{ game.team.name }}</h1>
             </div>
-            <div id="GameStatsVersus">vs.</div>
-            <div id="GameStatsTeamImage" style="margin-right: 0.5vw">
+            <div class="VSscore">
+                <h2>{{ team_state.PTS }}</h2>
+                <p>VS.</p>
+                <h2>{{ oppo_state.score }}</h2>
+            </div>
+            <div class="teamName">
                 {% if game.opponent.figure %}
-                <img src="{{ game.opponent.figure.url }}" />
+                <img src="{{ game.opponent.figure.url }}" alt="teamLogo">
                 {% else %}
-                <img src="{% static "images/images.jpeg" %}" />
+                <img src="{% static 'images/pic_team.png' %}" alt="teamLogo">
                 {% endif %}
+                <h1>{{ game.opponent.name }}</h1>
             </div>
-            <div id="GameStatsTeamScore" style="margin-right: 1vw; text-align: right">{{ oppo_state.score }}</div>
-            <div id="GameStatsTeamName">{{ game.opponent.name }}</div>
+
+            <div class="iconBtn-group">
+                <a class="iconBtn icon-edit" href="{% url 'edit_complete_game' team.id game.id %}"></a>
+                <a class="iconBtn icon-fb" href="javascript: void(window.open('http://www.facebook.com/share.php?u='.concat(encodeURIComponent('http://{{ request.META.HTTP_HOST }}{% url 'complete_game' team.id game.id %}'))));"></a>
+            </div>
         </div>
     </div>
 
@@ -54,124 +80,130 @@
         {% endfor %}
     {% endif %}
 
-    <div id="BodyHeadline" style="margin-top: 10px">{% trans "BOX_SCORE" %}</div>
-    <div>
-        <!-- Score -->
-        <table style="width: 100%">
-            <tr>
-                <th width="20%"></th>
-                <th width="12%">{% trans "Q1" %}</th>
-                <th width="12%">{% trans "Q2" %}</th>
-                <th width="12%">{% trans "Q3" %}</th>
-                <th width="12%">{% trans "Q4" %}</th>
-                <th width="12%">{% trans "OT" %}</th>
-                <th>{% trans "TOTAL" %}</th>
-            </tr>
-            <tr>
-                <td>{{ team.name }}</td>
-                <td>{{ team_state.first_quarter_score }}</td>
-                <td>{{ team_state.second_quarter_score }}</td>
-                <td>{{ team_state.third_quarter_score }}</td>
-                <td>{{ team_state.fourth_quarter_score }}</td>
-                <td>{{ team_state.overtime_score }}</td>
-                <td>{{ team_state.PTS }}</td>
-            </tr>
-            <tr>
-                <td>{{ game.opponent.name }}</td>
-                <td>{{ oppo_state.first_quarter_score }}</td>
-                <td>{{ oppo_state.second_quarter_score }}</td>
-                <td>{{ oppo_state.third_quarter_score }}</td>
-                <td>{{ oppo_state.fourth_quarter_score }}</td>
-                <td>{{ oppo_state.overtime_score }}</td>
-                <td>{{ oppo_state.score }}</td>
-            </tr>
-        </table>
-    </div>
-    <div id="BodyHeadline" style="margin-top: 10px">{% trans "PLAYER_STATS" %}</div>
-    <div>
-        <!-- Player stats -->
-        <table style="width: 100%">
-            <tr>
-                <th>{% trans "NAME" %}</th>
-                <th>{% trans "GS" %}</th>
-                <th>{% trans "MINS" %}</th>
-                <th>{% trans "FG" %}</th>
-                <th>{% trans "FG%" %}</th>
-                <th>{% trans "3PTS" %}</th>
-                <th>{% trans "3PTS%" %}</th>
-                <th>{% trans "FT" %}</th>
-                <th>{% trans "FT%" %}</th>
-                <th>{% trans "OREB" %}</th>
-                <th>{% trans "DREB" %}</th>
-                <th>{% trans "REB" %}</th>
-                <th>{% trans "AST" %}</th>
-                <th>{% trans "STL" %}</th>
-                <th>{% trans "BLK" %}</th>
-                <th>{% trans "TO" %}</th>
-                <th>{% trans "PF" %}</th>
-                <th>{% trans "PTS" %}</th>
-            </tr>
-            {% if players_state_per_game %}
-                {% for player_state_per_game in players_state_per_game|dictsortreversed:"game_started" %}
-                    <tr>
-                        <td>{{ player_state_per_game.player.name }}</td>
-                        {% if player_state_per_game.game_started %}
+    <div class="row page-content">
+        <div class="col s12 content-block">
+            <h3>{% trans 'BOX_SCORE' %}</h3>
+            <!-- Score -->
+            <div class="blockBg table">
+                <table class="scroll-left">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>{% trans "Q1" %}</th>
+                            <th>{% trans "Q2" %}</th>
+                            <th>{% trans "Q3" %}</th>
+                            <th>{% trans "Q4" %}</th>
+                            <th>{% trans "OT" %}</th>
+                            <th>{% trans "TOTAL" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody class="flexcroll-gray">
+                        <tr>
+                            <td>{{ team.name }}</td>
+                            <td>{{ team_state.first_quarter_score }}</td>
+                            <td>{{ team_state.second_quarter_score }}</td>
+                            <td>{{ team_state.third_quarter_score }}</td>
+                            <td>{{ team_state.fourth_quarter_score }}</td>
+                            <td>{{ team_state.overtime_score }}</td>
+                            <td>{{ team_state.PTS }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ game.opponent.name }}</td>
+                            <td>{{ oppo_state.first_quarter_score }}</td>
+                            <td>{{ oppo_state.second_quarter_score }}</td>
+                            <td>{{ oppo_state.third_quarter_score }}</td>
+                            <td>{{ oppo_state.fourth_quarter_score }}</td>
+                            <td>{{ oppo_state.overtime_score }}</td>
+                            <td>{{ oppo_state.score }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3>{% trans 'PLAYER_STATS' %}</h3>
+            <div class="blockBg scroll-left-horizontal flexcroll-gray">
+                <table id="myTable" class="tablesorter">
+                    <thead>
+                        <tr>
+                            <th>{% trans "NAME" %}</th>
+                            <th>{% trans "GS" %}</th>
+                            <th class="header2">{% trans "MINS" %}</th>
+                            <th class="header2">{% trans "FG" %}</th>
+                            <th class="header2">{% trans "FG%" %}</th>
+                            <th class="header2">{% trans "3PTS" %}</th>
+                            <th class="header2">{% trans "3PTS%" %}</th>
+                            <th class="header2">{% trans "FT" %}</th>
+                            <th class="header2">{% trans "FT%" %}</th>
+                            <th class="header2">{% trans "OREB" %}</th>
+                            <th class="header2">{% trans "DREB" %}</th>
+                            <th class="header2">{% trans "REB" %}</th>
+                            <th class="header2">{% trans "AST" %}</th>
+                            <th class="header2">{% trans "STL" %}</th>
+                            <th class="header2">{% trans "BLK" %}</th>
+                            <th class="header2">{% trans "TO" %}</th>
+                            <th class="header2">{% trans "PF" %}</th>
+                            <th class="header2">{% trans "PTS" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% if players_state_per_game %}
+                        {% for player_state_per_game in players_state_per_game|dictsortreversed:"game_started" %}
+                        <tr>
+                            <td>{{ player_state_per_game.player.name }}</td>
+                            {% if player_state_per_game.game_started %}
                             <td>V</td>
-                        {% else %}
-                            <td></td>
-                        {% endif %}
-                        <td>{{ player_state_per_game.time | time:"i:s" }}</td>
-                       <td>
-                           {{ player_state_per_game.two_points_made|add:player_state_per_game.three_points_made }}-{{ player_state_per_game.two_points_attempt|add:player_state_per_game.three_points_attempt }}
-                       </td>
-                       <td>{% widthratio player_state_per_game.two_points_made|add:player_state_per_game.three_points_made player_state_per_game.two_points_attempt|add:player_state_per_game.three_points_attempt 100 %}%</td>
-                       <td>
-                           {{ player_state_per_game.three_points_made }}-{{ player_state_per_game.three_points_attempt }}
-                       </td>
-                       <td>{% widthratio player_state_per_game.three_points_made player_state_per_game.three_points_attempt 100 %}%</td>
-                       <td>
-                           {{ player_state_per_game.FTM }}-{{ player_state_per_game.FTA }}
-                       </td>
-                       <td>{% widthratio player_state_per_game.FTM player_state_per_game.FTA 100%}%</td>
-                       <td>{{ player_state_per_game.OREB }}</td>
-                       <td>{{ player_state_per_game.DREB }}</td>
-                       <td>{{ player_state_per_game.REB }}</td>
-                       <td>{{ player_state_per_game.AST }}</td>
-                       <td>{{ player_state_per_game.STL }}</td>
-                       <td>{{ player_state_per_game.BLK }}</td>
-                       <td>{{ player_state_per_game.TO }}</td>
-                       <td>{{ player_state_per_game.PF }}</td>
-                       <td>{{ player_state_per_game.PTS }}</td>
-                   </tr>
-               {% endfor %}
-               <tr>
-                   <th colspan="18" style="text-align: left">{% trans "TOTAL" %}</th>
-               </tr>
-               <tr>
-                   <td>-</td>
-                   <td>-</td>
-                   <td>{{ total_team_time }}</td>
-                   <td>
-                       {{ team_state.two_points_made|add:team_state.three_points_made }}-{{ team_state.two_points_attempt|add:team_state.three_points_attempt }}
-                   </td>
-                   <td>{% widthratio team_state.two_points_made|add:team_state.three_points_made team_state.two_points_attempt|add:team_state.three_points_attempt 100 %}%</td>
-                   <td>
-                       {{ team_state.three_points_made }}-{{ team_state.three_points_attempt }}
-                   </td>
-                   <td>{% widthratio team_state.three_points_made team_state.three_points_attempt 100 %}%</td>
-                   <td>{{ team_state.FTM }}-{{ team_state.FTA }}</td>
-                   <td>{% widthratio team_state.FTM team_state.FTA 100 %}%</td>
-                   <td>{{ team_state.OREB }}</td>
-                   <td>{{ team_state.DREB }}</td>
-                   <td>{{ team_state.REB }}</td>
-                   <td>{{ team_state.AST }}</td>
-                   <td>{{ team_state.STL }}</td>
-                   <td>{{ team_state.BLK }}</td>
-                   <td>{{ team_state.TO }}</td>
-                   <td>{{ team_state.PF }}</td>
-                   <td>{{ team_state.PTS }}</td>
-                </tr>
-            {% endif %}
-        </table>
-    </div>
+                            {% else %}
+                            <td>&nbsp;</td>
+                            {% endif %}
+                            <td>{{ player_state_per_game.time | time:"i:s" }}</td>
+                            <td>{{ player_state_per_game.two_points_made|add:player_state_per_game.three_points_made }}-{{ player_state_per_game.two_points_attempt|add:player_state_per_game.three_points_attempt }}</td>
+                            <td>{% widthratio player_state_per_game.two_points_made|add:player_state_per_game.three_points_made player_state_per_game.two_points_attempt|add:player_state_per_game.three_points_attempt 100 %}%</td>
+                            <td>{{ player_state_per_game.three_points_made }}-{{ player_state_per_game.three_points_attempt }}</td>
+                            <td>{% widthratio player_state_per_game.three_points_made player_state_per_game.three_points_attempt 100 %}%</td>
+                            <td>{{ player_state_per_game.FTM }}-{{ player_state_per_game.FTA }}</td>
+                            <td>{% widthratio player_state_per_game.FTM player_state_per_game.FTA 100%}%</td>
+                            <td>{{ player_state_per_game.OREB }}</td>
+                            <td>{{ player_state_per_game.DREB }}</td>
+                            <td>{{ player_state_per_game.REB }}</td>
+                            <td>{{ player_state_per_game.AST }}</td>
+                            <td>{{ player_state_per_game.STL }}</td>
+                            <td>{{ player_state_per_game.BLK }}</td>
+                            <td>{{ player_state_per_game.TO }}</td>
+                            <td>{{ player_state_per_game.PF }}</td>
+                            <td>{{ player_state_per_game.PTS }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th class="total" colspan="18">{% trans "TOTAL" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>{{ total_team_time }}</td>
+                            <td>{{ team_state.two_points_made|add:team_state.three_points_made }}-{{ team_state.two_points_attempt|add:team_state.three_points_attempt }}</td>
+                            <td>{% widthratio team_state.two_points_made|add:team_state.three_points_made team_state.two_points_attempt|add:team_state.three_points_attempt 100 %}%</td>
+                            <td>{{ team_state.three_points_made }}-{{ team_state.three_points_attempt }}</td>
+                            <td>{% widthratio team_state.three_points_made team_state.three_points_attempt 100 %}%</td>
+                            <td>{{ team_state.FTM }}-{{ team_state.FTA }}</td>
+                            <td>{% widthratio team_state.FTM team_state.FTA 100 %}%</td>
+                            <td>{{ team_state.OREB }}</td>
+                            <td>{{ team_state.DREB }}</td>
+                            <td>{{ team_state.REB }}</td>
+                            <td>{{ team_state.AST }}</td>
+                            <td>{{ team_state.STL }}</td>
+                            <td>{{ team_state.BLK }}</td>
+                            <td>{{ team_state.TO }}</td>
+                            <td>{{ team_state.PF }}</td>
+                            <td>{{ team_state.PTS }}</td>
+                        </tr>
+                    </tbody>
+                    {% endif %}
+                </table>
+            </div>
+        </div><!-- end of halfBlock-->
+    </div><!--end of page-content-->
+</div><!--end of content-->
 {% endblock %}

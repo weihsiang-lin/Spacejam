@@ -1,0 +1,175 @@
+@media screen and (max-width: 1080px){
+	/* team pblic version */
+	.donut { width: 22%; margin: 0 1%; }
+	.main-title h1 { font-size: 340%;  margin-top: 50px; }
+	.main-title h1:after { bottom: -10px; }
+
+	.scroll-left-horizontal { overflow-x: auto; }
+	.scroll-left-horizontal table { min-width: 1200px; }
+
+	.teamName h1 { font-size: 2rem; margin-top: 10px; }
+	.teamName h1:after { bottom: -8px; }
+.input-group > div .teamEdit-inputFile { width: 55%; }
+
+
+}
+
+@media screen and (max-width: 992px){
+	/* index.html */
+	.three-items > div { padding: 0 20px; }
+	.startNow { padding: 119px 0; background-position: 85% 3px; }
+
+	/* team pblic version */
+	.donut { width: 14%; margin: 0 2%; }
+	.main-title h1 { font-size: 400%; }
+
+	label, input, select, .input-group > div { width: 100%; max-width: 480px; }
+	.input-group > div { display: block; margin: 0 auto; }
+	.input-group { padding-bottom: 30px; }
+	.input-group > div .teamEdit-inputFile { float: right; width: 78%;}
+
+	.main-title p { margin: 0 20px; }
+	.teamName { width: 130px; margin: 0 20px; }
+	.main-title .teamName h1 { font-size: 1rem; }
+	.teamName h1:after { bottom: -8px; }
+	.VSscore h2 { font-size: 2.5em; }
+
+
+
+
+}
+
+/*special index*/
+@media screen and (max-width: 700px){
+	#logo{
+		width: 58px;
+		height: 38px;
+		background: url('../images/logo_mobile.png') center center;
+		background-size: 58px 38px;
+		margin-left: 13px;
+	}	
+	.pie { width: 100%; display: block; }
+	.main-title h1 { font-size: 340%; }
+	.score {
+		transform: scale(0.7);
+		-webkit-transform: scale(0.7);
+		-moz-transform: scale(0.7);
+		-o-transform: scale(0.7);
+		right: 1%;
+	}
+	.iconBtn-group { bottom: -25px; }
+	/* team pblic version */
+	.main-title > img { margin-left: -20px; }
+	.sub-menu a { margin: 0; }
+
+
+	.scroll-left {
+	    display: block!important;
+	    position: relative;
+	    width: 100%;
+	}
+	.scroll-left thead {
+	    display: block;
+	    float: left;
+	    border-right: 1px solid #ddd;
+	}
+	.scroll-left thead tr { display: block; }
+	.scroll-left th { text-align: center; display: block; }
+	.scroll-left thead:after {
+	    visibility: hidden;
+	    display: block;
+	    font-size: 0;
+	    content: " ";
+	    clear: both;
+	    height: 0;
+	}
+	.scroll-left tbody {
+	    display: block;
+	    width: auto;
+	    position: relative;
+	    overflow-x: auto;
+	    white-space: nowrap;
+	}
+	.scroll-left tbody tr {
+	    display: inline-block;
+	    vertical-align: top;
+	    margin: 0px -2px;
+	}
+	.scroll-left td {
+	    display: block;
+	    min-height: 1.25em;
+	    text-align: left;
+	}
+	.scroll-left td, th { 
+		padding-left: 5px;    
+		margin: 0;
+	    vertical-align: top; 
+	}
+	th , td { padding: 5px 21px 5px 7px; }
+	tr { padding: 10px; }
+	.th-memberPic { height: 90px; }
+}
+/*special index*/
+
+@media screen and (max-width: 526px){
+	.navTop .index-right { float: none; margin-right: 0; }
+	.index-nav { height: 98px; overflow: hidden; }
+	.index-nav ul li { margin: 8px 15px 14px; }
+	.index-nav #logo{
+		width: 214px;
+		height: 38px;
+		background: url('../images/logo_web.png') center center;
+		background-size: 214px 38px;
+		margin-left: 30px;
+		float: none;
+		margin: 10px auto;
+	}
+	.content-nav > ul > li { margin: 18px 8px; }
+	.mainPic-title { transform: scale(0.75); }
+	.mainPic-left .mainPic-title { right: 7%; }
+	.three-items > div { width: 90%; }
+	.content { padding-bottom: 70px; }
+	footer {     
+		height: 70px;
+	    text-align: center;
+	    padding: 14px;
+	    line-height: 25px;
+	}
+	footer > div { display: block; margin: 0 auto; }
+	footer .right { float: none; }
+
+	/* team pblic version */
+	.donut { width: 22%; margin: 0; }
+	.main-title h1 { font-size: 230%; }
+	.blank { height: 235px; padding: 77px 0; }
+	.blank h1 { letter-spacing: 0.1em; font-size: 2.5em; }
+	.schedule-time h3 { font-size: 1em; }
+	.teamName , .VSscore { display: block; margin: 0 auto; }
+	.team-group .teamName, .new { display: block; margin: 50px auto; }
+	.input-group > div .teamEdit-inputFile { float: right; width: 73%;}
+
+	.scroll-left-horizontal-400 { overflow-x: auto; }
+	.scroll-left-horizontal-400 table { min-width: 400px; }
+
+}
+
+/*special index*/
+@media screen and (max-width: 456px){
+	.content-nav > ul > li { margin: 18px 6px; }
+	.mainPic-title { transform: scale(0.6); }
+	.mainPic-left .mainPic-title { right: 3%; }
+	.startNow a { display: block; padding: 7px 32px; }
+	.input-group > div .teamEdit-inputFile { float: right; width: 59%;}
+
+	.member-subMenu { padding: 20px 0; }
+	.shadowBtn { display: block; margin: 10px auto; }
+	.shadowBtn.select:after { opacity: 0; }
+	.member-subMenu:last-child a.shadowBtn:after { opacity: 1; bottom: -31px; left: 47%; }
+	.shadowBtn:hover, .shadowBtn.select { background-color: #FFE9E9; }
+
+}
+/*special index*/
+
+@media screen and (max-width: 320px){
+	
+}

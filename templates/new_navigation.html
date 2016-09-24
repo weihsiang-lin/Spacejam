@@ -1,0 +1,39 @@
+{% load i18n %}
+<nav class="nav-bottom">
+    <div class="navTop">
+        <a href="/"><div id="logo"></div></a>
+        <div class="right content-nav">
+            <ul>
+                <li><a class="iconLeague navBtn" href="#">{% trans 'LEAGUES' %}</a>
+                    <ul style="display:none;" class="sub-menu scroll flexcroll-gray">
+                        <li><a href="#">名人榜</a></li>
+                        <li><a href="#">最新消息</a></li>
+                        <li><a href="#">盃賽資訊</a></li>
+                        <li><a href="#">賽程一覽</a></li>
+                        <li><a href="#">戰績排行</a></li>
+                    </ul>
+                </li>
+                <li><a class="iconTeam navBtn" href="{% url 'myteams' %}">{% trans 'TEAMS' %}</a>
+                    <ul class="sub-menu scroll flexcroll-gray">
+                        {% url 'team_summary' team_id as summary %}
+                        <li><a {% ifequal request.path summary %}class="selected"{% endifequal %} href="{{ summary }}">Summary</a></li>
+                        {% url 'mygames' team_id as schedule %}
+                        <li><a {% ifequal request.path schedule %}class="selected"{% endifequal %} href="{{ schedule }}">{% trans 'NAV_SCHEDULE' %}</a></li>
+                        {% url 'player_index' team_id as roster %}
+                        <li><a {% ifequal request.path roster %}class="selected"{% endifequal %} href="{{ roster }}">{% trans 'NAV_ROSTER' %}</a></li>
+                        {% url 'stats' team_id as stats %}
+                        <li><a {% ifequal request.path stats %}class="selected"{% endifequal %} href="{{ stats }}">{% trans 'NAV_STATS' %}</a></li>
+                        {% url 'analytics' team_id as analytics %}
+                        <li><a {% ifequal request.path analytics %}class="selected"{% endifequal %} href="{{ analytics }}">{% trans 'NAV_ANALYSIS' %}</a></li>
+                    </ul>
+                </li>
+                <li class="hover-btn"><a id="account_btn" class="iconAccount navBtn" href="#">{% trans 'MY_ACCOUNT' %}</a>
+                    <ul id="account_menu" class="hover-menu">
+                        <li><a href="/accounts/my/">{% trans 'SETTINGS' %}</a></li>
+                        <li><a href="/accounts/logout/">{% trans 'SIGN_OUT' %}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

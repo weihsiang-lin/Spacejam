@@ -1,122 +1,125 @@
 {% extends 'base.html' %}
 
-    {% load i18n %}
-    {% load staticfiles %}
+{% load i18n %}
+{% load staticfiles %}
 
-    {% block javascript %}
-    function ConfirmDeletion(team_id, game_id)
-    {
-        var result = confirm("Are you sure?");
-        if (result) {
-            window.location = "/teams/myteams/"+team_id+"/games/"+game_id+"/delete/";
+{% block javascript %}
+    <script type="text/javascript">
+        function ConfirmDeletion(team_id, game_id)
+        {
+            var result = confirm("Are you sure?");
+            if (result) {
+                window.location = "/teams/myteams/"+team_id+"/games/"+game_id+"/delete/";
+            }
+            else { return false; }
         }
-        else { return false; }
-    }
-    {% endblock %}
+    </script>
+{% endblock %}
 
-    {% block navigation %}
-        {% include 'navigation.html' %}
-    {% endblock %}
+{% block header %}
+    {% include 'new_navigation.html' %}
+{% endblock %}
 
-    {% block content %}
+{% block content %}
+    <div class="content">
         {% include 'teams/team_info.html' %}
-        <div style="height: auto; min-height: 65vh">
-
-            <!-- 2016.05.24 Message framework. -->
-            {% if messages %}
-                {% for message in messages %}
-                    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                    <p style="color: green">{{ message }}</p>
-                    {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                    <p style="color: red">{{ message }}</p>
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-            
-            <div id="BodyHeadline" style="float: left; width: 80.5vw">{% trans "UPCOMING_GAME" %}</div>
-            <div style="float: left; width: 3vw">
+        <div class="row page-content">
+            <div class="col s12 m12 l1"></div>
+            <div class="col s12 m12 l10 content-block">
+                <!-- 2016.05.24 Message framework. -->
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                        <p class="MSG-info">{{ message }}</p>
+                        {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        <p class="MSG-info">{{ message }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <h3>{% trans 'SCHEDULE' %}</h3>
                 {% if is_admin %}
-                    <a href="{% url 'create_game' team.id %}">
-                        <img src="{% static 'images/add-icon' %}" width="25px"/>
-                    </a>
+                <div class="contentBtn">
+                    <a class="iconBtn icon-add" href="{% url 'create_game' team.id %}"></a>
+                </div>
                 {% endif %}
-            </div>
-            <div style="clear: both">
-                {% if future_games %}
-                <table width="100%">
-                    <tr>
-                        <th>{% trans "DATE" %}</th>
-                        <th>{% trans "TIME" %}</th>
-                        <th>{% trans "OPPONENT" %}</th>
-                        <th>{% trans "RESULT" %}</th>
-                        <th>{% trans "SCORE" %}</th>
-                        {% if is_admin %}
-                            <th>{% trans "ACTIONS" %}</th>
-                        {% endif %}
-                    </tr>
-                    {% for game in future_games %}
-                    <tr>
-                        <td>{{ game.time|date:"SHORT_DATE_FORMAT" }}</td>
-                        <td>{{ game.time|time:"H:i"}}</td>
-                        <td>vs. {{ game.opponent }}</td>
-                        <td>-</td>
-                        <td>-</td>
-                        {% if is_admin %}
-                        <td>
-                            <a href="{% url 'edit_game' team.id game.id %}">{% trans "EDIT" %}</a>
-                            <a href="javascript: return false;" onclick="return ConfirmDeletion({{ team.id }}, {{ game.id }});">{% trans "DELETE" %}</a>
-                        </td>
-                        {% endif %}
-                    </tr>
-                    {% endfor %}
-                </table>
+                {% if not future_games and not past_games %}
+                <div class="blockBg blank blockBottom" style="display:block;">
+                    <img src="{% static 'images/Arrow-PNG.png' %}">
+                    <h1>{% trans 'CREATE' %}{% trans 'SCHEDULE' %}</h1>
+                </div>
                 {% else %}
-                <p>{% trans "NO_UPCOMING_GAME" %}</p>
-                {% endif %}
-            </div>
-            <div id="BodyHeadline">{% trans "COMPLETED_GAMES" %}</div>
-            <div>
-                {% if past_games %}
-                <table width="100%">
-                    <tr>
-                        <th>{% trans "DATE" %}</th>
-                        <th>{% trans "TIME" %}</th>
-                        <th>{% trans "OPPONENT" %}</th>
-                        <th>{% trans "RESULT" %}</th>
-                        <th>{% trans "SCORE" %}</th>
-                        <th>{% trans "ACTIONS" %}</th>
-                    </tr>
-                    {% for past_game in past_games|dictsortreversed:"game.time" %}
-                    <tr>
-                        <td>{{ past_game.game.time|date:"SHORT_DATE_FORMAT" }}</td>
-                        <td>{{ past_game.game.time|time:"H:i" }}</td>
-                        <td>vs. {{ past_game.game.opponent }}</td>
-                        {% if past_game.game.isComplete %}
-                            {% if past_game.team_state.isWin %}
-                            <td>{% trans "SHORT_WIN" %}</td>
-                            {% elif past_game.team_state.isWin == False %}
-                            <td>{% trans "SHORT_LOSE" %}</td>
-                            {% else %}
-                            <td>-</td>
-                        {% endif %}
-                        <td>{{ past_game.team_state.PTS }}-{{ past_game.opponent_state.score }}</td>
-                        <td><a href="{% url 'complete_game' team.id past_game.game.id %}">{% trans "VIEW" %}</a>
-                        {% else %}
-                        <td>-</td>
-                        <td>-</td>
-                            {% if is_admin %}
-                            <td><a href="{% url 'edit_game_states' team.id past_game.game.id %}">{% trans "EDIT" %}</a>
+                <div class="blockBg table">
+                    <table class="scroll-left">
+                        <thead>
+                            <tr>
+                                <th>{% trans 'DATE' %}</th>
+                                <th>{% trans "TIME" %}</th>
+                                <th>{% trans "OPPONENT" %}</th>
+                                <th>{% trans "RESULT" %}</th>
+                                <th>{% trans "SCORE" %}</th>
+                                {% if is_admin %}
+                                <th>{% trans "ACTIONS" %}</th>
+                                {% endif %}
+                            </tr>
+                        </thead>
+                        <tbody class="flexcroll-gray">
+                            {% if future_games %}
+                                {% for game in future_games %}
+                                <tr>
+                                    <td data-title="日期">{{ game.time|date:"Y/m/d" }}</td>
+                                    <td data-title="時間">{{ game.time|time:"H:i"}}</td>
+                                    <td data-title="對手">{{ game.opponent }}</td>
+                                    <td data-title="結果">&nbsp;</td>
+                                    <td data-title="分數">&nbsp;</td>
+                                    {% if is_admin %}
+                                    <td class="edit" data-title="動作">
+                                        <a href="{% url 'edit_game' team.id game.id %}"><img src="{% static 'images/icon_edit.png' %}"></a>
+                                        <a href="javascript: return false;" onclick="return ConfirmDeletion({{ team.id }}, {{ game.id }})"><img src="{% static 'images/icon_delete.png' %}"></a>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
                             {% endif %}
-                        {% endif %}
-                        {% if is_admin %}
-                        <a href="javascript: return false;" onclick="return ConfirmDeletion({{ team.id }}, {{ past_game.game.id }});">{% trans "DELETE" %}</a></td>
-                        {% endif %}
-                    </tr>
-                    {% endfor %}
-                </table>
-                {% else %}
-                <p>{% trans "NO_COMPLETED_GAME" %}</p>
+                            {% if past_games %}
+                                {% for past_game in past_games|dictsortreversed:"game.time" %}
+                                <tr class="schedule-done">
+                                    <td data-title="日期">{{ past_game.game.time|date:"Y/m/d" }}</td>
+                                    <td data-title="時間">{{ past_game.game.time|time:"H:i"}}</td>
+                                    <td data-title="對手">{{ past_game.game.opponent }}</td>
+                                    {% if past_game.game.isComplete %}
+                                        {% if past_game.team_state.isWin %}
+                                        <td data-title="結果">{% trans 'SHORT_WIN' %}</td>
+                                        {% elif past_game.team_state.isWin == False %}
+                                        <td data-title="結果">{% trans 'SHORT_LOSE' %}</td>
+                                        {% else %}
+                                        <td data-title="結果">&nbsp;</td>
+                                        {% endif %}
+                                    <td data-title="分數">{{ past_game.team_state.PTS }} - {{ past_game.opponent_state.score }}</td>
+                                    <td class="edit" data-title="動作">
+                                        <a href="{% url 'complete_game' team.id past_game.game.id %}"><img src="{% static 'images/icon_view.png' %}"></a>
+                                    </td>
+                                    {% else %}
+                                    <td data-title="結果">&nbsp;</td>
+                                    <td data-title="分數">&nbsp;</td>
+                                        {% if is_admin %}
+                                        <td class="edit" data-title="動作">
+                                            <a href="{% url 'edit_game_states' team.id past_game.game.id %}"><img src="{% static 'images/icon_edit.png' %}"></a>
+                                            <a href="javascript: return false;" onclick="return ConfirmDeletion({{ team.id }}, {{ past_game.game.id }})"><img src="{% static 'images/icon_delete.png' %}"></a>
+                                        </td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div><!--end of table-->
                 {% endif %}
-            </div>
-        </div>
-    {% endblock %}{% trans "EDIT" %}
+            </div><!-- end of halfBlock-->
+        </div><!--end of page-content-->
+    </div><!--end of content-->
+{% endblock %}
+
+{% block donut %}
+    {% include 'donut.html' %}
+{% endblock %}

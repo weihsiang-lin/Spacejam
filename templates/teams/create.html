@@ -1,59 +1,102 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+
 {% load i18n %}
 {% load staticfiles %}
-<html>
-    <head>
-        <meta charset='UTF-8'>
-        <title>Improvement Goes With Data - DataHoops</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
-        <link href='https://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
 
-    <!-- JavaScript -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+{% block javascript %}
+    <!--*必填-->
+    <script src="{% static 'js/jquery.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.validate.js' %}" type="text/javascript"></script>
     <script type="text/javascript">
-        function form_check()
-        {
-            if (create_team.name.value == "")
-            {
-                document.getElementById('name').focus();
-                document.getElementById('empty_name').style.display = "block"; 
-            }
-            else create_team.submit();
-        }
+        $(function(){
+            $("#commentForm").validate();
+        });
     </script>
-    </head>
-    <body>
-        <div id="Header">
-            <div id="HeaderLeft">DataHoops</div>
-            <div id="HeaderRight">
-                <a href="{% url 'myteams' %}" style="text-decoration: underline">{% trans "MY_TEAM" %}</a> |
-                <a href="/accounts/my/" style="text-decoration: underline">{% trans "MY_ACCOUNT" %}</a> |
-                <a href="/accounts/logout/" style="text-decoration: underline">{% trans "SIGN_OUT" %}</a>
-            </div>
+{% endblock %}
+
+{% block header %}
+<nav class="nav-bottom">
+    <div class="navTop">
+        <a href="/"><div id="logo"></div></a>
+        <div class="right content-nav">
+            <ul>
+                <li><a class="iconLeague navBtn" href="#">{% trans 'LEAGUES' %}</a>
+                    <ul style="display:none;" class="sub-menu scroll flexcroll-gray">
+                        <li><a href="#">名人榜</a></li>
+                        <li><a href="#">最新消息</a></li>
+                        <li><a href="#">盃賽資訊</a></li>
+                        <li><a href="#">賽程一覽</a></li>
+                        <li><a href="#">戰績排行</a></li>
+                    </ul>
+                </li>
+                <li><a class="iconTeam navBtn" href="#">{% trans 'TEAMS' %}</a>
+                    <ul class="sub-menu scroll flexcroll-gray" style="display: none">
+                        <li><a class="selected" href="#">Summary</a></li>
+                        <li><a href="#">{% trans 'NAV_SCHEDULE' %}</a></li>
+                        <li><a href="#">{% trans 'NAV_ROSTER' %}</a></li>
+                        <li><a href="#">{% trans 'NAV_STATS' %}</a></li>
+                        <li><a href="#">{% trans 'NAV_ANALYSIS' %}</a></li>
+                    </ul>
+                </li>
+                <li class="hover-btn"><a id="account_btn" class="iconAccount navBtn" href="#">{% trans 'MY_ACCOUNT' %}</a>
+                    <ul id="account_menu" class="hover-menu">
+                        <li><a href="/accounts/my/">{% trans 'SETTINGS' %}</a></li>
+                        <li><a href="/accounts/logout/">{% trans 'SIGN_OUT' %}</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-        <div style="height: auto; min-height: 90vh; font-family: 'Raleway', sans-serif">
-            <div style="height: 15vh; line-height: 15vh; text-align: center; font-size: 1.5rem">{% trans "MY_TEAM" %} > {% trans "CREATE" %}</div>
-            <div style="text-align: center">
-                <form id="create_team" name="create_team" action="" method="post" enctype="multipart/form-data" style="width: 30vw; margin: auto">
-                    {% csrf_token %}            
-                    <p style="float: left">{% trans "TEAM_NAME" %}</p>
-                    <input type="text" id="name" name="name" style="width: 100%"><br>
-                    <div id="empty_name" style="color: red; text-align: left; display: none">{% trans "PLEASE_INSERT_TEAM_NAME" %}</div>
-                    <p style="float: left">{% trans "COACH" %}</p>
-                    <input type="text" name="coach" style="width: 100%"><br>
-                    <p style="float: left">{% trans "CAPTAIN" %}</p>
-                    <input type="text" name="captain" style="width: 100%"><br>
-                    <p style="float: left">{% trans "CODE" %}</p>
-                    <input type="text" name="code" style="width: 100%"><br>
-                    <p style="float: left">{% trans "IMAGE" %}</p>
-                    <input type="file" name="figure" style="width: 100%"><br>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="row page-content">
+        <div class="col s12 m12 l1"></div>
+        <div class="col s12 m12 l10 content-block">
+            <h3 class="subinfo">{% trans 'MY_TEAM' %}<span>{% trans 'CREATE' %}</span></h3>
+            <div class="form">
+                <form id="commentForm" class="commentForm" name="edit_team" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="blockBg input-group-block">
+                        <div>
+                            <label>{% trans 'TEAM_NAME' %}<span class="redmark">*{% trans 'REQUIRED' %}</span></label>
+                            <input class="required" type="text" id="name" name="name" value="">
+                            <label>{% trans 'COACH' %}</label>
+                            <input type="text" name="coach" value="">
+                            <label>{% trans 'CAPTAIN' %}</label>
+                            <input type="text" name="captain" value="">
+                        </div>
+                        <div>
+                            <label>{% trans 'CODE' %}</label>
+                            <input type="text" name="code" value="">
+                            <label>{% trans 'IMAGE' %}</label>
+                            <input id="uploadFile" placeholder="{% trans 'NO_FILE_CHOSEN' %}" disabled="disabled" />
+                            <div class="fileUpload btn-brown btn">
+                                <span>{% trans 'CHOOSE_FILE' %}</span>
+                                <input name="figure" id="uploadBtn" type="file" class="upload" />
+                            </div>
+                        </div>
+                    </div><!--end of input-group -->
+                    <div class="btn-group">
+                        <button class="btn" type="button" onclick="location.href='{% url 'myteams' %}'">{% trans 'CANCEL' %}</button>
+                        <button class="btn" type="submit" onclick="form_check()">{% trans 'CREATE' %}</button>
+                    </div>
                 </form>
-            </div>
-            <div style="width: 30vw; margin: auto">
-                <button type="button" style="float: left; width: 14.75vw; margin-top: 10px" onclick="location.href='{% url 'myteams' %}'">{% trans "CANCEL" %}</button>
-                <button type="submit" style="float: left; width: 14.75vw; margin-top: 10px; margin-left: 0.5vw" onclick="form_check()">{% trans "CREATE" %}</button>
-            </div>
-        </div>
-    </body>
-</html>
+            </div><!-- end of form-->
+        </div><!-- end of halfBlock-->
+    </div><!--end of page-content-->
+</div><!--end of content-->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //input file
+        document.getElementById("uploadBtn").onchange = function () {
+            document.getElementById("uploadFile").value = this.value;
+        };
+
+    });
+</script>
+{% endblock %}

@@ -5,6 +5,20 @@
 
 {% block javascript %}
 
+<!--table sorter-->
+<script type="text/javascript" src="{% static 'js/jquery.tablesorter.js' %}"></script>
+
+<!--table sorter-->
+<script type="text/javascript">
+    $(function () {
+        // table sorter
+        $("#myTable").tablesorter({widgets: ['zebra']});
+    });
+</script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
 function HideTotShowAvg() {
     document.getElementById('average').style.display = "block";
     document.getElementById('total').style.display = "none";
@@ -14,7 +28,9 @@ function HideAvgShowTot() {
     document.getElementById('average').style.display = "none";
     document.getElementById('total').style.display = "block";
 }
+</script>
 
+<script type="text/javascript">
 // Google
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
@@ -26,24 +42,24 @@ function drawChart() {
     data.addColumn('string', 'Name');    
     data.addColumn('number', 'Points');
     data.addRows([
-      ['{{player.name}}', {{career_PTS_avg|floatformat:1}}],
-      ['Others', {{PER_PPG|floatformat:1}}]
+      ['{{ player.name }}', {{ career_PTS_avg|floatformat:1 }}],
+      ['Others', {{ PER_PPG|floatformat:1 }}]
     ]);
     // Create the data table.
     var data2 = new google.visualization.DataTable();
     data2.addColumn('string', 'Name');
     data2.addColumn('number', 'Assists');
     data2.addRows([
-      ['{{player.name}}', {{career_AST_avg|floatformat:1}}],
-      ['Others', {{PER_AST|floatformat:1}}]
+      ['{{ player.name }}', {{ career_AST_avg|floatformat:1 }}],
+      ['Others', {{ PER_AST|floatformat:1 }}]
     ]);
     // Create the data table.
     var data3 = new google.visualization.DataTable();
     data3.addColumn('string', 'Name');
     data3.addColumn('number', 'Rebonds');
     data3.addRows([
-      ['{{player.name}}', {{career_REB_avg|floatformat:1}}],
-      ['Others', {{PER_REB|floatformat:1}}]
+      ['{{ player.name }}', {{ career_REB_avg|floatformat:1 }}],
+      ['Others', {{ PER_REB|floatformat:1 }}]
     ]);
 
     // Set chart options
@@ -60,197 +76,252 @@ function drawChart() {
     var chart3 = new google.visualization.PieChart(document.getElementById('chart_div3'));
     chart3.draw(data3, options3);
 }
+</script>
 
 {% endblock %}
 
-{% block navigation %}
-    {% include 'player_navigation.html' %}
+{% block header %}
+    {% include 'new_navigation.html' %}
 {% endblock %}
 
 {% block content %}
+<div class="content">
     {% include 'players/player_info.html' %}
-    <div id="BodyHeadline">{% trans "PERFORMANCE" %}</div>
-    <div>
-        <div id="chart_div" style="float: left; height: 200px; width: 33%;"></div>
-        <div id="chart_div2" style="float: left; height: 200px; width: 33%;"></div>
-        <div id="chart_div3" style="float: left; height: 200px; width: 33%;"></div>
-    </div>
-    <div id="BodyHeadline" style="float: left">{% trans "CAREER_STATS" %}</div>
-    <button type="button" id="btnTot" onclick="HideAvgShowTot()" style="float: right">{% trans "TOTAL" %}</button>
-    <button type="button" id="btnAvg" onclick="HideTotShowAvg()" style="float: right; margin-right: 0.5vw">{% trans "AVERAGE" %}</button>
-    <div id="average" style="display: block">
-        <table width="100%">
-            <tr>
-                <th>{% trans "GAMES" %}</th>
-                <th>{% trans "STARTED" %}</th>
-                <th>{% trans "TIME" %}</th>
-                <th>{% trans "FG%" %}</th>
-                <th>{% trans "3PTS%" %}</th>
-                <th>{% trans "FT%" %}</th>
-                <th>{% trans "OREB" %}</th>
-                <th>{% trans "DREB" %}</th>
-                <th>{% trans "REB" %}</th>
-                <th>{% trans "AST" %}</th>
-                <th>{% trans "STL" %}</th>
-                <th>{% trans "BLK" %}</th>
-                <th>{% trans "TO" %}</th>
-                <th>{% trans "PF" %}</th>
-                <th>{% trans "PTS" %}</th>
-            <tr>
-            <tr>
-                <td>{{ stats.game_played }}</td>
-                <td>{{ stats.game_started }}</td>
-                <td>{{ career_time_avg | time:"i:s" }}</td>
-                <td>{{ career_FG_avg | floatformat:1 }}%</td>
-                <td>{{ career_3PT_avg | floatformat:1 }}%</td>
-                <td>{{ career_FT_avg | floatformat:1 }}%</td>
-                <td>{{ career_OREB_avg | floatformat:1 }}</td>
-                <td>{{ career_DREB_avg | floatformat:1 }}</td>
-                <td>{{ career_REB_avg | floatformat:1 }}</td>
-                <td>{{ career_AST_avg | floatformat:1 }}</td>
-                <td>{{ career_STL_avg | floatformat:1 }}</td>
-                <td>{{ career_BLK_avg | floatformat:1 }}</td>
-                <td>{{ career_TO_avg | floatformat:1 }}</td>
-                <td>{{ career_PF_avg | floatformat:1 }}</td>
-                <td>{{ career_PTS_avg | floatformat:1 }}</td>
-            </tr>
-        </table>
-    </div>
-    <div id="total" style="display: none">
-        <table width="100%">
-            <tr>
-                <th>{% trans "GAMES" %}</th>
-                <th>{% trans "STARTED" %}</th>
-                <th>{% trans "TIME" %}</th>
-                <th>{% trans "FG%" %}</th>
-                <th>{% trans "3PTS%" %}</th>
-                <th>{% trans "FT%" %}</th>
-                <th>{% trans "OREB" %}</th>
-                <th>{% trans "DREB" %}</th>
-                <th>{% trans "REB" %}</th>
-                <th>{% trans "AST" %}</th>
-                <th>{% trans "STL" %}</th>
-                <th>{% trans "BLK" %}</th>
-                <th>{% trans "TO" %}</th>
-                <th>{% trans "PF" %}</th>
-                <th>{% trans "PTS" %}</th>
-            </tr>
-            <tr>
-                <td>{{ stats.game_played }}</td>
-                <td>{{ stats.game_started }}</td>
-                <!-- 2016.05.17 Show TIME as string format -->
-                <td>{{ total_stats_time }}</td>
-                <td>{{ career_FG_avg | floatformat:1 }}%</td>
-                <td>{{ career_3PT_avg | floatformat:1 }}%</td>
-                <td>{{ career_FT_avg | floatformat:1 }}%</td>
-                <td>{{ stats.OREB }}</td>
-                <td>{{ stats.DREB }}</td>
-                <td>{{ stats.REB }}</td>
-                <td>{{ stats.AST }}</td>
-                <td>{{ stats.STL }}</td>
-                <td>{{ stats.BLK }}</td>
-                <td>{{ stats.TO }}</td>
-                <td>{{ stats.PF }}</td>
-                <td>{{ stats.PTS }}</td>
-            </tr>
-        </table>
-    </div>
-    <div id="BodyHeadline" style="margin-top: 10px">{% trans "PAST_5_GAMES" %}</div>
-        {% if past_five_games %}
-            <table width="100%">
-                <tr>
-                    <th>{% trans "DATE" %}</th>
-                    <th>{% trans "OPPONENT" %}</th>
-                    <th>{% trans "TIME" %}</th>
-                    <th>{% trans "FG%" %}</th>
-                    <th>{% trans "FG" %}</th>
-                    <th>{% trans "3PTS%" %}</th>
-                    <th>{% trans "3PTS" %}</th>
-                    <th>{% trans "FT%" %}</th>
-                    <th>{% trans "FT" %}</th>
-                    <th>{% trans "OREB" %}</th>
-                    <th>{% trans "DREB" %}</th>
-                    <th>{% trans "REB" %}</th>
-                    <th>{% trans "AST" %}</th>
-                    <th>{% trans "STL" %}</th>
-                    <th>{% trans "BLK" %}</th>
-                    <th>{% trans "TO" %}</th>
-                    <th>{% trans "PF" %}</th>
-                    <th>{% trans "PTS" %}</th>
-                </tr>
-                {% for past_five in past_five_games_list %}
-                    <tr>
-                        <td>{{ past_five.obj.game.time | date:"m/d" }}</td>
-                        <td>{{ past_five.obj.game.opponent }}</td>
-                        <td>{{ past_five.obj.time | time:"i:s" }}</td>
-                        <td>{{ past_five.FG_Percent | floatformat:1 }}%</td>
-                        <td>
-                            {{ past_five.obj.two_points_made|add:past_five.obj.three_points_made  }}-{{ past_five.obj.two_points_attempt|add:past_five.obj.three_points_attempt }}
-                        </td>
-                        <td>{{ past_five.3PT_Percent | floatformat:1 }}%</td>
-                        <td>{{ past_five.obj.three_points_made }}-{{ past_five.obj.three_points_attempt }}</td>
-                        <td>{{ past_five.FT_Percent | floatformat:1 }}%</td>
-                        <td>{{ past_five.obj.FTM }}-{{ past_five.obj.FTA }}</td>
-                        <td>{{ past_five.obj.OREB }}</td>
-                        <td>{{ past_five.obj.DREB }}</td>
-                        <td>{{ past_five.obj.REB }}</td>
-                        <td>{{ past_five.obj.AST }}</td>
-                        <td>{{ past_five.obj.STL }}</td>
-                        <td>{{ past_five.obj.BLK }}</td>
-                        <td>{{ past_five.obj.TO }}</td>
-                        <td>{{ past_five.obj.PF }}</td>
-                        <td>{{ past_five.obj.PTS }}</td>
-                    </tr>
-                {% endfor %}
-                <tr>
-                    <th colspan="18" style="text-align: left">{% trans "AVERAGE" %}</th>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>{{ past_five_games_avg.time | time:"i:s" }}</td>
-                    <td>{{ past_five_games_avg.FG_Percent | floatformat:1 }}%</td>
-                    <td>{{ past_five_games_avg.FGM | floatformat:1 }}-{{ past_five_games_avg.FGA | floatformat:1 }}</td>
-                    <td>{{ past_five_games_avg.3PT_Percent | floatformat:1 }}%</td>
-                    <td>{{ past_five_games_avg.M_3PT | floatformat:1 }}-{{ past_five_games_avg.A_3PT | floatformat:1 }}</td>
-                    <td>{{ past_five_games_avg.FT_Percent | floatformat:1 }}%</td>
-                    <td>{{ past_five_games_avg.FTM | floatformat:1 }}-{{ past_five_games_avg.FTA | floatformat:1 }}</td>
-                    <td>{{ past_five_games_avg.OREB | floatformat:1 }}</td>
-                    <td>{{ past_five_games_avg.DREB | floatformat:1 }}</td>
-                    <td>{{ past_five_games_avg.REB | floatformat:1 }}</td>
-                    <td>{{ past_five_games_avg.AST | floatformat:1 }}</td>
-                    <td>{{ past_five_games_avg.STL | floatformat:1 }}</td>
-                    <td>{{ past_five_games_avg.BLK | floatformat:1 }}</td>
-                    <td>{{ past_five_games_avg.TO | floatformat:1 }}</td>
-                    <td>{{ past_five_games_avg.PF | floatformat:1 }}</td>
-                    <td>{{ past_five_games_avg.PTS | floatformat:1 }}</td>
-                </tr>
-                <tr>
-                    <th colspan="18" style="text-align: left">{% trans "TOTAL" %}</th>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>{{ past_five_games_total.time }}</td>
-                    <td>{{ past_five_games_avg.FG_Percent | floatformat:1 }}%</td>
-                    <td>{{ past_five_games_total.FGM }}-{{ past_five_games_total.FGA }}</td>
-                    <td>{{ past_five_games_avg.3PT_Percent | floatformat:1 }}%</td>
-                    <td>{{ past_five_games_total.M_3PT }}-{{ past_five_games_total.A_3PT }}</td>
-                    <td>{{ past_five_games_avg.FT_Percent | floatformat:1 }}%</td>
-                    <td>{{ past_five_games_total.FTM }}-{{ past_five_games_total.FTA }}</td>
-                    <td>{{ past_five_games_total.OREB }}</td>
-                    <td>{{ past_five_games_total.DREB }}</td>
-                    <td>{{ past_five_games_total.REB }}</td>
-                    <td>{{ past_five_games_total.AST }}</td>
-                    <td>{{ past_five_games_total.STL }}</td>
-                    <td>{{ past_five_games_total.BLK }}</td>
-                    <td>{{ past_five_games_total.TO }}</td>
-                    <td>{{ past_five_games_total.PF }}</td>
-                    <td>{{ past_five_games_total.PTS }}</td>
-                </tr>
-            </table>
+    <div class="page-content">
+        <div class="row">
+            <div class="col s12 m12 l1"></div>
+            <div class="col s12 m12 l10">
+                <div class="member-subMenu">
+                    <a class="shadowBtn select" href="{% url 'player_summary' team.id player.id %}">Summary</a>
+                    <a class="shadowBtn" href="{% url 'player_analytics' team.id player.id %}">&nbsp;&nbsp;&nbsp;&nbsp;{% trans 'NAV_ANALYSIS' %}&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                </div>
+            </div>
         </div>
-    {% else %}
-        <p>{% trans "NO_STATS" %}</p>
-    {% endif %}
+
+        <div class="row">
+            <div class="col s12 m12 l1"></div>
+            <div class="col s12 m12 l10 content-block">
+                <h3>{% trans 'PERFORMANCE' %}</h3>
+                <div class="blockBg pie-group pie3">
+                    <div class="pie" id="chart_div"></div>
+                    <div class="pie" id="chart_div2"></div>
+                    <div class="pie" id="chart_div3"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12 l1"></div>
+            <div class="col s12 m12 l10 content-block">
+                <h3>{% trans "CAREER_STATS" %}</h3>
+                <div class="subNav-Btn contentBtn">
+                    <button class="btn btn-brown" type="button" id="btnAvg" onclick="HideTotShowAvg()">{% trans "AVERAGE" %}</button>
+                    <button class="btn btn-brown" type="button" id="btnTot" onclick="HideAvgShowTot()">{% trans "TOTAL" %}</button>
+                </div>
+
+                <div id="average" class="blockBg scroll-left-horizontal flexcroll-gray" style="display: block">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>{% trans "GAMES" %}</th>
+                                <th>{% trans "STARTED" %}</th>
+                                <th>{% trans "TIME" %}</th>
+                                <th>{% trans "FG%" %}</th>
+                                <th>{% trans "3PTS%" %}</th>
+                                <th>{% trans "FT%" %}</th>
+                                <th>{% trans "OREB" %}</th>
+                                <th>{% trans "DREB" %}</th>
+                                <th>{% trans "REB" %}</th>
+                                <th>{% trans "AST" %}</th>
+                                <th>{% trans "STL" %}</th>
+                                <th>{% trans "BLK" %}</th>
+                                <th>{% trans "TO" %}</th>
+                                <th>{% trans "PF" %}</th>
+                                <th>{% trans "PTS" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ stats.game_played }}</td>
+                                <td>{{ stats.game_started }}</td>
+                                <td>{{ career_time_avg | time:"i:s" }}</td>
+                                <td>{{ career_FG_avg | floatformat:1 }}%</td>
+                                <td>{{ career_3PT_avg | floatformat:1 }}%</td>
+                                <td>{{ career_FT_avg | floatformat:1 }}%</td>
+                                <td>{{ career_OREB_avg | floatformat:1 }}</td>
+                                <td>{{ career_DREB_avg | floatformat:1 }}</td>
+                                <td>{{ career_REB_avg | floatformat:1 }}</td>
+                                <td>{{ career_AST_avg | floatformat:1 }}</td>
+                                <td>{{ career_STL_avg | floatformat:1 }}</td>
+                                <td>{{ career_BLK_avg | floatformat:1 }}</td>
+                                <td>{{ career_TO_avg | floatformat:1 }}</td>
+                                <td>{{ career_PF_avg | floatformat:1 }}</td>
+                                <td>{{ career_PTS_avg | floatformat:1 }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="total" class="blockBg scroll-left-horizontal flexcroll-gray" style="display: none">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>{% trans "GAMES" %}</th>
+                                <th>{% trans "STARTED" %}</th>
+                                <th>{% trans "TIME" %}</th>
+                                <th>{% trans "FG%" %}</th>
+                                <th>{% trans "3PTS%" %}</th>
+                                <th>{% trans "FT%" %}</th>
+                                <th>{% trans "OREB" %}</th>
+                                <th>{% trans "DREB" %}</th>
+                                <th>{% trans "REB" %}</th>
+                                <th>{% trans "AST" %}</th>
+                                <th>{% trans "STL" %}</th>
+                                <th>{% trans "BLK" %}</th>
+                                <th>{% trans "TO" %}</th>
+                                <th>{% trans "PF" %}</th>
+                                <th>{% trans "PTS" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ stats.game_played }}</td>
+                                <td>{{ stats.game_started }}</td>
+                                <!-- 2016.05.17 Show TIME as string format -->
+                                <td>{{ total_stats_time }}</td>
+                                <td>{{ career_FG_avg | floatformat:1 }}%</td>
+                                <td>{{ career_3PT_avg | floatformat:1 }}%</td>
+                                <td>{{ career_FT_avg | floatformat:1 }}%</td>
+                                <td>{{ stats.OREB }}</td>
+                                <td>{{ stats.DREB }}</td>
+                                <td>{{ stats.REB }}</td>
+                                <td>{{ stats.AST }}</td>
+                                <td>{{ stats.STL }}</td>
+                                <td>{{ stats.BLK }}</td>
+                                <td>{{ stats.TO }}</td>
+                                <td>{{ stats.PF }}</td>
+                                <td>{{ stats.PTS }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l1"></div>
+            <div class="col s12 m12 l10 content-block">
+                <h3>{% trans "PAST_5_GAMES" %}</h3>
+                <div id="average" class="blockBg scroll-left-horizontal flexcroll-gray">
+                    <table id="myTable" class="tablesorter">
+                        <thead>
+                            <tr>
+                                <th class="header2">{% trans "DATE" %}</th>
+                                <th class="header2">{% trans "OPPONENT" %}</th>
+                                <th class="header2">{% trans "TIME" %}</th>
+                                <th class="header2">{% trans "FG%" %}</th>
+                                <th class="header2">{% trans "FG" %}</th>
+                                <th class="header2">{% trans "3PTS%" %}</th>
+                                <th class="header2">{% trans "3PTS" %}</th>
+                                <th class="header2">{% trans "FT%" %}</th>
+                                <th class="header2">{% trans "FT" %}</th>
+                                <th class="header2">{% trans "OREB" %}</th>
+                                <th class="header2">{% trans "DREB" %}</th>
+                                <th class="header2">{% trans "REB" %}</th>
+                                <th class="header2">{% trans "AST" %}</th>
+                                <th class="header2">{% trans "STL" %}</th>
+                                <th class="header2">{% trans "BLK" %}</th>
+                                <th class="header2">{% trans "TO" %}</th>
+                                <th class="header2">{% trans "PF" %}</th>
+                                <th class="header2">{% trans "PTS" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for past_five in past_five_games_list %}
+                            <tr>
+                                <td>{{ past_five.obj.game.time | date:"m/d" }}</td>
+                                <td>{{ past_five.obj.game.opponent }}</td>
+                                <td>{{ past_five.obj.time | time:"i:s" }}</td>
+                                <td>{{ past_five.FG_Percent | floatformat:1 }}%</td>
+                                <td>
+                                    {{ past_five.obj.two_points_made|add:past_five.obj.three_points_made  }}-{{ past_five.obj.two_points_attempt|add:past_five.obj.three_points_attempt }}
+                                </td>
+                                <td>{{ past_five.3PT_Percent | floatformat:1 }}%</td>
+                                <td>{{ past_five.obj.three_points_made }}-{{ past_five.obj.three_points_attempt }}</td>
+                                <td>{{ past_five.FT_Percent | floatformat:1 }}%</td>
+                                <td>{{ past_five.obj.FTM }}-{{ past_five.obj.FTA }}</td>
+                                <td>{{ past_five.obj.OREB }}</td>
+                                <td>{{ past_five.obj.DREB }}</td>
+                                <td>{{ past_five.obj.REB }}</td>
+                                <td>{{ past_five.obj.AST }}</td>
+                                <td>{{ past_five.obj.STL }}</td>
+                                <td>{{ past_five.obj.BLK }}</td>
+                                <td>{{ past_five.obj.TO }}</td>
+                                <td>{{ past_five.obj.PF }}</td>
+                                <td>{{ past_five.obj.PTS }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <thead class="bordertop">
+                            <tr>
+                                <th class="total header" colspan="18">{% trans 'AVERAGE' %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>{{ past_five_games_avg.time | time:"i:s" }}</td>
+                                <td>{{ past_five_games_avg.FG_Percent | floatformat:1 }}%</td>
+                                <td>{{ past_five_games_avg.FGM | floatformat:1 }}-{{ past_five_games_avg.FGA | floatformat:1 }}</td>
+                                <td>{{ past_five_games_avg.3PT_Percent | floatformat:1 }}%</td>
+                                <td>{{ past_five_games_avg.M_3PT | floatformat:1 }}-{{ past_five_games_avg.A_3PT | floatformat:1 }}</td>
+                                <td>{{ past_five_games_avg.FT_Percent | floatformat:1 }}%</td>
+                                <td>{{ past_five_games_avg.FTM | floatformat:1 }}-{{ past_five_games_avg.FTA | floatformat:1 }}</td>
+                                <td>{{ past_five_games_avg.OREB | floatformat:1 }}</td>
+                                <td>{{ past_five_games_avg.DREB | floatformat:1 }}</td>
+                                <td>{{ past_five_games_avg.REB | floatformat:1 }}</td>
+                                <td>{{ past_five_games_avg.AST | floatformat:1 }}</td>
+                                <td>{{ past_five_games_avg.STL | floatformat:1 }}</td>
+                                <td>{{ past_five_games_avg.BLK | floatformat:1 }}</td>
+                                <td>{{ past_five_games_avg.TO | floatformat:1 }}</td>
+                                <td>{{ past_five_games_avg.PF | floatformat:1 }}</td>
+                                <td>{{ past_five_games_avg.PTS | floatformat:1 }}</td>
+                            </tr>
+                        </tbody>
+                        <thead class="bordertop">
+                            <tr>
+                                <th class="total header" colspan="18">{% trans "TOTAL" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>{{ past_five_games_total.time }}</td>
+                                <td>{{ past_five_games_avg.FG_Percent | floatformat:1 }}%</td>
+                                <td>{{ past_five_games_total.FGM }}-{{ past_five_games_total.FGA }}</td>
+                                <td>{{ past_five_games_avg.3PT_Percent | floatformat:1 }}%</td>
+                                <td>{{ past_five_games_total.M_3PT }}-{{ past_five_games_total.A_3PT }}</td>
+                                <td>{{ past_five_games_avg.FT_Percent | floatformat:1 }}%</td>
+                                <td>{{ past_five_games_total.FTM }}-{{ past_five_games_total.FTA }}</td>
+                                <td>{{ past_five_games_total.OREB }}</td>
+                                <td>{{ past_five_games_total.DREB }}</td>
+                                <td>{{ past_five_games_total.REB }}</td>
+                                <td>{{ past_five_games_total.AST }}</td>
+                                <td>{{ past_five_games_total.STL }}</td>
+                                <td>{{ past_five_games_total.BLK }}</td>
+                                <td>{{ past_five_games_total.TO }}</td>
+                                <td>{{ past_five_games_total.PF }}</td>
+                                <td>{{ past_five_games_total.PTS }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!--end of table-->
+            </div>
+        </div><!-- end of halfBlock-->
+    </div><!--end of page-content-->
+</div><!--end of content-->
+{% endblock %}
+
+{% block donut %}
+    {% include 'players/donut.html' %}
 {% endblock %}

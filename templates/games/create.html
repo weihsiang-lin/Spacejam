@@ -1,68 +1,79 @@
 {% extends 'base.html' %}
 
-    {% load i18n %}
-    {% load staticfiles %}
+{% load i18n %}
+{% load staticfiles %}
 
-    {% block javascript %}
+{% block javascript %}
+<!--*必填-->
+<script src="{% static 'js/jquery.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/jquery.validate.js' %}" type="text/javascript"></script>
 
-    function form_check() {
-        if (create_game.opponent.value == "")
-        {
-            document.getElementById('opponent').focus();
-            document.getElementById('empty_oppo').style.display = "block";
-        }
-        else create_game.submit();
-    }
+<!--*必填-->
+<script type="text/javascript">
+    $(function(){
+        $("#commentForm").validate();
+    });
+</script>
+{% endblock %}
 
-    {% endblock %}
+{% block header %}
+    {% include 'new_navigation.html' %}
+{% endblock %}
 
-    {% block navigation %}
-        {% include 'navigation.html' %}
-    {% endblock %}
-
-    {% block content %}
+{% block content %}
+    <div class="content">
         {% include 'teams/team_info.html' %}
-        <div id="BodyHeadline">{% trans "SCHEDULE" %} > {% trans "CREATE" %}</div>
-        <form id="create_game" name="create_game" action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div>
-                <p>{% trans "OPPONENT" %}</p>
-                <input type="text" id="opponent" name="opponent">
-                <!-- 2016.05.06 UI error handling. -->
-                <div id="empty_oppo" style="display: none; color: red">
-                    {% trans "PLEASE_INSERT_OPPONENT_NAME" %}
-                </div>
-                <p>{% trans "LOCATION" %}</p>
-                <input type="text" name="location"><br>
-                <p>{% trans "TIME" %}</p>
-                <input type="text" name="time" value="{{ game_time }}"><br>
-            </div>
-            <div>
-                <p>{% trans "TYPE" %}</p>
-                <select name="game_type">
-                    <option value="1">{% trans "SEASON" %}</option>
-                    <option value="2">{% trans "PRACTICE" %}</option>
-                    <option value="3">{% trans "CASUAL" %}</option>
-                </select><br>
-                <p>{% trans "PERIODS" %}</p>
-                <select name="periods">
-                    <option value="1">{% trans "QUARTERS" %}</option>
-                    <option value="2">{% trans "HALVES" %}</option>
-                </select><br>
-                <p>{% trans "MINS_PER_PERIOD" %}</p>
-                <input type="number" name="mins_per_period" min="1" value="10"><br>
-            </div>
-            <div>
-                <p>{% trans "FAULS_PER_PLAYER" %}</p>
-                <input type="number" name="fouls_per_player" min="1" value="5"><br>
-                <p>{% trans "TIMEOUT_1ST_HALF" %}</p>
-                <input type="number" name="1st_half_timeouts" min="1" value="3"><br>
-                <p>{% trans "TIMEOUT_2ND_HALF" %}</p>
-                <input type="number" name="2nd_half_timeouts" min="1" value="2">
-                <p></p>
-            </div>
-        </form>
-        <button type="button" style="float: right; margin-right: 3.25vw" onclick="location.href='{% url 'mygames' team.id %}'">{% trans "CANCEL" %}</button>
-        <button type="submit" style="float: right; margin-right: 1vw" onclick="form_check()">{% trans "CREATE" %}</button>
-    {% endblock %}
+        <div class="row page-content">
+            <div class="col s12 m12 l1"></div>
+            <div class="col s12 m12 l10 content-block">
+                <h3 class="subinfo">{% trans 'SCHEDULE' %}<span>{% trans 'CREATE' %}</span></h3>
+                <div class="form">
+                    <form id="commentForm" class="commentForm" name="create_player" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="blockBg input-group">
+                            <div>
+                                <label>{% trans 'OPPONENT' %}<span class="redmark">*{% trans 'REQUIRED' %}</span></label>
+                                <input class="required" type="text" id="opponent" name="opponent">
+                                <label>{% trans 'LOCATION' %}</label>
+                                <input type="text" name="location">
+                                <label>{% trans 'TIME' %}</label>
+                                <input type="text" name="time" value="{{ game_time }}">
+                            </div>
+                            <div>
+                                <label>{% trans 'TYPE' %}</label>
+                                <select name="game_type">
+                                    <option value="1">{% trans 'SEASON' %}</option>
+                                    <option value="2">{% trans "PRACTICE" %}</option>
+                                    <option value="3">{% trans "CASUAL" %}</option>
+                                </select>
+                                <label>{% trans "PERIODS" %}</label>
+                                <select name="periods">
+                                    <option value="1">{% trans "QUARTERS" %}</option>
+                                    <option value="2">{% trans "HALVES" %}</option>
+                                </select>
+                                <label>{% trans "MINS_PER_PERIOD" %}</label>
+                                <input type="number" name="mins_per_period" min="1" value="10">
+                            </div>
+                            <div>
+                                <label>{% trans "FAULS_PER_PLAYER" %}</label>
+                                <input type="number" name="fouls_per_player" min="1" value="5">
+                                <label>{% trans "TIMEOUT_1ST_HALF" %}</label>
+                                <input type="number" name="1st_half_timeouts" min="1" value="3">
+                                <label>{% trans "TIMEOUT_2ND_HALF" %}</label>
+                                <input type="number" name="2nd_half_timeouts" min="1" value="2">
+                            </div>
+                        </div><!--end of input-group -->
+                        <div class="btn-group">
+                            <button class="btn" type="button" onclick="window.location.href='{% url 'mygames' team.id %}'">{% trans 'CANCEL' %}</button>
+                            <button class="btn" type="submit">{% trans 'CREATE' %}</button>
+                        </div>
+                    </form>
+                </div><!-- end of form-->
+            </div><!-- end of halfBlock-->
+        </div><!--end of page-content-->
+    </div><!--end of content-->
+{% endblock %}
 
+{% block donut %}
+    {% include 'donut.html' %}
+{% endblock %}
