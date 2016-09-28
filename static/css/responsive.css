@@ -48,6 +48,16 @@
 		background-size: 58px 38px;
 		margin-left: 13px;
 	}	
+	
+	footer {     
+		height: 70px;
+	    text-align: center;
+	    padding: 14px;
+	    line-height: 25px;
+	}
+	footer > div { display: block; margin: 0 auto; }
+	footer .right { float: none; }
+	
 	.pie { width: 100%; display: block; }
 	.main-title h1 { font-size: 340%; }
 	.score {
@@ -129,14 +139,6 @@
 	.mainPic-left .mainPic-title { right: 7%; }
 	.three-items > div { width: 90%; }
 	.content { padding-bottom: 70px; }
-	footer {     
-		height: 70px;
-	    text-align: center;
-	    padding: 14px;
-	    line-height: 25px;
-	}
-	footer > div { display: block; margin: 0 auto; }
-	footer .right { float: none; }
 
 	/* team pblic version */
 	.donut { width: 22%; margin: 0; }
