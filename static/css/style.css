@@ -13,7 +13,7 @@ body{
 	background-color: #F0F0F0;
 	color:#000;
 	margin:0;
-	font: /* 1em/1.5 'cwTeXHei', "Microsoft JhengHei",Arial,sans-serif; */
+	font:1em/1.5 "Microsoft JhengHei",Arial,sans-serif;
 	text-align: center;
 	position: relative;
 	min-height: 100vh;
@@ -351,6 +351,7 @@ footer > div { display: inline-block; }
 footer .right { float: right; }
 footer a { color: #666; }
 footer a:hover { color: #E1271D; }
+footer a, footer iframe { vertical-align: middle; }
 
 
 /*******  index.html  ********/
@@ -407,7 +408,7 @@ footer a:hover { color: #E1271D; }
 }
 .mainPic-title { position: absolute; }
 .mainPic-title p {
-	font-family: 'Ubuntu';
+	font-family: 'Ubuntu',Arial,sans-serif;
 	font-size: 1.3em;
 	font-style: italic;
 	color: #fff;
@@ -423,7 +424,7 @@ footer a:hover { color: #E1271D; }
 	letter-spacing: 13px;
 }
 .mainPic-title span {
-	font-family: 'Candal';
+	font-family: 'Candal',Arial,sans-serif;
 	font-size: 4.8em;
 	font-weight: 500;
 	font-style: italic;

@@ -801,7 +801,7 @@ msgstr "中鋒"
 #: templates/index.html:30 templates/index.html.py:67 templates/login.html:39
 #: templates/register.html:42
 msgid "WHY_DATAHOOPS"
-msgstr ""
+msgstr "為什麼使用DataHoops？"
 
 #: templates/index.html:31 templates/index.html.py:86
 #: templates/index_bak.html:35 templates/login.html:40
@@ -811,7 +811,7 @@ msgstr "關於我們"
 
 #: templates/index.html:32 templates/login.html:41 templates/register.html:44
 msgid "HOW_IT_WORKS"
-msgstr ""
+msgstr "如何使用"
 
 #: templates/index.html:33 templates/index_bak.html:36 templates/login.html:42
 #: templates/login.html.py:63 templates/privacy_policy.html:49
